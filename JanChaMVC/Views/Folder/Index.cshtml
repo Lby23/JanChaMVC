@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+<link href="~/layui-v2.5.7/layui/css/layui.css" rel="stylesheet" />
+<script src="~/layui-v2.5.7/layui/layui.js"></script>
+<h1>Index</h1>
+
+<table class="layui-hide" id="test"></table>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+<script>
+    layui.use('table', function () {
+        var table = layui.table;
+
+        table.render({
+            elem: '#test',
+            url: 'http://localhost:64502/api/Folder/Index',
+            method: 'post',
+            cols: [[
+                { field: 'id', width: 60, title: '序号', sort: true },
+                { field: 'parentId', width: 90, title: '编号' },
+                { field: 'name', width: 120, title: '名称', sort: true },
+                { field: 'key', width: 120, title: 'urlkey', sort: true },
+                { field: 'path', title: '模板路径', minWidth: 85 },
+                { field: 'sort', width: 110, title: '排序' },
+                { field: 'status', width: 110, title: '状态' },
+                { field: 'type', width: 110, title: '类型' },
+                { field: 'jumpUrl', width: 110, title: '地址' },
+                { field: 'content', width: 110, title: '说明' },
+                { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150 }
+            ]],
+            page: true
+        });
+    });
+</script>

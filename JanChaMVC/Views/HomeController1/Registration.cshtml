@@ -1,0 +1,104 @@
+﻿@model JanChaMVC.Models.User
+
+@{
+    ViewData["Title"] = "Registration";
+}
+
+<h1>Registration</h1>
+
+<h4>User</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Registration">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                    <label asp-for="UId" class="control-label"></label>
+                    <input asp-for="UId" class="form-control" />
+                    <span asp-validation-for="UId" class="text-danger"></span>
+                </div>*@
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger" id="UserName"></span>
+            </div>
+            <div class="form-group form-check" id="wrap">
+                <label class="form-check-label">
+                    @*<input class="form-check-input" asp-for="UserSex" />男
+                        @Html.DisplayNameFor(model => model.UserSex)*@
+                    <input value=true id="Radio1" type="radio" name="sex"  />女
+                    <input value=false id="Radio2" type="radio" name="sex"  />男
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger" id="Age"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger" id="Phone"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Number" class="control-label"></label>
+                <input asp-for="Number" class="form-control" />
+                <span asp-validation-for="Number" class="text-danger" id="Number"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger" id="Password"></span>
+            </div>
+            <div class="form-group">
+                <input id="zc" type="submit" value="注册" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@section scripts{
+    <script >
+        
+        $('#zc').click(function () {
+            var UserName = $('#UserName').val();
+
+            var UserSex = $('#wrap input[name="sex"]:checked ').val();
+            
+            var Age = $('#Age').val();
+
+            var Phone = $('#Phone').val();
+
+            var Number = $('#Number').val();
+
+            var Password = $('#Password').val();
+            alert(Password);
+            $.ajax({
+
+                url: "http://localhost:64502/api/Login",
+                data: {
+                    UserName: UserName,
+                    UserSex: UserSex,
+                    Age: Age,
+                    Phone: Phone,
+                    Number: Number,
+                    Password: Password
+                },
+                type: 'post',
+                success: function (resut) {
+                    if (resut > 0) {
+                        alert("注册成功");
+
+                    } else {
+                        alert("注册失败");
+                        location.reload();
+                    }
+                }
+            })
+        })
+    </script>
+}
+
