@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>登录</h1>
+
+@*<div id="dl" style="width:300px;height:300px;margin:0 auto;background-color:aqua">
+        <div style="width: 100%; height: 30%; margin-top:20%; background-color: aliceblue">
+            <label>账号：</label>
+            <input id="Text1" type="text" name="Number" placeholder="登录账号" /></br>
+            <label>密码：</label>
+            <input id="Text2" type="password" name="Password" placeholder="账号密码" /></br>
+        </div>
+        <div style="width: 300px; height: 27px; margin: 0 auto;">
+            <div>
+                <input id="Button1" type="button" value="登录" />
+            </div>
+            <div>
+                <input id="Button2" type="button" value="注册" />
+            </div>
+        </div>
+
+    </div>*@
+
+<!doctype html>
+<html long="zh">
+<body>
+    <!--中部内容-->
+    <div class="wrap" id="wrap">
+        <div class="logWrap">
+
+            <div class="logShow">
+                <!-- 头部提示信息 -->
+                <div class="LoginIndex LoginTop">
+                    <p class="p1">登录</p>
+                </div>
+                <!-- 输入框 -->
+                <div class="InputStr">
+                    <input id="Number" type="text" placeholder="输入用户名" />
+                </div>
+                <div class="InputStr">
+                    <input id="Password" type="password" placeholder="输入用户密码" />
+                </div>
+                <div class="LoginButton">
+                    <input id="Button1" type="button" value="注册" />
+
+                    <input id="Button2" type="button" value="登录" />
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+@section scripts{
+    <script>
+        $('#Button1').click(function () {
+            alert(123);
+            location.href = "/HomeController1/Registration";
+        })
+
+        $('#Button2').click(function () {
+            alert(456);
+            var Number = $('#Number').val();
+            var Password = $('#Password').val();
+            $.ajax({
+                url: "http://localhost:64502/api/Login",
+                data: {
+                    Number:Number, Password:Password
+                },
+                type: 'get',
+                success: function (resut) {
+                    if (resut!="") {
+                        alert("登录成功");
+                    } else {
+                        alert("登录失败");
+                        location.reload();
+                    }
+                }
+            })
+        })
+    </script>
+
+}
+
