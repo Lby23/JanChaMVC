@@ -12,5 +12,10 @@ namespace JanChaMVC.Controllers
         {
             return View();
         }
+
+        public IActionResult Article()
+        {
+            return View();
+        }
     }
 }
