@@ -6,19 +6,21 @@ using System.Threading.Tasks;
 
 namespace JanChaMVC.Controllers
 {
-    public class MVCController1 : Controller
+    public class FolderController : Controller
     {
         public IActionResult Index()
         {
             return View();
         }
-
-        public IActionResult Questionnaire()//问卷调查视图
+        public IActionResult Add()
         {
             return View();
         }
-
-        public IActionResult Article()
+        public IActionResult Detail()
+        {
+            return View();
+        }
+        public IActionResult Edit()
         {
             return View();
         }

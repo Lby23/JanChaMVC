@@ -1,0 +1,384 @@
+﻿
+@{
+    ViewData["Title"] = "Article";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="~/layui-v2.5.7/layui/css/layui.css" rel="stylesheet" />
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo">维生特·上海</div>
+            <!-- 头部区域（可配合layui已有的水平导航） -->
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item"><a href="/MVCController1/Index">首页</a></li>
+                <li class="layui-nav-item"><a href="">黑名单</a></li>
+                <li class="layui-nav-item"><a href="">举报投诉</a></li>
+                <li class="layui-nav-item"><a href="">招聘管理</a></li>
+                <li class="layui-nav-item"><a href="">问卷管理</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">内容管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">栏目管理</a></dd>
+                        <dd><a href="">栏目公告</a></dd>
+                        <dd><a href="">栏目滚动图片</a></dd>
+                        <dd><a href="/MVCController1/Article">文章管理</a></dd>
+                        <dd><a href="">文章审核</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">其他管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">友情链接</a></dd>
+                        <dd><a href="">访问量统计</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">系统管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">用户管理</a></dd>
+                        <dd><a href="">日志管理</a></dd>
+                        <dd><a href="">角色管理</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+        <!-- 内容主体区域 -->
+        <div class="layui-body">
+
+            <!-- 搜索栏 -->
+            <div class="layui-form-item demoTable" style="margin-top:5px;">
+                <div class="layui-inline">
+                    <div class="layui-input-inline">
+                        @*<input id="artname" name="artname" autocomplete="off" class="layui-input" placeholder="-请选择-">*@
+                        <select id="artname" name="artname" class="layui-input">
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <div class="layui-input-inline">
+                        <input id="folname" name="folname" autocomplete="off" class="layui-input" placeholder="-请选择-">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <div class="layui-input-inline">
+                        @*<input id="status" name="status" autocomplete="off" class="layui-input" placeholder="-请选择-">*@
+                        <select id="status" name="status" class="layui-input" lay-filter="aihao">
+                            <option value="0">-请选择-</option>
+                            <option value="1">显示</option>
+                            <option value="2">隐藏</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="layui-btn layui-btn-primary" id="btncha"><i class="layui-icon">&#xe615;</i>查询</button>
+                <button class="layui-btn layui-btn-primary" id="btnchong"><i class="layui-icon">&#xe9aa;</i>重置</button>
+                <button class="layui-btn layui-btn-primary" id="btnzeng" data-type="auto"><i class="layui-icon">&#xe654;</i>新增</button>
+            </div>
+            <!-- 表格 -->
+            <table class="layui-hide" id="test"></table>
+            <!-- 表格右侧编辑和删除 -->
+            <script type="text/html" id="barDemo">
+                <a class="layui-btn layui-btn" lay-event="edit1">编辑内容</a>
+                <a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
+                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+            </script>
+            <!-- 添加弹出层 -->
+            <form class="layui-form" id="create" hidden="hidden">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">栏目</label>
+                    <div class="layui-input-inline">
+                        <select id="artname" name="artname" class="layui-input">
+                        </select>
+                    </div>
+                    <label class="layui-form-label">名称</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">发布者</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="createPeople" required lay-verify="required" autocomplete="off" class="layui-input">
+                    </div>
+                    <label class="layui-form-label">发布时间</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="createTime" required lay-verify="required" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">排序</label>
+                    <div class="layui-input-inline">
+                        <select name="sort" lay-verify="required">
+                            <option value=""></option>
+                            <option value="10">10</option>
+                            <option value="9">9</option>
+                            <option value="8">8</option>
+                            <option value="7">7</option>
+                            <option value="6">6</option>
+                            <option value="5">5</option>
+                            <option value="4">4</option>
+                            <option value="3">3</option>
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                    </div>
+                    <label class="layui-form-label">状态</label>
+                    <div class="layui-input-inline">
+                        <input type="radio" name="status" value="隐藏" title="隐藏">
+                        <input type="radio" name="status" value="显示" title="显示" checked>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">是否评论</label>
+                    <div class="layui-input-inline">
+                        <input type="radio" name="isComment" value="是" title="否" checked>
+                        <input type="radio" name="isComment" value="是" title="否">
+                    </div>
+                    <label class="layui-form-label">是否推荐</label>
+                    <div class="layui-input-inline">
+                        <input type="radio" name="isRecommend" value="是" title="否">
+                        <input type="radio" name="isRecommend" value="是" title="否" checked>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">开始时间</label>
+                    <div class="layui-input-inline">
+                        <input type="password" name="startTime" required lay-verify="required" autocomplete="off" class="layui-input">
+                    </div>
+                    <label class="layui-form-label">结束时间</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="endTime" required lay-verify="required" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">类型</label>
+                    <div class="layui-input-inline">
+                        <select name="type" lay-verify="required">
+                            <option value="1">正常</option>
+                            <option value="2">不支持</option>
+                        </select>
+                    </div>
+                    <label class="layui-form-label">跳转地址</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="jumpUrl" required lay-verify="required" placeholder="跳转地址，设置直接跳转" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">图片</label>
+                    <div class="layui-input-inline">
+                        <input id="File1" type="file" name="image"/>
+                    </div>
+                    <div class="layui-input-inline">
+                        <input type="text" name="空" required lay-verify="required" placeholder="网络图片url" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">附件</label>
+                    <div class="layui-input-inline">
+                        <input id="File1" type="file" name="空"/>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="formDemo">保存</button>
+                        <button type="reset" class="layui-btn">关闭</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="~/layui-v2.5.7/layui/layui.js"></script>
+    <script src="~/Jquery/jquery-3.3.1.js"></script>
+    <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+
+    <script>
+
+        //JavaScript代码区域
+        layui.use('element', function () {
+            var element = layui.element;
+
+        });
+
+        layui.use('element', function () {
+            var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+            //监听导航点击
+            element.on('nav(demo)', function (elem) {
+                //console.log(elem)
+                layer.msg(elem.text());
+            });
+        });
+        //数据表格
+        layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element', 'slider', 'form'], function () {
+            var laydate = layui.laydate //日期
+                , laypage = layui.laypage //分页
+                , layer = layui.layer //弹层
+                , table = layui.table //表格
+                , carousel = layui.carousel //轮播
+                , upload = layui.upload //上传
+                , element = layui.element //元素操作
+                , slider = layui.slider //滑块
+                , form = layui.form
+            table.render({
+                elem: '#test'
+                , url: 'http://localhost:64502/api/Article/GetArticles'
+                , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+                , page: true
+                , cols: [[
+                    { field: 'id', width: 80, title: '序号' }
+                    , { field: 'name', width: 150, title: '栏目', sort: true }
+                    , { field: 'title', width: '20%', minWidth: 100, title: '名称', sort: true } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                    , { field: 'sort', width: 80, title: '排序', sort: true }
+                    , {
+                        field: 'status', width: 80, title: '状态', sort: true
+                        , templet: function (d) {
+                            if (d.status == 1)
+                                return '显示'
+                            else
+                                return '隐藏'
+                        }
+                    }
+                    , {
+                        field: 'isUp', width: 80, title: '置顶', sort: true
+                        , templet: function (d) {
+                            if (d.isUp == 1)
+                                return '是'
+                            else
+                                return '否'
+                        }
+                    }
+                    , {
+                        field: 'isRecommend', width: 80, title: '推荐', sort: true
+                        , templet: function (d) {
+                            if (d.isRecommend == 1)
+                                return '是'
+                            else
+                                return '否'
+                        }
+                    }
+                    , {
+                        field: 'approveStatus', width: 150, title: '审核状态', sort: true
+                        , templet: function (d) {
+                            if (d.approveStatus == 1)
+                                return '通过'
+                            else
+                                return '未通过'
+                        }
+                    }
+                    , {
+                        field: 'createTime', width: 150, title: '发布时间', sort: true
+                        , templet: function (d) {
+                            return loadData(d.createTime);
+                        }
+                    }
+                    , { field: 'createPeople', width: 150, title: '发布者', sort: true }
+                    , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 230 }
+                ]]
+            });
+            //重载查询
+            $('#btncha').on('click', function () {
+
+                table.reload('test', {
+                    where: { //设定异步数据接口的额外参数，任意设
+                        artname: $('#artname').val(),
+                        folname: $('#folname').val(),
+                        status: $('#status').val()
+                    }
+                    , page: {
+                        curr: 1 //重新从第 1 页开始
+                    }
+                }); //只重载数据
+            });
+
+            table.on('toolbar(test)', function (obj) {
+                alert(123);
+                var data = obj.data;
+                //console.log(obj)
+                if (obj.event === 'del') {
+                    layer.confirm('真的删除行么', function (index) {
+                        obj.del();
+                        layer.close(index);
+                    });
+                } else if (obj.event === 'edit') {
+                    layer.prompt({
+                        formType: 2
+                        , value: data.email
+                    }, function (value, index) {
+                        obj.update({
+                            email: value
+                        });
+                        layer.close(index);
+                    });
+                }
+            });
+
+            //绑定查询下拉框
+            $(function () {
+                $.ajax({
+                    url: 'http://localhost:64502/api/Article/GetFolder',
+                    type: 'get',
+                    success: function (result) {
+                        var strHtml = '';
+                        strHtml += '<option value="">-请选择-</option>';
+                        $(result.data).each(function () {
+                            strHtml += '<option value="' + this.name + '">' + this.name + '</option>';
+                        });
+                        $('#artname').empty().append(strHtml);
+                        //渲染下拉
+                        form.render('select');
+                    }
+                })
+            })
+
+        });
+        //重置
+        $('#btnchong').click(function () {
+            $('artname').val(""),
+            $('#folname').val(""),
+            $('#status').val(0);
+        })
+        //新增弹出方法
+        $('#btnzeng').click(function () {
+            layer.open({
+                type: 1
+                , title:'添加文章'
+                , content: $('#create')
+                ,width: '500px'
+                ,area:["800px","600px"]
+                , btn: '关闭全部'
+                , btnAlign: 'c' //按钮居中
+                , shade: 0 //不显示遮罩
+                , yes: function () {
+                    layer.closeAll();
+                }
+            });
+        })
+           
+
+        //时间戳格式化
+        function loadData(data) {
+            var f = parseInt(data.substring(6, 19));
+            var d = new Date(f);
+            var y = d.getFullYear() + "/"
+            var m = (d.getMonth() + 1 > 10 ? (d.getMonth() + 1) : ("0" + (d.getMonth() + 1))) + "/"
+            var dd = (d.getDate() + 1 > 10 ? (d.getDate()) : ("0" + (d.getDate()))) + "   "
+            var h = d.getHours() + ":"
+            var mm = d.getMinutes() + ":"
+            var s = d.getSeconds()
+            return y + m + dd + h + mm + s;
+        }
+    </script>
+</body>
+</html>
+
