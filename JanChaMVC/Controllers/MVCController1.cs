@@ -8,7 +8,17 @@ namespace JanChaMVC.Controllers
 {
     public class MVCController1 : Controller
     {
+        //首页
         public IActionResult Index()
+        {
+            return View();
+        }
+        //黑名单Blacklist
+        public IActionResult BlackList()
+        {
+            return View();   
+        }
+        public IActionResult BlackListData()
         {
             return View();
         }
