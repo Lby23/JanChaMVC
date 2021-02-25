@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="D:\技能\mvc\JanChaMVC\layui-v2.5.7\layui\css\layui.css" rel="stylesheet" />
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo">layui 后台布局</div>
+            <!-- 头部区域（可配合layui已有的水平导航） -->
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item"><a href="">首页</a></li>
+                <li class="layui-nav-item"><a href="">黑名单</a></li>
+                <li class="layui-nav-item"><a href="">举报投诉</a></li>
+                <li class="layui-nav-item"><a href="">招聘管理</a></li>
+                <li class="layui-nav-item"><a href="">问卷管理</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">内容管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">栏目管理</a></dd>
+                        <dd><a href="">栏目公告</a></dd>
+                        <dd><a href="">栏目滚动图片</a></dd>
+                        <dd><a href="">文章管理</a></dd>
+                        <dd><a href="">文章审核</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">其他管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">友情链接</a></dd>
+                        <dd><a href="">访问量统计</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">系统管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">用户管理</a></dd>
+                        <dd><a href="">日志管理</a></dd>
+                        <dd><a href="">角色管理</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <div style="padding: 15px;">内容主体区域</div>
+        </div>
+    </div>
+    <script src="D:\技能\mvc\JanChaMVC\layui-v2.5.7\layui\layui.js"></script>
+    <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+
+    <script>
+
+        //JavaScript代码区域
+        layui.use('element', function () {
+            var element = layui.element;
+
+        });
+
+        layui.use('element', function () {
+            var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+            //监听导航点击
+            element.on('nav(demo)', function (elem) {
+                //console.log(elem)
+                layer.msg(elem.text());
+            });
+        });
+    </script>
+</body>
+</html>
+
+
