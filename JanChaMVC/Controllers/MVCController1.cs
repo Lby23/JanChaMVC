@@ -12,5 +12,10 @@ namespace JanChaMVC.Controllers
         {
             return View();
         }
+
+        public IActionResult Questionnaire()//问卷调查视图
+        {
+            return View();
+        }
     }
 }
