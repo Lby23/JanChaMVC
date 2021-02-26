@@ -127,9 +127,33 @@
                     , { field: 'name', width: 150, title: '栏目', sort: true }
                     , { field: 'title', width: '20%', minWidth: 100, title: '名称', sort: true } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
                     , { field: 'sort', width: 80, title: '排序', sort: true }
-                    , { field: 'status', width: 80, title: '状态', sort: true }
-                    , { field: 'isComment', width: 80, title: '评论', sort: true }
-                    , { field: 'isRecommend', width: 80, title: '推荐', sort: true }
+                    , {
+                        field: 'status', width: 80, title: '状态', sort: true
+                        , templet: function (d) {
+                            if (d.status == 1)
+                                return '显示'
+                            else
+                                return '隐藏'
+                        }
+                    }
+                    , {
+                        field: 'isComment', width: 80, title: '评论', sort: true
+                        , templet: function (d) {
+                            if (d.isUp == 1)
+                                return '是'
+                            else
+                                return '否'
+                        }
+                    }
+                    , {
+                        field: 'isRecommend', width: 80, title: '推荐', sort: true
+                        , templet: function (d) {
+                            if (d.isRecommend == 1)
+                                return '是'
+                            else
+                                return '否'
+                        }
+                    }
                     , { field: 'createTime', width: 150, title: '发布时间', sort: true }
                     , { field: 'createPeople', width: 150, title: '发布者', sort: true }
 

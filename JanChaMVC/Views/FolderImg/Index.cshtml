@@ -1,0 +1,120 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h1>栏目滚动图片</h1>
+<!-- 搜索栏 -->
+<div class="layui-form-item demoTable" style="margin-top:5px;">
+    <div class="layui-inline">
+        <div class="layui-input-inline">
+            <input id="folname" name="folname" autocomplete="off" class="layui-input" placeholder="请输入名称">
+        </div>
+    </div>
+    <div class="layui-inline">
+        <div class="layui-input-inline">
+            <select id="status" name="status" class="layui-input" lay-filter="aihao">
+                <option value="0">-请选择-</option>
+                <option value="1">显示</option>
+                <option value="2">隐藏</option>
+            </select>
+        </div>
+    </div>
+    <button class="layui-btn layui-btn-primary" id="btncha"><i class="layui-icon">&#xe615;</i>查询</button>
+    <button class="layui-btn layui-btn-primary" id="btnchong"><i class="layui-icon">&#xe9aa;</i>重置</button>
+    <button class="layui-btn layui-btn-primary" id="btnzeng" data-type="auto"><i class="layui-icon">&#xe654;</i>新增</button>
+</div>
+
+<table class="layui-hide" id="test"></table>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+<script>
+    //数据表格
+    layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element', 'slider', 'form'], function () {
+        var laydate = layui.laydate //日期
+            , laypage = layui.laypage //分页
+            , layer = layui.layer //弹层
+            , table = layui.table //表格
+            , carousel = layui.carousel //轮播
+            , upload = layui.upload //上传
+            , element = layui.element //元素操作
+            , slider = layui.slider //滑块
+            , form = layui.form;
+
+        table.render({
+            elem: '#test',
+            url: 'http://localhost:64502/api/FolderImg/Index',
+            method: 'post',
+            cols: [[
+                { field: 'id', width: 60, title: '序号' },
+                { field: 'folderId', width: 90, title: '栏目', sort: true },
+                { field: 'name', width: 120, title: '题目', sort: true },
+                { field: 'countnt', width: 120, title: '内容', sort: true },
+                { field: 'sort', width: 110, title: '排序', sort: true },
+                {
+                    field: 'status', width: 110, title: '状态', sort: true, templet: function (d) {
+                        if (d.status == 1)
+                            return '显示'
+                        else
+                            return '隐藏'
+                    }
+                },
+                { field: 'img', width: 110, title: '图片' },
+                {
+                    field: 'img', title: '图片', align: 'center', sort: false,
+                    templet: function (d) {
+                        return '<div οnclick="photograph(this)"><img src=' + d.img + '></div>'
+                    }
+                },
+                { field: 'img', title: '图片', fixed: 'left', templet: '<div><img src="{{ d.img}}"></div>', style: 'height:48px;width:48px;line-height:48px!important;' },
+                { field: 'jumpUrl', width: 110, title: '链接地址' },
+                {
+                    field: 'createTime', width: 110, title: '更新时间', sort: true, templet: function (d) {
+                        return loadData(d.createTime);
+                    }
+                },
+                { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150 }
+            ]],
+            page: true
+        });
+
+        //重载查询
+        $('#btncha').on('click', function () {
+
+            table.reload('test', {
+                where: { //设定异步数据接口的额外参数，任意设
+                    folname: $('#folname').val(),
+                    status: $('#status').val()
+                }
+                , page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+            }); //只重载数据
+        });
+        //重置
+        $('#btnchong').click(function () {
+                $('#folname').val(""),
+                $('#status').val(0);
+        })
+
+        //新增弹出方法
+        $('#btnzeng').click(function () {
+            layer.open({
+                type: 1
+                , title: '添加栏目轮播图'
+                , content: $('#create')
+                , width: '500px'
+                , area: ["800px", "600px"]
+                , btn: '关闭全部'
+                , btnAlign: 'c' //按钮居中
+                , shade: 0 //不显示遮罩
+                , yes: function () {
+                    layer.closeAll();
+                }
+            });
+        })
+    });
+</script>
