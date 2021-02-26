@@ -1,0 +1,363 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="~/layui-v2.5.7/layui/css/layui.css" rel="stylesheet" />
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo">中梁</div>
+            <!-- 头部区域（可配合layui已有的水平导航） -->
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item"><a href="/MVCController1/Index">首页</a></li>
+                <li class="layui-nav-item"><a href="/MVCController1/BlackList">黑名单</a></li>
+                <li class="layui-nav-item"><a href="">举报投诉</a></li>
+                <li class="layui-nav-item"><a href="">招聘管理</a></li>
+                <li class="layui-nav-item"><a href="">问卷管理</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">内容管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">栏目管理</a></dd>
+                        <dd><a href="">栏目公告</a></dd>
+                        <dd><a href="">栏目滚动图片</a></dd>
+                        <dd><a href="">文章管理</a></dd>
+                        <dd><a href="">文章审核</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">其他管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">友情链接</a></dd>
+                        <dd><a href="">访问量统计</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">系统管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">用户管理</a></dd>
+                        <dd><a href="">日志管理</a></dd>
+                        <dd><a href="">角色管理</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <!-- 内容主体区域 -->
+            <div style="padding: 15px;">
+
+                <!--头部工具栏-->
+                <div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <div class="layui-input-inline">
+                                <input id="tel1" type="text" name="BUnit" placeholder="请输入违纪单位/人" />
+                            </div>
+                        </div>
+                    </div>
+                    <button id="chaxun" class="layui-btn">查询</button>
+                    <button class="layui-btn layui-btn-sm" onclick="chongzhi()" id="chongzhi">重置</button>
+                    <button class="layui-btn layui-btn-sm" onclick="addBlacglist()">新增</button>
+                    <button class="layui-btn layui-btn-sm" onclick="">导入</button>
+                </div>
+
+                <!--数据表格-->
+                <table id="demo" lay-filter="test"></table>
+
+                <!--添加弹出框-->
+                <div id="tianjia" hidden="hidden">
+                    <form class="layui-form">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">违纪类别</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="Btype" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">违纪单位/人</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="Bunit" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">证件号</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="BpapersNumber" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">违纪事项</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="Bmatter" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">状态</label>
+                            <div class="layui-input-inline">
+                                <select name="Bstate" style="width:200px" lay-filter="aihao">
+                                    <option value="true">启用</option>
+                                    <option value="false">禁用</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">违纪时间</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="BUpdateTime" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">发布人</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="PubLishPerson" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn" lay-submit lay-filter="add">添加</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!--修改弹出框-->
+                <div id="xiugai" hidden="hidden">
+                    <form class="layui-form">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">违纪类别</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="Btype" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">违纪单位/人</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="Bunit" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">证件号</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="BpapersNumber" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">违纪事项</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="Bmatter" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">状态</label>
+                            <div class="layui-input-inline">
+                                <select name="Bstate" style="width:200px" lay-filter="aihao">
+                                    <option value="true">启用</option>
+                                    <option value="false">禁用</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">违纪时间</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="BUpdateTime" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">发布人</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="PubLishPerson" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn" lay-submit lay-filter="put">修改</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/layui-v2.5.7/layui/layui.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+    <script>
+
+        //JavaScript代码区域
+        layui.use('element', function () {
+            var element = layui.element;
+
+        });
+
+        layui.use('table', function () {
+            var table = layui.table;
+            //第一个实例
+            var tableObj = table.render({
+                elem: '#demo'
+                , height: 500
+                , width: 1450
+                , url: 'http://localhost:64502/api/BlackList/' //数-据接口
+                , page: true //开启分页
+                , cols: [[ //表头
+                    { field: 'Bid', title: '序号', width: 80, sort: true, fixed: 'left' }
+                    , { field: 'Btype', title: '违纪类别', width: 100 }
+                    , { field: 'Bunit', title: '违纪单位/人', width: 100 }
+                    , { field: 'BpapersNumber', title: '证件号', width: 350 }
+                    , { field: 'Bmatter', title: '违纪事项', width: 100 }
+                    , {
+                        field: 'Bstate', title: '状态', width: 100,
+                        templet: function (d)
+                        {
+                            return d.Bstate ? "启用" : "禁用";
+                        }
+                    }
+                    , { field: 'BUpdateTime', title: '更新时间', width: 200 }
+                    , { field: 'PubLishPerson', title: '发布人', width: 100 }
+                    , { title: '操作', toolbar: '#barDemo', width: 310 }
+                ]]
+            });
+            //重置按钮点击事件
+            $("#chongzhi").click(function () {
+                $("[id=tel1]").val("");
+                tableObj.reload();
+            });
+            //查询
+            $("#chaxun").click(function () {
+                //tableObj为第一次加载数据时的表格，见代码142行
+                tableObj.reload({
+                    where: { //设定异步数据接口的额外参数，传的条件
+                        BUnit: $("[name=BUnit]").val()
+                    }
+                    , page: {
+                        curr: 1 //重新从第 1 页开始
+                    }
+                });
+            })
+
+            //监听工具条
+            table.on('tool(test)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+                var data = obj.data; //获得当前行数据
+                var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+                var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
+
+                if (layEvent === 'edit') { //编辑
+                    index = layer.open({
+                        type: 1,
+                        width: 400
+                        , btn: ['Close']
+                        , title: "更新"
+                        , closeBtn: 1,
+                        yes: function (index, layero) {
+                            layer.close(index); //如果设定了yes回调，需进行手工关闭
+                        }
+                        , success: function (layero, index) {
+                            $.ajax({
+                                url: "http://localhost:64502/api/BlackList?Bid=" + data.Bid,
+                                type: "get",
+                                success: function (data) {
+                                    $("[name=Btype]").val(data.Btype);
+                                    $("[name=Bunit]").val(data.Bunit);
+                                    $("[name=BpapersNumber]").val(data.BpapersNumber);
+                                    $("[name=Bmatter]").val(data.People);
+                                    $("[name=Bstate]").prop(data.Bstate);
+                                    $("[name=BUpdateTime]").val(data.CreateTime);
+                                    $("[name=PubLishPerson]").val(data.PubLishPerson);
+                                }
+                            })
+                        }
+                        , content: $('#xiugai') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+                    });
+                }else if (layEvent === 'del') {//删除
+                    layer.confirm('确定删除吗?', function (index) {
+                        $.ajax({
+                            url: "http://localhost:64502/api/BlackList?Bid=" + data.Bid,
+                            type: "delete",
+                            success: function (result) {
+                                if (result > 0) {
+                                    layer.msg("删除成功！");
+                                    tableObj.reload();//重载表格
+                                }
+                                else {
+                                    layer.msg("哎呀呀，删除失败咯");
+                                }
+                            }
+                        })
+                    });
+                } else if (layEvent === 'detail') {
+                    //查看
+                }
+            });
+        });
+
+        function addBlacglist() {
+            lxx = layer.open({
+                type: 1,
+                width: 400
+                , btn: ['关闭']
+                , title: "添加"
+                , closeBtn: 1,
+                yes: function (index, layero) {
+                    layer.close(lxx); //如果设定了yes回调，需进行手工关闭
+                }
+                , success: function (layero, index) {
+                    $("[name=Btype]").val("");
+                    $("[name=Bunit]").val("");
+                    $("[name=BpapersNumber]").val("");
+                    $("[name=Bmatter]").val("");
+                    $("[name=Bstate]").val("");
+                    $("[name=BUpdateTime]").val("");
+                    $("[name=PubLishPerson]").val("");
+                }
+                , content: $('#tianjia') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+            });
+        }
+        var form = layui.form;
+        //添加操作的表单提交事件
+        form.on('submit(add)', function (data) {
+            $.post("http://localhost:64502/api/BlackList", data.field, function (data) {
+                if (data > 0) {
+                    layer.msg("添加成功！");
+                    layer.close(lxx); //如果设定了yes回调，需进行手工关闭
+                    tableObj.reload(); //重载表格
+                }
+                else {
+                    layer.msg("添加失败！");
+                }
+            })
+            return false;
+        });
+
+
+
+        layui.use('element', function () {
+            var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+            //监听导航点击
+            element.on('nav(demo)', function (elem) {
+                //console.log(elem)
+                layer.msg(elem.text());
+            });
+        });
+
+    </script>
+    <script type="text/html" id="barDemo">
+        <button type="button" lay-event="detail" class="layui-btn layui-btn-normal">查看</button>
+        <button type="button" lay-event="edit" class="layui-btn">修改</button>
+        <button type="button" lay-event="del" class="layui-btn layui-btn-danger">删除</button>
+    </script>
+</body>
+</html>
+
+
