@@ -9,11 +9,6 @@
 <div class="layui-form-item demoTable" style="margin-top:5px;">
     <div class="layui-inline">
         <div class="layui-input-inline">
-            <input id="folname" name="folname" autocomplete="off" class="layui-input" placeholder="请输入名称">
-        </div>
-    </div>
-    <div class="layui-inline">
-        <div class="layui-input-inline">
             <select id="status" name="status" class="layui-input" lay-filter="aihao">
                 <option value="0">-请选择-</option>
                 <option value="1">显示</option>
@@ -28,7 +23,8 @@
 
 <table class="layui-hide" id="test"></table>
 <script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn" lay-event="detail">查看</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
 <script>
@@ -91,7 +87,6 @@
 
             table.reload('test', {
                 where: { //设定异步数据接口的额外参数，任意设
-                    folname: $('#folname').val(),
                     status: $('#status').val()
                 }
                 , page: {
@@ -101,7 +96,6 @@
         });
         //重置
         $('#btnchong').click(function () {
-                $('#folname').val(""),
                 $('#status').val(0);
         })
 
