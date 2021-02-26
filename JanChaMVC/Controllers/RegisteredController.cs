@@ -9,7 +9,7 @@ namespace JanChaMVC.Controllers
 {
     public class RegisteredController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index()//注册用户
         {
             return View();
         }
