@@ -80,6 +80,7 @@
     </div>
 
     <script src="~/layui-v2.5.7/layui/layui.js"></script>
+    <script src="~/js/Setcookie.js"></script>
     <script>
         layui.use(['layer'], function () {
             var layer = layui.layer;
@@ -187,8 +188,18 @@
                         //if (jsonData.code == '999') {
                         //    window.location.href = '/Default/Index';
                         if (data > 0) {
-                            alert(123);
+                            alert("登录成功");
+                            Setcookie("name", data.userName);
+                            Setcookie("email", "814096262@qq.com");
+                            Setcookie("phone", data.phone);
+                            Setcookie("content", data.userName);
+                            Setcookie("Id", data.uId);
+                            Setcookie("pass", data.password);
+                            location.href = '/MVCController1/Index'
                             return false;
+                        }
+                        else {
+                            alert("登录失败");
                         }
                     },
                     error: function () {
@@ -196,38 +207,12 @@
                         $('#loginBtn').val("登录");
                     }
                 });
+
             }
 
         }
     </script>
-    @*<script>
-            //$('#zhuce').click(function () {
-            //    alert(123);
-            //    location.href = "/HomeController1/Registration";
-            //})
 
-            $('#loginBtn').click(function () {
-                alert(123);
-                var Number = $('#Number').val();
-                var Password = $('#Password').val();
-                $.ajax({
-                    url: "http://localhost:64502/api/Login",
-                    data: {
-                        Number: Number,
-                        Password: Password
-                    },
-                    type: 'get',
-                    success: function (resut) {
-                        if (resut > 0) {
-                            alert("登录成功");
-                        } else {
-                            alert("登录失败");
-                            location.reload();
-                        }
-                    }
-                })
-            })
-        </script>*@
 </body>
 </html>
 
