@@ -183,8 +183,9 @@
                         
                         success: function (result) {
                             if (result > 0) {
-                                
                                 alert("登录成功");
+                                Setcookie("Number", result.Number);
+                                Setcookie("Password", result.Password);
                                 location.href = '/MVCController1/Index';
                                 return false;
                             } else {
