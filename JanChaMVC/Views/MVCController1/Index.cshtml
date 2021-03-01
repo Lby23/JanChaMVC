@@ -78,23 +78,23 @@
                         <table class="layui-table"  lay-skin="nob" style="margin-left:20px;" >
                             <tr>
                                 <td>登录名</td>
-                                <td><input id="name" type="text" style="border:none;outline:none"/></td>
+                                <td><input id="name" type="text" value="admin" style="border:none;outline:none" readonly/></td>
                             </tr>
                             <tr>
                                 <td>昵称</td>
-                                <td><input id="userName" type="text" style="border:none;outline:none"/></td>
+                                <td><input id="userName" type="text" style="border:none;outline:none" readonly/></td>
                             </tr>
                             <tr>
                                 <td>email</td>
-                                <td><input id="email" type="text" style="border:none;outline:none"/></td>
+                                <td><input id="email" type="text" style="border:none;outline:none" readonly/></td>
                             </tr>
                             <tr>
                                 <td>手机号</td>
-                                <td><input id="phone" type="text" style="border:none;outline:none"/></td>
+                                <td><input id="phone" type="text" style="border:none;outline:none" readonly/></td>
                             </tr>
                             <tr>
                                 <td>备注</td>
-                                <td><input id="content" type="text" style="border:none;outline:none"/></td>
+                                <td><input id="content" type="text" style="border:none;outline:none" readonly/></td>
                             </tr>
                         </table>
                     </div>
@@ -103,11 +103,11 @@
                     <div style="background-color:darkgrey;width:100%; height :50px; float:left;">
                         <h3 style="margin-top:15px;margin-left:10px;">
                             注册用户TOP10
-                            <a href="" style="color:darkgreen;font-size:10px;">更多</a>
+                            <a href="/Registered/Index" style="color:darkgreen;font-size:10px;">更多</a>
                         </h3>
                     </div>
                     <div style="float:left;">
-                        <table class="layui-hide" id="test2" lay-skin="nob"></table>
+                        <table class="layui-hide" id="tab" lay-skin="nob"></table>
                     </div>
                 </div>
             </div>
@@ -116,6 +116,8 @@
     </div>
 
     <script src="~/layui-v2.5.7/layui/layui.js"></script>
+    <script src="~/js/Setcookie.js"></script>
+    <script src="~/Jquery/jquery-3.3.1.js"></script>
     <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 
     <script>
@@ -185,20 +187,32 @@
             });
 
             //反填个人信息数据
-            
+            var username = getCookie("name").toString();
+            var useremail = getCookie("email").toString();
+            var userphone = getCookie("phone").toString();
+            var content = getCookie("content").toString();
+            $('#name').val(username);
+            $('#userName').val(username);
+            $('#email').val(useremail);
+            $('#phone').val(userphone);
+            $('#content').val(content);
+            //加载注册用户top10
             $(function () {
                 $.ajax({
-                    url: '',
+                    url: 'http://localhost:64502/api/RegisteredUsers/GetUsers',
                     type: 'get',
                     success: function (data) {
-                        $('#name').val(data.folderId);
-                        $('#userName').val(data.title);
-                        $('#email').val(data.createPeople);
-                        $('#phone').val(data.createTime);
-                        $('#content').val(data.sort);
+                        var str = '';
+                        $(data.data).each(function () {
+                            str += '<tr>'
+                                + '<td>用户：' + this.userName + '</td>'
+                                + '<td>' + this.time + '</td>'
+                                + '</tr>';
+                        });
+                        $("#tab").empty().append(str);
                     }
-                })
-            })
+                });
+            });
         });
     </script>
     <!--用来layui数据自动排序-->
