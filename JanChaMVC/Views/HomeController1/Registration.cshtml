@@ -26,8 +26,8 @@
                 <label class="form-check-label">
                     @*<input class="form-check-input" asp-for="UserSex" />男
                         @Html.DisplayNameFor(model => model.UserSex)*@
-                    <input value=true id="Radio1" type="radio" name="sex"  />女
-                    <input value=false id="Radio2" type="radio" name="sex"  />男
+                    <input value=1 id="Radio1" type="radio" name="sex"  />女
+                    <input value=0 id="Radio2" type="radio" name="sex"   />男
                 </label>
             </div>
             <div class="form-group">
@@ -51,7 +51,7 @@
                 <span asp-validation-for="Password" class="text-danger" id="Password"></span>
             </div>
             <div class="form-group">
-                <input id="zc" type="submit" value="注册" class="btn btn-primary" />
+                <input id="zc" type="button" value="注册" class="btn btn-primary" />
             </div>
         </form>
     </div>
@@ -67,26 +67,32 @@
             var UserName = $('#UserName').val();
 
             var UserSex = $('#wrap input[name="sex"]:checked ').val();
-            
+            UserSex = UserSex == "0" ? true : false;
             var Age = $('#Age').val();
 
             var Phone = $('#Phone').val();
 
+            console.log(JSON.stringify({
+                UserName: UserName,
+                UserSex: UserSex,
+                Age: Age,
+                Phone: Phone,
+                Number: Number,
+                Password: Password
+            }))
             var Number = $('#Number').val();
-
             var Password = $('#Password').val();
-            alert(Password);
             $.ajax({
 
-                url: "http://localhost:64502/api/Login",
-                data: {
+                url: "http://localhost:64502/api/Login/Registration",
+                data: JSON.stringify({
                     UserName: UserName,
                     UserSex: UserSex,
                     Age: Age,
                     Phone: Phone,
                     Number: Number,
                     Password: Password
-                },
+                }),
                 type: 'post',
                 success: function (resut) {
                     if (resut > 0) {
@@ -96,7 +102,8 @@
                         alert("注册失败");
                         location.reload();
                     }
-                }
+                },
+                contentType: 'application/json;'
             })
         })
     </script>
