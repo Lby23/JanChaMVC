@@ -48,6 +48,24 @@
                 </div>
                 <div class="usernameWrapDiv">
                     <div class="usernameLabel">
+                        <label>电子邮件:</label>
+                    </div>
+                    <div class="passwordDiv">
+                        <i class="layui-icon layui-icon-password adminIcon"></i>
+                        <input id="Emile" class="layui-input adminInput" type="text" name="Emile" placeholder="输入邮箱">
+                    </div>
+                </div>
+                <div class="usernameWrapDiv">
+                    <div class="usernameLabel">
+                        <label>手机号:</label>
+                    </div>
+                    <div class="passwordDiv">
+                        <i class="layui-icon layui-icon-password adminIcon"></i>
+                        <input id="Phone" class="layui-input adminInput" type="text" name="Phone" placeholder="输入手机号">
+                    </div>
+                </div>
+                <div class="usernameWrapDiv">
+                    <div class="usernameLabel">
                         <label>验证码:</label>
                     </div>
                     <div class="cardDiv">
@@ -178,19 +196,24 @@
                     dataType: 'html',
                     data: JSON.stringify({
                         Number: $('#Number').val(),
-                        Password: $('#Password').val()
+                        Password: $('#Password').val(),
+                        Phone:$('#Phone').val(),
+                        Emile: $('#Emile').val(),
                     }),
                     contentType: 'application/json',
                     success: function (data) {
-                        //layer.close(loginLoadIndex);
-                        //var jsonData = JSON.parse(data);
-                        //if (jsonData.code == '999') {
-                        //    window.location.href = '/Default/Index';
-
                         if (data > 0) {
-                            alert(123);
+                            var UId = data.UId;
+                            var Number = data.Number;
+                            var Password = data.Password;
+                            var Phone = data.Phone;
+                            var Emile = data.Emile;
+                            
+                            alert("注册成功");
                             location.href = '/MVCController1/Index';
                             return false;
+                        } else {
+                            alert("失败");
                         }
                     },
                     error: function () {
