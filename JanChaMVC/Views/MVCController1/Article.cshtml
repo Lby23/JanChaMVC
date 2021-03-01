@@ -61,7 +61,7 @@
                 <div class="layui-inline">
                     <div class="layui-input-inline">
                         @*<input id="artname" name="artname" autocomplete="off" class="layui-input" placeholder="-请选择-">*@
-                        <select id="artname" name="artname" class="layui-input">
+                        <select id="artname" name="artname" class="layui-input artname">
                         </select>
                     </div>
                 </div>
@@ -85,19 +85,19 @@
                 <button class="layui-btn layui-btn-primary" id="btnzeng" data-type="auto"><i class="layui-icon">&#xe654;</i>新增</button>
             </div>
             <!-- 表格 -->
-            <table class="layui-hide" id="test"></table>
+            <table class="layui-hide" lay-filter="test" id="test"></table>
             <!-- 表格右侧编辑和删除 -->
             <script type="text/html" id="barDemo">
                 <a class="layui-btn layui-btn" lay-event="edit1">编辑内容</a>
                 <a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
                 <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
             </script>
-            <!-- 添加弹出层 -->
+            <!-- 添加，修改弹出层 -->
             <form class="layui-form" id="create" hidden="hidden">
                 <div class="layui-form-item">
                     <label class="layui-form-label">栏目</label>
                     <div class="layui-input-inline">
-                        <select id="artname" name="artname" class="layui-input">
+                        <select id="q" name="artname" class="layui-input artname">
                         </select>
                     </div>
                     <label class="layui-form-label">名称</label>
@@ -134,26 +134,26 @@
                     </div>
                     <label class="layui-form-label">状态</label>
                     <div class="layui-input-inline">
-                        <input type="radio" name="status" value="隐藏" title="隐藏">
-                        <input type="radio" name="status" value="显示" title="显示" checked>
+                        <input id="status2" type="radio" name="status" value="2" title="隐藏">
+                        <input id="status1" type="radio" name="status" value="1" title="显示">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">是否评论</label>
                     <div class="layui-input-inline">
-                        <input type="radio" name="isComment" value="是" title="否" checked>
-                        <input type="radio" name="isComment" value="是" title="否">
+                        <input id="isComment1" type="radio" name="isComment" value="1" title="是">
+                        <input id="isComment2" type="radio" name="isComment" value="2" title="否">
                     </div>
                     <label class="layui-form-label">是否推荐</label>
                     <div class="layui-input-inline">
-                        <input type="radio" name="isRecommend" value="是" title="否">
-                        <input type="radio" name="isRecommend" value="是" title="否" checked>
+                        <input id="isRecommend1" type="radio" name="isRecommend" value="1" title="是">
+                        <input id="isRecommend2" type="radio" name="isRecommend" value="2" title="否">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">开始时间</label>
                     <div class="layui-input-inline">
-                        <input type="password" name="startTime" required lay-verify="required" autocomplete="off" class="layui-input">
+                        <input type="text" name="startTime" required lay-verify="required" autocomplete="off" class="layui-input">
                     </div>
                     <label class="layui-form-label">结束时间</label>
                     <div class="layui-input-inline">
@@ -176,7 +176,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">图片</label>
                     <div class="layui-input-inline">
-                        <input id="File1" type="file" name="image"/>
+                        <input id="File1" type="file" name="image" />
                     </div>
                     <div class="layui-input-inline">
                         <input type="text" name="空" required lay-verify="required" placeholder="网络图片url" autocomplete="off" class="layui-input">
@@ -185,15 +185,15 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">附件</label>
                     <div class="layui-input-inline">
-                        <input id="File1" type="file" name="空"/>
+                        <input id="File1" type="file" name="空" />
                     </div>
                 </div>
-                <div class="layui-form-item">
+                @*<div class="layui-form-item">
                     <div class="layui-input-block">
-                        <button class="layui-btn" lay-submit lay-filter="formDemo">保存</button>
-                        <button type="reset" class="layui-btn">关闭</button>
+                        <button class="layui-btn" lay-submit lay-filter="formDemo" id="submit">保存</button>
+                        <button type="reset" class="layui-btn"><i class="layui-icon">&#xe9aa;</i>重置</button>
                     </div>
-                </div>
+                </div>*@
             </form>
         </div>
     </div>
@@ -230,13 +230,18 @@
                 , element = layui.element //元素操作
                 , slider = layui.slider //滑块
                 , form = layui.form
+            //显示数据
             table.render({
                 elem: '#test'
                 , url: 'http://localhost:64502/api/Article/GetArticles'
                 , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
-                , page: true
+                , page: true    //开启分页
+                , limit: 5
+                , limits: [5, 10, 15]
                 , cols: [[
-                    { field: 'id', width: 80, title: '序号' }
+                    {
+                        field: 'id', width: 80, title: '序号', templet: '#xuhao'
+                    }
                     , { field: 'name', width: 150, title: '栏目', sort: true }
                     , { field: 'title', width: '20%', minWidth: 100, title: '名称', sort: true } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
                     , { field: 'sort', width: 80, title: '排序', sort: true }
@@ -245,7 +250,7 @@
                         , templet: function (d) {
                             if (d.status == 1)
                                 return '显示'
-                            else
+                            else if (d.status == 2)
                                 return '隐藏'
                         }
                     }
@@ -254,7 +259,7 @@
                         , templet: function (d) {
                             if (d.isUp == 1)
                                 return '是'
-                            else
+                            else if (d.isUp == 2)
                                 return '否'
                         }
                     }
@@ -263,7 +268,7 @@
                         , templet: function (d) {
                             if (d.isRecommend == 1)
                                 return '是'
-                            else
+                            else if (d.isRecommend == 2)
                                 return '否'
                         }
                     }
@@ -272,15 +277,13 @@
                         , templet: function (d) {
                             if (d.approveStatus == 1)
                                 return '通过'
-                            else
+                            else if (d.approveStatus == 2)
                                 return '未通过'
                         }
                     }
                     , {
                         field: 'createTime', width: 150, title: '发布时间', sort: true
-                        , templet: function (d) {
-                            return loadData(d.createTime);
-                        }
+                        , templet: "<div>{{layui.util.toDateString(d.createTime, 'yyyy年-MM月-dd日 HH:mm:ss')}}</div>"
                     }
                     , { field: 'createPeople', width: 150, title: '发布者', sort: true }
                     , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 230 }
@@ -288,7 +291,6 @@
             });
             //重载查询
             $('#btncha').on('click', function () {
-
                 table.reload('test', {
                     where: { //设定异步数据接口的额外参数，任意设
                         artname: $('#artname').val(),
@@ -300,84 +302,217 @@
                     }
                 }); //只重载数据
             });
-
-            table.on('tool(test)', function (obj) {
-                alert(123);
-                var data = obj.data;
-                //console.log(obj)
-                if (obj.event === 'del') {
+            //右侧点击按钮
+            table.on('tool(test)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+                var data = obj.data //获得当前行数据
+                    , layEvent = obj.event; //获得 lay-event 对应的值
+                if (layEvent === 'edit1') {
+                    layer.msg('修改状态操作');
+                } else if (layEvent === 'del') {
                     layer.confirm('真的删除行么', function (index) {
-                        obj.del();
-                        layer.close(index);
-                    });
-                } else if (obj.event === 'edit') {
-                    layer.prompt({
-                        formType: 2
-                        , value: data.email
-                    }, function (value, index) {
-                        obj.update({
-                            email: value
+                        $.ajax({
+                            url: 'http://localhost:64502/api/Article/Delete',
+                            type: 'delete',
+                            data: '"' + data.id + '"',
+                            dataType: "json",
+                            contentType: "application/json",
+                            success: function (result) {
+                                if (result > 0) {
+                                    alert("删除成功！");
+
+                                }
+                                else {
+                                    alert("删除失败！")
+                                }
+                            }
                         });
-                        layer.close(index);
+                        location.reload();
+                    });
+                } else if (layEvent === 'edit') {
+                    layer.open({
+                        type: 1
+                        , title: '修改文章'
+                        , content: $('#create')
+                        , width: '500px'
+                        , area: ["800px", "600px"]
+                        , btn: ['提交', '关闭全部']
+                        , btnAlign: 'c' //按钮居中
+                        , shade: 0 //不显示遮罩
+                        , success: function () {
+                            //反填数据
+                            $('[name="artname"]').val(data.folderId);
+                            $('[name="title"]').val(data.title);
+                            $('[name="createPeople"]').val(data.createPeople);
+                            $('[name="createTime"]').val(data.createTime);
+                            $('[name="sort"]').val(data.sort);
+                            //alert(data.folderId);
+                            if (data.status == 1) {
+                                $("#status1").prop('checked', true)
+                            } else if (data.status == 2) {
+                                $("#status2").prop('checked', true)
+                            };
+                            if (data.isComment == 1) {
+                                $("#isComment1").prop('checked', true)
+                            } else if (data.isComment == 2) {
+                                $("#isComment2").prop('checked', true)
+                            };
+                            if (data.isRecommend == 1) {
+                                $("#isRecommend1").prop('checked', true)
+                            } else if (data.isRecommend == 2) {
+                                $("#isRecommend2").prop('checked', true)
+                            };
+                            $('[name="startTime"]').val(data.startTime);
+                            $('[name="endTime"]').val(data.endTime);
+                            $('[name="type"]').val(data.type);
+                            $('[name="jumpUrl"]').val(data.jumpUrl);
+                            $('[name="image"]').val(data.image);
+                            form.render('select')
+                            form.render('radio')
+                        }
+                        , btn1: function (index, layero) {                            
+
+                            //修改方法
+                            //alert(data.id);
+                            $.ajax({
+                                url: 'http://localhost:64502/api/Article/Update',
+                                type: 'put',
+                                data: JSON.stringify({
+                                    id: data.id,
+                                    folderId: $('#q').val(),
+                                    title: $('[name="title"]').val(),
+                                    createPeople: $('[name="createPeople"]').val(),
+                                    createTime: $('[name="createTime"]').val(),
+                                    sort: $('[name="sort"]').val(),
+                                    status: $('[name="status"]:checked').val(),
+                                    isComment: $('[name="isComment"]:checked').val(),
+                                    isRecommend: $('[name="isRecommend"]:checked').val(),
+                                    startTime: $('[name="startTime"]').val(),
+                                    endTime: $('[name="endTime"]').val(),
+                                    type: $('[name="type"]').val(),
+                                    jumpUrl: $('[name="jumpUrl"]').val(),
+                                    image: $('[name="image"]').val()
+                                    
+                                }),
+                                success: function (data) {
+                                    if (data > 0) {
+                                        alert("修改成功");
+                                        location.reload();
+
+                                        table.reload('test', {
+                                            where: { //设定异步数据接口的额外参数，任意设
+                                            }
+                                            , page: {
+                                                curr: 1 //重新从第 1 页开始
+                                            }
+                                        }); //只重载数据
+                                    } else {
+                                        alert("修改失败");
+                                    }
+                                },
+                                dataType: "json",
+                                contentType: "application/json"
+                            });
+                            return false;
+                        }
+                        , btn2: function () {
+                            layer.closeAll();
+                        }
                     });
                 }
-            });
 
+            });
             //绑定查询下拉框
-            $(function () {
+            $(function () {                
                 $.ajax({
                     url: 'http://localhost:64502/api/Article/GetFolder',
                     type: 'get',
                     success: function (result) {
                         var strHtml = '';
-                        strHtml += '<option value="">-请选择-</option>';
+                        strHtml += '<option value="0">-请选择-</option>';
                         $(result.data).each(function () {
-                            strHtml += '<option value="' + this.name + '">' + this.name + '</option>';
+                            strHtml += '<option value="' + this.id + '">' + this.name + '</option>';
                         });
-                        $('#artname').empty().append(strHtml);
+                        $('.artname').empty().append(strHtml);
                         //渲染下拉
                         form.render('select');
                     }
                 })
             })
 
-        });
-        //重置
+            
+        });       
+        //重置按钮
         $('#btnchong').click(function () {
-            $('artname').val(""),
-            $('#folname').val(""),
-            $('#status').val(0);
+
+            $('#artname').val(0),
+                $('#folname').val(""),
+                $('#status').val(0);
         })
         //新增弹出方法
         $('#btnzeng').click(function () {
             layer.open({
                 type: 1
-                , title:'添加文章'
+                , title: '添加文章'
                 , content: $('#create')
-                ,width: '500px'
-                ,area:["800px","600px"]
-                , btn: '关闭全部'
+                , width: '500px'
+                , area: ["800px", "600px"]
+                , btn: ['提交','关闭全部']
                 , btnAlign: 'c' //按钮居中
                 , shade: 0 //不显示遮罩
-                , yes: function () {
+                , btn1: function () {                   
+                    //alert(JSON.stringify(data.field));
+                    //添加方法
+                    $.ajax({
+                        url: 'http://localhost:64502/api/Article/Create',
+                        type: 'post',
+                        data: JSON.stringify({
+                            folderId: $('#q').val(),
+                            title: $('[name="title"]').val(),
+                            createPeople: $('[name="createPeople"]').val(),
+                            createTime: $('[name="createTime"]').val(),
+                            sort: $('[name="sort"]').val(),
+                            status: $('[name="status"]:checked').val(),
+                            isComment: $('[name="isComment"]:checked').val(),
+                            isRecommend: $('[name="isRecommend"]:checked').val(),
+                            startTime: $('[name="startTime"]').val(),
+                            endTime: $('[name="endTime"]').val(),
+                            type: $('[name="type"]').val(),
+                            jumpUrl: $('[name="jumpUrl"]').val(),
+                            image: $('[name="image"]').val()
+                        }),
+                        success: function (data) {
+                            if (data > 0) {
+                                alert("添加成功");
+
+                                $("#create")[0].reset();
+                                layui.form.render();
+                                location.reload();
+                                table.reload('test', {
+                                    where: { //设定异步数据接口的额外参数，任意设
+                                    }
+                                    , page: {
+                                        curr: 1 //重新从第 1 页开始
+                                    }
+                                }); //只重载数据
+                            } else {
+                                alert("添加失败");
+                            }
+                        },
+                        dataType: "json",
+                        contentType: "application/json"
+                    });
+                    return false;
+                },
+                btn2: function () {
                     layer.closeAll();
                 }
             });
         })
-           
 
-        //时间戳格式化
-        function loadData(data) {
-            var f = parseInt(data.substring(6, 19));
-            var d = new Date(f);
-            var y = d.getFullYear() + "/"
-            var m = (d.getMonth() + 1 > 10 ? (d.getMonth() + 1) : ("0" + (d.getMonth() + 1))) + "/"
-            var dd = (d.getDate() + 1 > 10 ? (d.getDate()) : ("0" + (d.getDate()))) + "   "
-            var h = d.getHours() + ":"
-            var mm = d.getMinutes() + ":"
-            var s = d.getSeconds()
-            return y + m + dd + h + mm + s;
-        }
+    </script>
+    <!--用来layui数据自动排序-->
+    <script type="text/html" id="xuhao">
+        {{d.LAY_TABLE_INDEX+1}}
     </script>
 </body>
 </html>
