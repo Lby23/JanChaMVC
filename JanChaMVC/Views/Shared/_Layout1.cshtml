@@ -63,19 +63,9 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-    <script>
-        //时间戳格式化
-        function loadData(data) {
-            var f = parseInt(data.substring(6, 19));
-            var d = new Date(f);
-            var y = d.getFullYear() + "/"
-            var m = (d.getMonth() + 1 > 10 ? (d.getMonth() + 1) : ("0" + (d.getMonth() + 1))) + "/"
-            var dd = (d.getDate() + 1 > 10 ? (d.getDate()) : ("0" + (d.getDate()))) + "   "
-            var h = d.getHours() + ":"
-            var mm = d.getMinutes() + ":"
-            var s = d.getSeconds()
-            return y + m + dd + h + mm + s;
-        }
+    
+    <script type="text/html" id="zizeng">
+        {{d.LAY_TABLE_INDEX+1}}
     </script>
 </body>
 </html>
