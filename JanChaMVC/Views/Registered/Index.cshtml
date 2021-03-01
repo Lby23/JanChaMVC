@@ -87,8 +87,8 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">性别</label>
                 <div class="layui-input-inline">
-                    <input type="radio" name="UserSex" value="男" title="男">
-                    <input type="radio" name="UserSex" value="女" title="女" checked>
+                    <input type="radio" name="UserSex" value="男" >
+                    <input type="radio" name="UserSex" value="女"  checked>
                 </div>
             </div>
             <div class="layui-form-item">
@@ -250,7 +250,15 @@
                 , cols: [[
                     , { field: 'uId', title: 'ID', width: 80, sort: true, fixed: true }
                     , { field: 'userName', title: '用户名', width: 80 }
-                    , { field: 'userSex', title: '性别', width: 80, sort: true }
+                    , {
+                        field: 'userSex', title: '性别', width: 80, sort: true
+                        , templet: function (d) {
+                            if (d.userSex == true)
+                                return '女'
+                            else
+                                return '男'
+                        }
+                    }
                     , { field: 'age', title: '年龄', width: 80 }
                     , { field: 'phone', title: '手机号' }
                     , { field: 'number', title: '账号', width: 80 }
@@ -282,7 +290,7 @@
             table.on('tool(user)', function (obj) {
                 var data = obj.data;
                 //console.log(obj)
-                if (obj.event === 'detail') {
+                if (obj.event === 'detail') {//显示
                     layer.open({
                         type: 1,
                         title: '查看',
@@ -302,7 +310,7 @@
                                 $('input[name ="Password"]').val(data.password)
                         }
                     })
-                } else if (obj.event === 'del') {
+                } else if (obj.event === 'del') {//删除
                     layer.confirm('真的删除行么', function (index) {
                         $.ajax({
                             url: "http://localhost:64502/api/RegisteredUsers/Delete?UId=" + data.uId,
@@ -319,7 +327,7 @@
                         })
                     })
                 }
-                else if (obj.event === 'edit') {
+                else if (obj.event === 'edit') {//修改
                     layer.open({
                         type: 1,
                         title: '修改',

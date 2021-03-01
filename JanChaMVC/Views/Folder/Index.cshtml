@@ -34,7 +34,7 @@
     layui.use('table', function () {
         var table = layui.table;
 
-        table.render({
+        var datatable= table.render({
             elem: '#test',
             url: 'http://localhost:64502/api/Folder/Index',
             method: 'post',
@@ -57,7 +57,7 @@
         //重载查询
         $('#btncha').on('click', function () {
 
-            table.reload('test', {
+            datatable.reload('test', {
                 where: { //设定异步数据接口的额外参数，任意设
                     folname: $('#folname').val(),
                     status: $('#status').val()
@@ -78,7 +78,7 @@
             layui.use('layer', function () {
                 var layer = layui.layer;
                 //在这里面输入任何合法的js语句
-                layer.open({
+               add= layer.open({
                     type: 2,
                     skin: 'layui-layer-rim', //加上边框
                     title: '栏目添加',
