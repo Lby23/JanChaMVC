@@ -63,12 +63,15 @@
                 <div style="width:1000px;margin-left:80px;">
                     <form class="layui-form" action="" lay-filter="example">
                         <div class="layui-form-item">
-                            <button class="layui-btn"
-                                    lay-filter="test1"
-                                    lay-dropdown="{menus: [{layIcon:'layui-icon-username',txt: 'default', event:'usercenter'}, {layIcon: 'layui-icon-set',txt: 'inverse', event:'set'}, {layIcon: 'layui-icon-logout', txt: 'flat-ui', event:'loginout'},{layIcon: 'layui-icon-logout', txt: 'flat', event:'loginout'}]}">
-                                <span>下拉菜单</span>
-                                <i class="layui-icon layui-icon-triangle-d"></i>
-                            </button>
+                            <label class="layui-form-label">主题设置</label>
+                            <div class="layui-input-block">
+                                <select id="Select1">
+                                    <option value="default">default</option>
+                                    <option value="default">default</option>
+                                    <option value="default">default</option>
+                                    <option value="default">default</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label">登录名</label>
@@ -160,16 +163,6 @@
             });
         });    
 
-        // 把 dropdown.js 放在了你的扩展控件目录，你可以:
-        layui.config({
-            base: '你的扩展目录'
-        }).use(['dropdown'], function () {
-            var dropdown = layui.dropdown;
-            // 监听菜单点击
-            dropdown.onFilter('test1', function (event) {
-                // ...业务代码
-            })
-        });
     </script>
 
 </body>
