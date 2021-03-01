@@ -141,23 +141,23 @@
                 layer.alert("请输入正确验证码");
                 return false;
             }
-            $.ajax({
-                url: 'http://localhost:64502/api/Login/Login',
-                type: 'post',
-                data: {
-                    Number: loginUsername,
-                    Password: loginPassword
-                },
-                success: function (data) {
-                    alert(data);
-                    if (data > 0) {
-                        alert(123);
-                    }
-                    else {
-                        alert(data);
-                    }
-                }
-            })
+            //$.ajax({
+            //    url: 'http://localhost:64502/api/Login/Login',
+            //    type: 'post',
+            //    data: {
+            //        Number: loginUsername,
+            //        Password: loginPassword
+            //    },
+            //    success: function (data) {
+            //        alert(data);
+            //        if (data > 0) {
+            //            alert(123);
+            //        }
+            //        else {
+            //            alert(data);
+            //        }
+            //    }
+            //})
             return true;
         }
         // 登录流程
@@ -186,8 +186,10 @@
                         //var jsonData = JSON.parse(data);
                         //if (jsonData.code == '999') {
                         //    window.location.href = '/Default/Index';
+
                         if (data > 0) {
                             alert(123);
+                            location.href = '/MVCController1/Index';
                             return false;
                         }
                     },
