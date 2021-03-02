@@ -22,15 +22,15 @@
             <ul class="layui-nav layui-layout-left">
                 <li class="layui-nav-item"><a href="/MVCController1/Index">首页</a></li>
                 <li class="layui-nav-item"><a href="/MVCController1/BlackList">黑名单</a></li>
-                <li class="layui-nav-item"><a href="">举报投诉</a></li>
-                <li class="layui-nav-item"><a href="">招聘管理</a></li>
+                <li class="layui-nav-item"><a href="/MVCController1/Complain">举报投诉</a></li>
+                <li class="layui-nav-item"><a href="/MVCController1/Recruit">招聘管理</a></li>
                 <li class="layui-nav-item"><a href="/MVCController1/Questionnaire">问卷管理</a></li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">内容管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="">栏目管理</a></dd>
+                        <dd><a href="/Folder/Index">栏目管理</a></dd>
                         <dd><a href="">栏目公告</a></dd>
-                        <dd><a href="">栏目滚动图片</a></dd>
+                        <dd><a href="/FolderImg/Index">栏目滚动图片</a></dd>
                         <dd><a href="/MVCController1/Article">文章管理</a></dd>
                         <dd><a href="">文章审核</a></dd>
                     </dl>
@@ -38,7 +38,7 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;">其他管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="">友情链接</a></dd>
+                        <dd><a href="/MVCController1/Link">友情链接</a></dd>
                         <dd><a href="">访问量统计</a></dd>
                     </dl>
                 </li>
@@ -75,26 +75,26 @@
                         </h3>
                     </div>
                     <div style="float:left;">
-                        <table class="layui-table"  lay-skin="nob" style="margin-left:20px;" >
+                        <table class="layui-table" lay-skin="nob" style="margin-left:20px;">
                             <tr>
                                 <td>登录名</td>
-                                <td><input id="name" type="text" value="admin" style="border:none;outline:none" readonly/></td>
+                                <td><input id="name" type="text" value="admin" style="border:none;outline:none" readonly /></td>
                             </tr>
                             <tr>
                                 <td>昵称</td>
-                                <td><input id="userName" type="text" style="border:none;outline:none" readonly/></td>
+                                <td><input id="userName" type="text" style="border:none;outline:none" readonly /></td>
                             </tr>
                             <tr>
                                 <td>email</td>
-                                <td><input id="email" type="text" style="border:none;outline:none" readonly/></td>
+                                <td><input id="email" type="text" style="border:none;outline:none" readonly /></td>
                             </tr>
                             <tr>
                                 <td>手机号</td>
-                                <td><input id="phone" type="text" style="border:none;outline:none" readonly/></td>
+                                <td><input id="phone" type="text" style="border:none;outline:none" readonly /></td>
                             </tr>
                             <tr>
                                 <td>备注</td>
-                                <td><input id="content" type="text" style="border:none;outline:none" readonly/></td>
+                                <td><input id="content" type="text" style="border:none;outline:none" readonly /></td>
                             </tr>
                         </table>
                     </div>
@@ -122,15 +122,10 @@
 
     <script>
 
-        //JavaScript代码区域
-        layui.use('element', function () {
-            var element = layui.element;
 
-        });
-
-        layui.use('element', function () {
-            var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
-
+        layui.use(['element','form'], function () {
+            var element = layui.element //导航的hover效果、二级菜单等功能，需要依赖element模块
+                , form = layui.form
             //监听导航点击
             element.on('nav(demo)', function (elem) {
                 //console.log(elem)
@@ -138,8 +133,10 @@
             });
         });
         //数据表格
-        layui.use('table', function () {
-            var table = layui.table;
+        layui.use(['table','form'], function () {
+            var table = layui.table
+                , form = layui.form
+
 
             table.render({
                 elem: '#test'
@@ -197,22 +194,22 @@
             $('#phone').val(userphone);
             $('#content').val(content);
             //加载注册用户top10
-            $(function () {
                 $.ajax({
                     url: 'http://localhost:64502/api/RegisteredUsers/GetUsers',
                     type: 'get',
                     success: function (data) {
+                        alert(123);
                         var str = '';
                         $(data.data).each(function () {
                             str += '<tr>'
                                 + '<td>用户：' + this.userName + '</td>'
-                                + '<td>' + this.time + '</td>'
+                                + '<td>' + this.time1 + '</td>'
                                 + '</tr>';
                         });
                         $("#tab").empty().append(str);
+                        form.render();
                     }
                 });
-            });
         });
     </script>
     <!--用来layui数据自动排序-->

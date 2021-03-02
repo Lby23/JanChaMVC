@@ -179,12 +179,17 @@
                         success: function (result) {
                             if (result > 0) {
                                 alert("登录成功");
-                                Setcookie("Number", result.Number);
-                                Setcookie("Password", result.Password);
+
+                                Setcookie("name", result.Number);
+                                Setcookie("email", "814096262@qq.com");
+                                Setcookie("phone", result.phone);
+                                Setcookie("content", result.userName);
+                                Setcookie("Id", result.uId);
+                                Setcookie("pass", result.Password);
                                 location.href = '/MVCController1/Index';
                                 return false;
                             } else {
-                                alert("失败");
+                                alert("登录失败");
                             }
                         },
                         contentType: 'application/json',
