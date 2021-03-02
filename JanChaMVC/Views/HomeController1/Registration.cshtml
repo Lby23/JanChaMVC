@@ -4,88 +4,192 @@
     ViewData["Title"] = "Registration";
 }
 
-<h1>Registration</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <script src="~/Jquery/jquery-3.3.1.js"></script>
+    <link href="~/css/adminlogin.css" rel="stylesheet" />
+    <link href="~/layui-v2.5.7/layui/css/layui.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="wrap">
+        <img src="~/Img/-8d9ff779e1e113a.jpg" style="width:100%;height:100%" />
+        <div class="loginForm" style="width: 500px;height: 1800px;">
+            <form>
+                <div class="usernameWrapDiv">
+                    <div class="usernameLabel">
+                        <label>用户名:</label>
+                    </div>
+                    <div class="usernameDiv">
+                        <i class="layui-icon layui-icon adminIcon"></i>
+                        <input id="UserName" class="layui-input adminInput" type="text" name="UserName" placeholder="输入用户名">
+                    </div>
+                </div>
+                <div class="usernameWrapDiv">
+                    <div class="usernameLabel">
+                        <label>性别:</label>
+                    </div>
+                    <div class="passwordDiv">
+                        <i class="layui-icon  adminIcon"></i>
+                        <input id="UserSex1" class="layui-radio-disbaled " type="radio" name="UserSex" checked="checked">男
+                        <input id="UserSex2" class="layui-radio-disbaled " type="radio" name="UserSex">女
+                    </div>
+                </div>
+                <div class="usernameWrapDiv">
+                    <div class="usernameLabel">
+                        <label>年龄:</label>
+                    </div>
+                    <div class="passwordDiv">
+                        <i class="layui-icon layui-icon adminIcon"></i>
+                        <input id="Age" class="layui-input adminInput" type="text" name="Age" placeholder="输入年龄">
+                    </div>
+                </div>
+                <div class="usernameWrapDiv">
+                    <div class="usernameLabel">
+                        <label>手机号:</label>
+                    </div>
+                    <div class="passwordDiv">
+                        <i class="layui-icon layui-icon adminIcon"></i>
+                        <input id="Phone" class="layui-input adminInput" type="text" name="Phone" placeholder="输入手机号">
+                    </div>
+                </div>
+                <div class="usernameWrapDiv">
+                    <div class="usernameLabel">
+                        <label>电子邮件:</label>
+                    </div>
+                    <div class="passwordDiv">
+                        <i class="layui-icon layui-icon adminIcon"></i>
+                        <input id="Emile" class="layui-input adminInput" type="text" name="Emile" placeholder="输入年龄">
+                    </div>
+                </div>
+                <div class="usernameWrapDiv">
+                    <div class="usernameLabel">
+                        <label>备注:</label>
+                    </div>
+                    <div class="passwordDiv">
+                        <i class="layui-icon layui-icon adminIcon"></i>
+                        <input id="Note" class="layui-input adminInput" type="text" name="Note" placeholder="备注">
+                    </div>
+                </div>
+                <div class="usernameWrapDiv">
+                    <div class="usernameLabel">
+                        <label>账号:</label>
+                    </div>
+                    <div class="passwordDiv">
+                        <i class="layui-icon layui-icon adminIcon"></i>
+                        <input id="Number" class="layui-input adminInput" type="text" name="Number" placeholder="请输入账号">
+                    </div>
+                </div>
+                <div class="usernameWrapDiv">
+                    <div class="usernameLabel">
+                        <label>密码:</label>
+                    </div>
+                    <div class="passwordDiv">
+                        <i class="layui-icon layui-icon adminIcon"></i>
+                        <input id="Password" class="layui-input adminInput" type="text" name="Password" placeholder="请输入密码">
+                    </div>
+                </div>
 
-<h4>User</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Registration">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*<div class="form-group">
-            <label asp-for="UId" class="control-label"></label>
-            <input asp-for="UId" class="form-control" />
-            <span asp-validation-for="UId" class="text-danger"></span>
-        </div>*@
-            <div class="form-group">
-                <label asp-for="UserName" class="control-label"></label>
-                <input asp-for="UserName" class="form-control" />
-                <span asp-validation-for="UserName" class="text-danger" id="UserName"></span>
+                <div class="usernameWrapDiv">
+                    <div class="submitLabel"></div>
+                    <div class="usernameDiv">
+                        <input id="zc" type="button" class="submit layui-btn layui-btn-fluid layui-btn-normal" value="注册">
+                    </div>
+                </div>
+            </form>
             </div>
-            <div class="form-group form-check" id="wrap">
-                <label class="form-check-label">
-                    @*<input class="form-check-input" asp-for="UserSex" />男
-                @Html.DisplayNameFor(model => model.UserSex)*@
-                    <input value=1 id="Radio1" type="radio" name="sex" />女
-                    <input value=0 id="Radio2" type="radio" name="sex" />男
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="Age" class="control-label"></label>
-                <input asp-for="Age" class="form-control" />
-                <span asp-validation-for="Age" class="text-danger" id="Age"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Phone" class="control-label"></label>
-                <input asp-for="Phone" class="form-control" />
-                <span asp-validation-for="Phone" class="text-danger" id="Phone"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Emile" class="control-label"></label>
-                <input asp-for="Emile" class="form-control" />
-                <span asp-validation-for="Emile"  class="text-danger" id="Emile"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Note" class="control-label"></label>
-                <input asp-for="Note" class="form-control" />
-                <span asp-validation-for="Note"  class="text-danger" id="Note"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Number" class="control-label"></label>
-                <input asp-for="Number" class="form-control" />
-                <span asp-validation-for="Number" class="text-danger" id="Number"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger" id="Password"></span>
-            </div>
-            <div class="form-group">
-                <input id="zc" type="button" value="注册" class="btn btn-primary" />
-            </div>
-        </form>
     </div>
-</div>
+    @*<div class="row">
+        <div class="col-md-4">
+            <form asp-action="Registration">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                        <label asp-for="UId" class="control-label"></label>
+                        <input asp-for="UId" class="form-control" />
+                        <span asp-validation-for="UId" class="text-danger"></span>
+                    </div>
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label">用户名</label>
+                    <input asp-for="UserName" class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger" id="UserName"></span>
+                </div>
+                <div class="form-group form-check" id="wrap">
+                    <label class="form-check-label">
+                        性别：
+                        <input value=1 id="Radio1" type="radio" name="sex" />女
+                        <input value=0 id="Radio2" type="radio" name="sex" />男
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Age" class="control-label">年龄</label>
+                    <input asp-for="Age" class="form-control" />
+                    <span asp-validation-for="Age" class="text-danger" id="Age"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Phone" class="control-label">手机号</label>
+                    <input asp-for="Phone" class="form-control" />
+                    <span asp-validation-for="Phone" class="text-danger" id="Phone"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Emile" class="control-label">电子邮件</label>
+                    <input asp-for="Emile" class="form-control" />
+                    <span asp-validation-for="Emile" class="text-danger" id="Emile"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Note" class="control-label">备注</label>
+                    <input asp-for="Note" class="form-control" />
+                    <span asp-validation-for="Note" class="text-danger" id="Note"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Number" class="control-label">账号</label>
+                    <input asp-for="Number" class="form-control" />
+                    <span asp-validation-for="Number" class="text-danger" id="Number"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label">密码</label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger" id="Password"></span>
+                </div>
+                <div class="form-group">
+                    <input id="zc" type="button" value="注册" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>*@
+    <script src="~/layui-v2.5.7/layui/layui.js"></script>
+    <script>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-@section scripts{
-    <script >
-        
         $('#zc').click(function () {
             var UserName = $('#UserName').val();
-
             var UserSex = $('#wrap input[name="sex"]:checked ').val();
             UserSex = UserSex == "0" ? true : false;
             var Age = $('#Age').val();
             var Phone = $('#Phone').val();
             var Emile = $('#Emile').val();
             var Note = $('#Note').val();
-           
             var Number = $('#Number').val();
-
             var Password = $('#Password').val();
+            if (UserName == "") {
+                alert("用户名不为空");
+                location.reload();
+            } else if (UserSex != "") {
+                alert("用户性别不为空");
+                location.reload();
+            } else if (Phone == "") {
+                alert("用户手机号不为空");
+                location.reload();
+            } else if (Emile == "") {
+                alert("电子邮件不为空");
+                location.reload();
+            } else if (Number == "") {
+                alert("账号不为空");
+                location.reload();
+            } else if (Password == "") {
+                alert("密码不为空");
+                location.reload();
+            }
             //console.log(JSON.stringify({
             //    UserName: UserName,
             //    UserSex: UserSex,
@@ -103,7 +207,7 @@
                     Age: Age,
                     Phone: Phone,
                     Emile: Emile,
-                    Note:note,
+                    Note: Note,
                     Number: Number,
                     Password: Password
                 }),
@@ -121,5 +225,5 @@
             })
         })
     </script>
-}
-
+</body>
+</html>
