@@ -23,8 +23,8 @@
             <ul class="layui-nav layui-layout-left">
                 <li class="layui-nav-item"><a href="/MVCController1/Index">首页</a></li>
                 <li class="layui-nav-item"><a href="/MVCController1/BlackList">黑名单</a></li>
-                <li class="layui-nav-item"><a href="">举报投诉</a></li>
-                <li class="layui-nav-item"><a href="">招聘管理</a></li>
+                <li class="layui-nav-item"><a href="/MVCController1/Complain">举报投诉</a></li>
+                <li class="layui-nav-item"><a href="/MVCController1/Recruit">招聘管理</a></li>
                 <li class="layui-nav-item"><a href="">问卷管理</a></li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">内容管理</a>
@@ -67,9 +67,9 @@
                         </div>
                     </div>
                     <button id="chaxun" class="layui-btn">查询</button>
-                    <button class="layui-btn layui-btn-sm" onclick="chongzhi()" id="chongzhi">重置</button>
-                    <button class="layui-btn layui-btn-sm" onclick="addBlacglist()">新增</button>
-                    <button class="layui-btn layui-btn-sm" onclick="">导入</button>
+                    <button class="layui-btn" id="chongzhi">重置</button>
+                    <button class="layui-btn" onclick="addBlacglist()">新增</button>
+                    <button class="layui-btn" onclick="">导入</button>
                 </div>
 
                 <!--数据表格-->
@@ -81,46 +81,44 @@
                         <div class="layui-form-item">
                             <label class="layui-form-label">违纪类别</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="Btype" placeholder="请输入" autocomplete="off" class="layui-input">
+                                <input type="text" id="IBtype" name="Btype" placeholder="请输入" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label">违纪单位/人</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="Bunit" placeholder="请输入" autocomplete="off" class="layui-input">
+                                <input type="text" id="IBunit" name="Bunit" placeholder="请输入" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label">证件号</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="BpapersNumber" placeholder="请输入" autocomplete="off" class="layui-input">
+                                <input type="text" id="IBpapersNumber" name="BpapersNumber" placeholder="请输入" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label">违纪事项</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="Bmatter" placeholder="请输入" autocomplete="off" class="layui-input">
+                                <input type="text" id="IBmatter" name="Bmatter" placeholder="请输入" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label">状态</label>
                             <div class="layui-input-inline">
-                                <select name="Bstate" style="width:200px" lay-filter="aihao">
-                                    <option value="true">启用</option>
-                                    <option value="false">禁用</option>
-                                </select>
+                                <input type="radio" name="sex" value="true" title="启用">
+                                <input type="radio" name="sex" value="false" title="禁用">
                             </div>
                         </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label">违纪时间</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="BUpdateTime" placeholder="请输入" autocomplete="off" class="layui-input">
+                                <input type="text" id="IBUpdateTime" name="BUpdateTime" placeholder="请输入" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label">发布人</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="PubLishPerson" placeholder="请输入" autocomplete="off" class="layui-input">
+                                <input type="text" id="IPubLishPerson" name="PubLishPerson" placeholder="请输入" autocomplete="off" class="layui-input">
                             </div>
                         </div>
 
@@ -137,6 +135,56 @@
                         <div class="layui-form-item">
                             <label class="layui-form-label">违纪类别</label>
                             <div class="layui-input-inline">
+                                <input type="hidden" name="Bid" value=0 />
+                                <input type="text" id="IBtype2" name="Btype" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">违纪单位/人</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="IBunit2" name="Bunit" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">证件号</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="IBpapersNumber2" name="BpapersNumber" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">违纪事项</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="IBmatter2" name="Bmatter" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">状态</label>
+                            <div class="layui-input-inline">
+                                <input type="radio" id="IBstate2" name="Bstate" value="true" title="启用">
+                                <input type="radio" id="IIBstate22" name="Bstate" value="false" title="禁用">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">违纪时间</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="IBUpdateTime2" name="BUpdateTime" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">发布人</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="IPubLishPerson2" name="PubLishPerson" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <!--详情弹出框-->
+                <div id="xiangqing" hidden="hidden">
+                    <form class="layui-form">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">违纪类别</label>
+                            <div class="layui-input-inline">
                                 <input type="text" name="Btype" placeholder="请输入" autocomplete="off" class="layui-input">
                             </div>
                         </div>
@@ -161,10 +209,8 @@
                         <div class="layui-form-item">
                             <label class="layui-form-label">状态</label>
                             <div class="layui-input-inline">
-                                <select name="Bstate" style="width:200px" lay-filter="aihao">
-                                    <option value="true">启用</option>
-                                    <option value="false">禁用</option>
-                                </select>
+                                <input type="radio" id="IBstate1" name="Bstate" value="true" title="启用">
+                                <input type="radio" id="IBstate11" name="Bstate" value="false" title="禁用">
                             </div>
                         </div>
                         <div class="layui-form-item">
@@ -179,12 +225,6 @@
                                 <input type="text" name="PubLishPerson" placeholder="请输入" autocomplete="off" class="layui-input">
                             </div>
                         </div>
-
-                        <div class="layui-form-item">
-                            <div class="layui-input-block">
-                                <button class="layui-btn" lay-submit lay-filter="put">修改</button>
-                            </div>
-                        </div>
                     </form>
                 </div>
             </div>
@@ -192,7 +232,7 @@
     </div>
 
     <script src="~/layui-v2.5.7/layui/layui.js"></script>
-    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/Jquery/jquery-3.3.1.js"></script>
     <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
     <script>
 
@@ -202,25 +242,28 @@
 
         });
 
-        layui.use('table', function () {
+        layui.use(['table', 'form'], function () {
             var table = layui.table;
+            var form = layui.form;
             //第一个实例
             var tableObj = table.render({
                 elem: '#demo'
-                , height: 500
+                , height: 400
                 , width: 1450
+                , limit: 10
+                , limits: [10, 15, 20, 25, 30, 35, 40, 45, 50]
                 , url: 'http://localhost:64502/api/BlackList/' //数-据接口
                 , page: true //开启分页
                 , cols: [[ //表头
                     { field: 'Bid', title: '序号', width: 80, sort: true, fixed: 'left' }
+                    , { title: '题号', toolbar: '#indexTpl' },
                     , { field: 'Btype', title: '违纪类别', width: 100 }
                     , { field: 'Bunit', title: '违纪单位/人', width: 100 }
                     , { field: 'BpapersNumber', title: '证件号', width: 350 }
                     , { field: 'Bmatter', title: '违纪事项', width: 100 }
                     , {
                         field: 'Bstate', title: '状态', width: 100,
-                        templet: function (d)
-                        {
+                        templet: function (d) {
                             return d.Bstate ? "启用" : "禁用";
                         }
                     }
@@ -257,30 +300,56 @@
                     index = layer.open({
                         type: 1,
                         width: 400
-                        , btn: ['Close']
-                        , title: "更新"
+                        , btn: ['修改', '关闭']
+                        , title: "修改"
                         , closeBtn: 1,
-                        yes: function (index, layero) {
-                            layer.close(index); //如果设定了yes回调，需进行手工关闭
-                        }
-                        , success: function (layero, index) {
-                            $.ajax({
-                                url: "http://localhost:64502/api/BlackList?Bid=" + data.Bid,
-                                type: "get",
-                                success: function (data) {
-                                    $("[name=Btype]").val(data.Btype);
-                                    $("[name=Bunit]").val(data.Bunit);
-                                    $("[name=BpapersNumber]").val(data.BpapersNumber);
-                                    $("[name=Bmatter]").val(data.People);
-                                    $("[name=Bstate]").prop(data.Bstate);
-                                    $("[name=BUpdateTime]").val(data.CreateTime);
-                                    $("[name=PubLishPerson]").val(data.PubLishPerson);
-                                }
-                            })
+                        success: function () {
+                            $("[name=Bid]").val(data.Bid);
+                            $("[name=Btype]").val(data.Btype);
+                            $("[name=Bunit]").val(data.Bunit);
+                            $("[name=BpapersNumber]").val(data.BpapersNumber);
+                            $("[name=Bmatter]").val(data.Bmatter);
+                            if (data.Bstate == true) {
+                                $("#IBstate2").prop('checked', true);
+                            } else {
+                                $("#IIBstate22").prop('checked', true);
+                            }
+                            $("[name=BUpdateTime]").val(data.BUpdateTime);
+                            $("[name=PubLishPerson]").val(data.PubLishPerson);
+                            form.render();
                         }
                         , content: $('#xiugai') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+                        , yes: function (index, layero) {
+                            $.ajax({
+                                url: "http://localhost:64502/api/BlackList?Bid=" + data.Bid,
+                                type: "put",
+                                data: JSON.stringify({
+                                    Bid: data.Bid,
+                                    Btype: $("#IBtype2").val(),
+                                    Bunit: $("#IBunit2").val(),
+                                    BpapersNumber: $("#IBpapersNumber2").val(),
+                                    Bmatter: $("#IBmatter2").val(),
+                                    Bstate: $("#IBstate2").prop('checked') == true ? true : false,
+                                    BUpdateTime: $("#IBUpdateTime2").val(),
+                                    PubLishPerson: $("#IPubLishPerson2").val(),
+                                }),
+                                success: function (result) {
+                                    if (result > 0) {
+                                        layer.msg("修改成功");
+                                        layer.close();
+                                        tableObj.reload();
+                                    } else {
+                                        layer.msg("修改失败");
+                                    }
+                                },
+                                contentType: "application/json",
+                            });
+                            return false;
+                        }, btn2: function (index, layero) {
+                            layer.close(index);
+                        }
                     });
-                }else if (layEvent === 'del') {//删除
+                } else if (layEvent === 'del') {//删除
                     layer.confirm('确定删除吗?', function (index) {
                         $.ajax({
                             url: "http://localhost:64502/api/BlackList?Bid=" + data.Bid,
@@ -298,21 +367,72 @@
                     });
                 } else if (layEvent === 'detail') {
                     //查看
+                    index = layer.open({
+                        type: 1,
+                        width: 400
+                        , btn: ['关闭']
+                        , closeBtn: 1,
+                        yes: function (index, layero) {
+                            layer.close(index); //如果设定了yes回调，需进行手工关闭
+                        },
+                        success: function () {
+                            $("[name=Btype]").val(data.Btype);
+                            $("[name=Bunit]").val(data.Bunit);
+                            $("[name=BpapersNumber]").val(data.BpapersNumber);
+                            $("[name=Bmatter]").val(data.Bmatter);
+                            if (data.Bstate == true) {
+                                $("#IBstate1").prop('checked', true);
+                            } else {
+                                $("#IBstate11").prop('checked', true);
+                            }
+                            $("[name=BUpdateTime]").val(data.BUpdateTime);
+                            $("[name=PubLishPerson]").val(data.PubLishPerson);
+                            form.render();
+                        }
+                        , content: $('#xiangqing') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+                    });
                 }
+            });
+
+            //添加操作的表单提交事件
+            form.on('submit(add)', function (data) {
+                console.log(data.elem)
+                console.log(data.form)
+                console.log(data.field)
+                $.ajax({
+                    url: "http://localhost:64502/api/BlackList",
+                    type: "post",
+                    data: JSON.stringify({
+                        Btype: $("#IBtype").val(),
+                        Bunit: $("#IBunit").val(),
+                        BpapersNumber: $("#IBpapersNumber").val(),
+                        Bmatter: $("#IBmatter").val(),
+                        Bstate: $("#IBstate2").prop("checked") == true ? true : false,
+                        BUpdateTime: $("#IBUpdateTime").val(),
+                        PubLishPerson: $("#IPubLishPerson").val(),
+                    }),
+                    success: function (result) {
+                        if (result > 0) {
+                            layer.msg("添加成功");
+                            layer.close(lxx);
+                            tableObj.reload();
+                        } else {
+                            layer.msg("添加失败");
+                        }
+                    },
+                    contentType: " application/ json",
+                });
+                return false;
             });
         });
 
+        //新增按钮弹出框
         function addBlacglist() {
             lxx = layer.open({
                 type: 1,
-                width: 400
-                , btn: ['关闭']
-                , title: "添加"
-                , closeBtn: 1,
-                yes: function (index, layero) {
-                    layer.close(lxx); //如果设定了yes回调，需进行手工关闭
-                }
-                , success: function (layero, index) {
+                area: ['400px'],
+                title: "新增问卷",
+                success: function () {
                     $("[name=Btype]").val("");
                     $("[name=Bunit]").val("");
                     $("[name=BpapersNumber]").val("");
@@ -320,25 +440,10 @@
                     $("[name=Bstate]").val("");
                     $("[name=BUpdateTime]").val("");
                     $("[name=PubLishPerson]").val("");
-                }
-                , content: $('#tianjia') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+                },
+                content: $('#tianjia') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
             });
         }
-        var form = layui.form;
-        //添加操作的表单提交事件
-        form.on('submit(add)', function (data) {
-            $.post("http://localhost:64502/api/BlackList", data.field, function (data) {
-                if (data > 0) {
-                    layer.msg("添加成功！");
-                    layer.close(lxx); //如果设定了yes回调，需进行手工关闭
-                    tableObj.reload(); //重载表格
-                }
-                else {
-                    layer.msg("添加失败！");
-                }
-            })
-            return false;
-        });
 
 
 
@@ -356,6 +461,9 @@
         <button type="button" lay-event="detail" class="layui-btn layui-btn-normal">查看</button>
         <button type="button" lay-event="edit" class="layui-btn">修改</button>
         <button type="button" lay-event="del" class="layui-btn layui-btn-danger">删除</button>
+    </script>
+    <script type="text/html" id="indexTpl">
+        {{d.LAY_INDEX}}
     </script>
 </body>
 </html>
