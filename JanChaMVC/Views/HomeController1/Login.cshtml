@@ -22,19 +22,16 @@
     <div class="wrap">
         <img src="~/Img/-8d9ff779e1e113a.jpg" style="width:100%;height:100%" />
         <div class="loginForm" style="
-        width: 500px;
-        height: 600px;">
+        width: 60%;
+        height: 60%;">
             <form>
-                <div class="logoHead">
-                    <!--<h2 style="margin-top: 15px">房产销售平台管理系统</h2>-->
-                </div>
                 <div class="usernameWrapDiv">
                     <div class="usernameLabel">
                         <label>用户名:</label>
                     </div>
                     <div class="usernameDiv">
                         <i class="layui-icon layui-icon-username adminIcon"></i>
-                        <input id="Number" class="layui-input adminInput" type="text" name="Number"  placeholder="输入账号">
+                        <input id="Number" class="layui-input adminInput" type="text" name="Number" placeholder="输入账号">
                     </div>
                 </div>
                 <div class="usernameWrapDiv">
@@ -43,9 +40,10 @@
                     </div>
                     <div class="passwordDiv">
                         <i class="layui-icon layui-icon-password adminIcon"></i>
-                        <input id="Password" class="layui-input adminInput" type="password" name="Password"  placeholder="输入密码">
+                        <input id="Password" class="layui-input adminInput" type="password" name="Password" placeholder="输入密码">
                     </div>
                 </div>
+
                 <div class="usernameWrapDiv">
                     <div class="usernameLabel">
                         <label>验证码:</label>
@@ -67,15 +65,12 @@
                     <div class="submitLabel"></div>
                     <div class="usernameDiv">
                         <br />
-                        <label><a id="loginRegister" style="color:#0079EF;">注册新用户</a></label>
+                        <label><a href="/HomeController1/Registration" id="" style="color:#0079EF;">注册新用户</a></label>
                     </div>
                 </div>
-
             </form>
-            <button class="layui-icon layui-icon-login-wechat" style="font-size: 50px; margin-top: 8px; margin-left: 150px; border-radius:50px;"></button>
-            <button class="layui-icon layui-icon-login-weibo" style="font-size: 50px; margin-top: 8px; margin-left: 20px; border-radius:50px;"></button>
-            <button class="layui-icon layui-icon-login-qq" style="font-size: 50px; margin-top: 8px; margin-left: 20px; border-radius:50px;"></button>
         </div>
+
     </div>
 
     <script src="~/layui-v2.5.7/layui/layui.js"></script>
@@ -94,7 +89,7 @@
             // 登陆事件
             $('#loginBtn').click(function () {
                 login();
-                //validateCode('#loginCard', '#loginCode');
+                validateCode('#loginCard', '#loginCode');
             });
             // 注册事件
             $('#loginRegister').click(function () {
@@ -119,52 +114,52 @@
             // 将生成的随机验证码赋值
             checkCode.val(code);
         }
-        // 校验验证码、用户名、密码
-        //function validateCode(inputID, codeID) {
-        //    var inputCode = $(inputID).val().toUpperCase();
-        //    var cardCode = $(codeID).val();
-        //    var loginUsername = $('#Number').val();
-        //    var loginPassword = $('#Password').val();
-        //    if ($.trim(loginUsername) == '' || $.trim(loginUsername).length <= 0) {
-        //        layer.alert("用户名不能为空");
-        //        return false;
-        //    }
-        //    if ($.trim(loginPassword) == '' || $.trim(loginPassword).length <= 0) {
-        //        layer.alert("密码不能为空");
-        //        return false;
-        //    }
-        //    if (inputCode.length <= 0) {
-        //        layer.alert("验证码不能为空");
-        //        return false;
-        //    }
-        //    if (inputCode != cardCode) {
-        //        layer.alert("请输入正确验证码");
-        //        return false;
-        //    }
-        //    //$.ajax({
-        //    //    url: 'http://localhost:64502/api/Login/Login',
-        //    //    type: 'post',
-        //    //    data: {
-        //    //        Number: loginUsername,
-        //    //        Password: loginPassword
-        //    //    },
-        //    //    success: function (data) {
-        //    //        alert(data);
-        //    //        if (data > 0) {
-        //    //            alert(123);
-        //    //        }
-        //    //        else {
-        //    //            alert(data);
-        //    //        }
-        //    //    }
-        //    //})
-        //    return true;
-        //}
-        // 登录流程
+        //校验验证码、用户名、密码
+        function validateCode(inputID, codeID) {
+            var inputCode = $(inputID).val().toUpperCase();
+            var cardCode = $(codeID).val();
+            var loginUsername = $('#Number').val();
+            var loginPassword = $('#Password').val();
+            if ($.trim(loginUsername) == '' || $.trim(loginUsername).length <= 0) {
+                layer.alert("用户名不能为空");
+                return false;
+            }
+            if ($.trim(loginPassword) == '' || $.trim(loginPassword).length <= 0) {
+                layer.alert("密码不能为空");
+                return false;
+            }
+            if (inputCode.length <= 0) {
+                layer.alert("验证码不能为空");
+                return false;
+            }
+            if (inputCode != cardCode) {
+                layer.alert("请输入正确验证码");
+                return false;
+            }
+            //$.ajax({
+            //    url: 'http://localhost:64502/api/Login/Login',
+            //    type: 'post',
+            //    data: {
+            //        Number: loginUsername,
+            //        Password: loginPassword
+            //    },
+            //    success: function (data) {
+            //        alert(data);
+            //        if (data > 0) {
+            //            alert(123);
+            //        }
+            //        else {
+            //            alert(data);
+            //        }
+            //    }
+            //})
+            return true;
+        }
+        //登录流程
         function login() {
-            //if (!validateCode('#loginCard', '#loginCode')) {
-            //    //阻断提示
-            //} else {
+            if (!validateCode('#loginCard', '#loginCode')) {
+                //阻断提示
+            } else {
                 //var loginUsername = $('#loginUsername').val();
                 //var loginPassword = $('#loginPassword').val();
                 //var params = {};
@@ -172,6 +167,7 @@
                 //params.loginPassword = loginPassword;
                 //var loginLoadIndex = layer.load(2);
                 $('#loginBtn').click(function () {
+
                     $.ajax({
                         type: 'post',
                         url: 'http://localhost:64502/api/Login/Login',
@@ -180,7 +176,6 @@
                             Number: $('input[name ="Number"]').val(),
                             Password: $('input[name ="Password"]').val(),
                         }),
-                        
                         success: function (result) {
                             if (result > 0) {
                                 alert("登录成功");
@@ -199,8 +194,8 @@
                         //}
                     });
                 })
-                
-            //}
+
+            }
 
         }
     </script>
