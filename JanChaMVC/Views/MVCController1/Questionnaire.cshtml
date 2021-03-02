@@ -59,42 +59,73 @@
         <div class="layui-inline" style="margin-top:3px">
             <input class="layui-input" name="title" id="tl" placeholder="请输入标题">
         </div>
-        <button type="button" class="layui-btn" id="seach">搜索</button>
-        <button class="layui-btn">重置</button>
-        <button class="layui-btn" onclick="Add()">新增</button>
+        <button type="button" class="layui-btn" id="seach"><i class="layui-icon layui-icon-search">搜索</i></button>
+        <button class="layui-btn" id="Cz" type="button"><i class="layui-icon layui-icon-refresh-3">重置</i></button>
+        <button class="layui-btn" onclick="Add()"><i class="layui-icon layui-icon-add-1">新增</i></button>
     </div>
-    <div id="xia" hidden="hidden">
+    <div id="xia" hidden="hidden" style="width:300px">
         <form class="layui-form">
             <div class="layui-form-item">
                 <label class="layui-form-label">问卷标题</label>
                 <div class="layui-input-block">
-                    <input type="text" name="Title" required lay-verify="required" placeholder="问卷标题" autocomplete="off" class="layui-input">
+                    <input type="text" id="ttl" name="Title" required lay-verify="required" placeholder="问卷标题" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
             <div class="layui-form-item layui-form-text">
                 <label class="layui-form-label">开始描述</label>
                 <div class="layui-input-block">
-                    <textarea name="BeginMs" class="layui-textarea"></textarea>
+                    <textarea name="BeginMs" id="bms" class="layui-textarea"></textarea>
                 </div>
             </div>
             <div class="layui-form-item layui-form-text">
                 <label class="layui-form-label">结束描述</label>
                 <div class="layui-input-block">
-                    <textarea name="EndMs" class="layui-textarea"></textarea>
+                    <textarea name="EndMs" id="ems" class="layui-textarea"></textarea>
                 </div>
             </div>
-            <div class="layui-form-item">
+            <div class="layui-form-item" id="div1">
                 <label class="layui-form-label">问卷状态</label>
                 <div class="layui-input-block">
-                    <input type="radio" name="Qsale" value="true" title="启用">
-                    <input type="radio" name="Qsale" value="false" title="禁用" checked>
+                    <input type="radio" name="Qsale" value=1 title="启用" id="r1" checked>
+                    <input type="radio" name="Qsale" value=0 title="禁用" id="r2">
                 </div>
             </div>
             <div class="layui-form-item">
                 <div class="layui-input-block">
-                    <button class="layui-btn" lay-submit lay-filter="add" id="for" type="submit">立即提交</button>
-                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    <button class="layui-btn" lay-submit lay-filter="add" type="submit">保存</button>
+                    <button class="layui-btn"  type="button" onclick="TT()">关闭</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="xia1" hidden="hidden" style="width:300px">
+        <form class="layui-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">问卷标题</label>
+                <div class="layui-input-block">
+                    <input type="hidden" name="QuesId" value=0/>
+                    <input type="text" id="ttl1" name="Title" required lay-verify="required" placeholder="问卷标题" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">开始描述</label>
+                <div class="layui-input-block">
+                    <textarea name="BeginMs" id="bms1" class="layui-textarea"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">结束描述</label>
+                <div class="layui-input-block">
+                    <textarea name="EndMs" id="ems1" class="layui-textarea"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item" id="div2">
+                <label class="layui-form-label">问卷状态</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="Qsale" value="1" title="启用" id="r3">
+                    <input type="radio" name="Qsale" value="0" title="禁用" id="r4">
                 </div>
             </div>
         </form>
@@ -102,10 +133,11 @@
     <!-- 内容主体区域 -->
     <table id="demo" lay-filter="test" width="100%"></table>
     <script src="~/layui-v2.5.7/layui/layui.js"></script>
-    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/Jquery/jquery-3.3.1.js"></script>
+    <script src="~/js/jquery.unobtrusive-ajax.js"></script>
     <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
     <script type="text/html" id="barDemo">
-        <button type="button" class="layui-btn layui-btn-xs layui-btn-xs">修改</button>
+        <button type="button" class="layui-btn layui-btn-xs layui-btn-xs" lay-event="edit">修改</button>
         <button type="button" class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</button>
         <button type="button" class="layui-btn layui-btn-normal layui-btn-xs">推钉钉</button>
         <button type="button" class="layui-btn layui-btn-normal layui-btn-xs">推邮箱</button>
@@ -117,116 +149,200 @@
         <button type="button" class="layui-btn layui-btn-normal  layui-btn-xs">查看</button>
     </script>
     <script>
-        var layer = layui.layer;
-        var form = layui.form;
-        layui.use('table', function () {
-            var table = layui.table;
+        layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element', 'slider', 'form'], function () {
+                    var laydate = layui.laydate //日期
+                        , laypage = layui.laypage //分页
+                        , layer = layui.layer //弹层
+                        , table = layui.table //表格
+                        , carousel = layui.carousel //轮播
+                        , upload = layui.upload //上传
+                        , element = layui.element //元素操作
+                        , slider = layui.slider //滑块
+                        , form = layui.form
 
-            //第一个实例
-            var tb = table.render({
-                elem: '#demo'
-                , height: 312
-                , id: 'eno'
-                , method: 'get'
-                , url: 'http://localhost:64502/api/Questionnaire' //数据接口
-                , page: true //开启分页
-                , cols: [[ //表头
-                    { field: 'quesId', title: '序号', width: 200, sort: true, fixed: 'left' }
-                    , { field: 'sno', title: '问卷编号', width: 200 }
-                    , { field: 'title', title: '问卷标题', width: 200 }
-                    , { field: 'qsale', title: '问卷状态', width: 200 }
-                    , { field: 'snum', title: '回收数量', width: 200 }
-                    , { field: 'createTime', title: '创建时间', width: 200 }
-                    , { field: 'createPeople', title: '创建人', width: 200 }
-                    , { fixed: 'right', title: '新增题目', toolbar: '#barDemo1', width: 138 }
-                    , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 270 }
-                    , { fixed: 'right', title: '查看邮件', toolbar: '#barDemo2', width: 100 }
-                ]]
-            });
-            //查询
-            $("#seach").click(function () {
-                var tle = $("#tl").val();
-                tb.reload({
-                    where: { //设定异步数据接口的额外参数，传的条件
-                        title: tle
-                    }
-                    , page: {
-                        curr: 1 //重新从第 1 页开始
-                    }
-                });
-            });
-
-
-            //监听行工具事件
-            table.on('tool(test)', function (obj) {
-                var data = obj.data;
-                var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
-                //console.log(obj)
-                if (layEvent === 'del') {
-                    layer.confirm('真的删除行么', function (index) {
-                        $.ajax({
-                            url: 'http://localhost:64502/api/Questionnaire/delete?id=' + data.quesId,
-                            type: 'Delete',
-                            success: function (result) {
-                                if (result > 0) {
-                                    layer.msg("删除成功！");
-                                    tb.reload();//重载表格
+                    //第一个实例
+                    var tb = table.render({
+                        elem: '#demo'
+                        , height: 312
+                        , id: 'eno'
+                        , limit: 5
+                        , limits:[5,10,15,20]
+                        , method: 'get'
+                        , url: 'http://localhost:64502/api/Questionnaire' //数据接口
+                        , page: true //开启分页
+                        , cols: [[ //表头
+                            { field: 'quesId', title: '序号', width: 150, sort: true, fixed: 'left' }
+                            , { field: 'sno', title: '问卷编号', width: 200 }
+                            , { field: 'title', title: '问卷标题', width: 200 }
+                            , {
+                                field: 'qsale', title: '问卷状态', width: 200
+                                , templet: function (d) {
+                                    return d.qsale ? "已发布" : "未发布"
                                 }
-                                else {
-                                    layer.msg("删除失败！");
-                                }
+                            }
+                            , { field: 'snum', title: '回收数量', width: 200 }
+                            , {
+                                field: 'createTime', title: '创建时间', width: 250
+                                , templet: "<div>{{layui.util.toDateString(d.createTime, 'yyyy年-MM月-dd日 HH:mm:ss')}}</div>"
+                              }
+                            , { field: 'createPeople', title: '创建人', width: 200 }
+                            , { fixed: 'right', title: '新增题目', toolbar: '#barDemo1', width: 138 }
+                            , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 270 }
+                            , { fixed: 'right', title: '查看邮件', toolbar: '#barDemo2', width: 100 }
+                        ]]
+                    });
+                    //查询
+                    $("#seach").click(function () {
+                        var tle = $("#tl").val();
+                        tb.reload({
+                            where: { //设定异步数据接口的额外参数，传的条件
+                                title: tle
+                            }
+                            , page: {
+                                curr: 1 //重新从第 1 页开始
                             }
                         });
                     });
-                }
-                //else if (obj.event === 'edit') {
-                //    layer.prompt({
-                //        formType: 2
-                //        , value: data.email
-                //    }, function (value, index) {
-                //        obj.update({
-                //            email: value
-                //        });
-                //        layer.close(index);
-                //    });
-                //}
-            });
-        });
+
+                    $("#Cz").click(function () {
+                        $("#tl").val("");
+                        tb.reload({
+                            where: { //设定异步数据接口的额外参数，传的条件
+                                title: ""
+                            }
+                            , page: {
+                                curr: 1 //重新从第 1 页开始
+                            }
+                        });
+                    });
+
+                    //监听行工具事件
+                    table.on('tool(test)', function (obj) {
+                        var data = obj.data;
+                        var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+                        //console.log(obj)
+                        if (layEvent === 'del') {
+                            layer.confirm('真的删除行么', function (index) {
+                                $.ajax({
+                                    url: 'http://localhost:64502/api/Questionnaire/delete?id=' + data.quesId,
+                                    type: 'Delete',
+                                    success: function (result) {
+                                        if (result > 0) {
+                                            layer.msg("删除成功！");
+                                            tb.reload();//重载表格
+                                        }
+                                        else {
+                                            layer.msg("删除失败！");
+                                        }
+                                    }
+                                });
+                            });
+                        }
+                        else if (obj.event === 'edit') {
+                            lxx = layer.open({
+                                type: 1,
+                                btn: ['保存', '关闭'],
+                                area: ['350px']
+                                , resize: false
+                                , title: "修改"
+                                , skin: 'demo-class'
+                                , btnAlign: 'c'
+                                , success: function () {
+                                    $("[name=Title]").val(data.title);
+                                    $("[name=BeginMs]").val(data.beginMs);
+                                    $("[name=EndMs]").val(data.endMs);
+                                    if (data.qsale == 1) {
+                                        $("#r3").prop('checked', true);
+                                    }
+                                    else if (data.qsale == 0) {
+                                        $("#r4").prop('checked', true);
+                                    }
+                                    form.render();
+                                }
+                                , content: $('#xia1') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+                                , yes: function (index, layero) {
+                                    $.ajax({
+                                        url: 'http://localhost:64502/api/Questionnaire/edit',
+                                        type: 'POST',
+                                        data: JSON.stringify({
+                                            QuesId: data.quesId,
+                                            Title: $("#ttl1").val(),
+                                            BeginMs: $("#bms1").val(),
+                                            EndMs: $("#ems1").val(),
+                                            Qsale: $("#r3").prop('checked') == true ? 1 : 0
+                                        }),
+                                        success: function (result) {
+                                            if (result > 0) {
+                                                layer.msg("修改成功!");
+                                                layer.close(lxx);
+                                                tb.reload();
+                                            }
+                                            else {
+                                                layer.msg("修改失败!");
+                                            }
+                                        },
+                                        //dataType: "json",
+                                        contentType: "application/json",
+                                    });
+                                    return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+                                }
+                                , btn2: function (index, layero) {
+                                    layer.closeAll();
+                                }
+                            })
+                        }
+                    });
+
+                    //添加
+
+                    form.on('submit(add)', function (data) {
+                        console.log(data.elem) //被执行事件的元素DOM对象，一般为button对象
+                        console.log(data.form) //被执行提交的form对象，一般在存在form标签时才会返回
+                        console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
+                        $.ajax({
+                            url: 'http://localhost:64502/api/Questionnaire',
+                            type: 'POST',
+                            data: JSON.stringify({
+                                Title: $("#ttl").val(),
+                                BeginMs: $("#bms").val(),
+                                EndMs: $("#ems").val(),
+                                Qsale: $('#div1 input[type="radio"] checked').val()
+                            }),
+                            success: function (result) {
+                                if (result > 0) {
+                                    layer.msg("添加成功!");
+                                    layer.close(lx);
+                                    tb.reload();
+                                }
+                                else {
+                                    layer.msg("添加失败!");
+                                }
+                            },
+                            //dataType: "json",
+                            contentType: "application/json",
+                        });
+                        return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+                    });
+                });
 
         function Add() {
-            lx=layer.open({
+            lx = layer.open({
                 type: 1,
-                area: ['500px']
+                area: ['350px']
+                , resize: false
                 , title: "新增问卷"
+                , success: function () {
+                    $("[name=Title]").val("");
+                    $("[name=BeginMs]").val("");
+                    $("[name=EndMs]").val("");
+                }
                 , content: $('#xia') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
             });
         }
-            
-            form.on('submit(add)', function (data) {
-                console.log(data.elem) //被执行事件的元素DOM对象，一般为button对象
-                console.log(data.form) //被执行提交的form对象，一般在存在form标签时才会返回
-                console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
-                $("#for").click(function () {
-                    $.ajax({
-                        url: 'http://localhost:64502/api/Questionnaire/Add',
-                        type: 'post',
-                        data: JSON.stringify(data.field),
-                        success: function (result) {
-                            if (result > 0) {
-                                layui.msg("添加成功!");
-                                layui.close(lxx);
-                                tb.reload();
-                            }
-                            else {
-                                layui.msg("添加失败!");
-                            }
-                        },//dataType: "json",
-                        contentType: "application/json"
-                    });
-                });
-                return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
-            });
-        
+        function TT()
+        {
+            layer.closeAll();
+        }
 
 
 
