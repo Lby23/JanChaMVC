@@ -321,6 +321,10 @@
             btn: ['提交', '关闭全部'],
             btnAlign: 'c', //按钮居中
             shade: 0, //不显示遮罩
+            success: function () {
+                $("#create")[0].reset();
+                layui.form.render();
+            },
             btn1: function () {
                 //alert(JSON.stringify(data.field));
                 //添加方法
@@ -342,8 +346,10 @@
                         if (data > 0) {
                             alert("添加成功");
 
+                            //初始化弹窗
                             $("#create")[0].reset();
                             layui.form.render();
+
                             location.reload();
                             table.reload('test', {
                                 where: { //设定异步数据接口的额外参数，任意设
