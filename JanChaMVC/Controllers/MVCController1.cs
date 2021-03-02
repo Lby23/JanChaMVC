@@ -38,5 +38,10 @@ namespace JanChaMVC.Controllers
         {
             return View();
         }
+
+        public IActionResult Personal()
+        {
+            return View();
+        }
     }
 }
