@@ -87,8 +87,8 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">性别</label>
                 <div class="layui-input-inline">
-                    <input type="radio" name="UserSex" value="男" >
-                    <input type="radio" name="UserSex" value="女"  checked>
+                    <input type="radio" name="UserSex" value="男" >男
+                    <input type="radio" name="UserSex" value="女"  checked>女
                 </div>
             </div>
             <div class="layui-form-item">
@@ -290,7 +290,7 @@
             table.on('tool(user)', function (obj) {
                 var data = obj.data;
                 //console.log(obj)
-                if (obj.event === 'detail') {//显示
+                if (obj.event === 'detail'){//显示
                     layer.open({
                         type: 1,
                         title: '查看',
