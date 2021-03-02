@@ -37,5 +37,10 @@ namespace JanChaMVC.Controllers
         {
             return View();
         }
+
+        public IActionResult Link()//相关链接视图
+        {
+            return View();
+        }
     }
 }
