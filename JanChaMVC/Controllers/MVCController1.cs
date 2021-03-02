@@ -18,7 +18,13 @@ namespace JanChaMVC.Controllers
         {
             return View();   
         }
-        public IActionResult BlackListData()
+        //投诉管理Complain
+        public IActionResult Complain()
+        {
+            return View();
+        }
+        //招聘管理Recruit 
+        public IActionResult Recruit()
         {
             return View();
         }

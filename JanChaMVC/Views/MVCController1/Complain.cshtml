@@ -1,0 +1,436 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="~/layui-v2.5.7/layui/css/layui.css" rel="stylesheet" />
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo">维生特·上海</div>
+            <!-- 头部区域（可配合layui已有的水平导航） -->
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item"><a href="/MVCController1/Index">首页</a></li>
+                <li class="layui-nav-item"><a href="/MVCController1/BlackList">黑名单</a></li>
+                <li class="layui-nav-item"><a href="/MVCController1/Complain">举报投诉</a></li>
+                <li class="layui-nav-item"><a href="/MVCController1/Recruit">招聘管理</a></li>
+                <li class="layui-nav-item"><a href="">问卷管理</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">内容管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">栏目管理</a></dd>
+                        <dd><a href="">栏目公告</a></dd>
+                        <dd><a href="">栏目滚动图片</a></dd>
+                        <dd><a href="/MVCController1/Article">文章管理</a></dd>
+                        <dd><a href="">文章审核</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">其他管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">友情链接</a></dd>
+                        <dd><a href="">访问量统计</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">系统管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">用户管理</a></dd>
+                        <dd><a href="">日志管理</a></dd>
+                        <dd><a href="">角色管理</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+
+        <div>
+            <!-- 内容主体区域 -->
+            <div style="padding: 15px;">
+                <!--头部工具栏-->
+                <div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <div class="layui-input-inline">
+                                <input id="tel1" type="text" name="CName" class="layui-input" placeholder="请输入违纪单位/人" />
+                            </div>
+                        </div>
+                    </div>
+                    <button id="chaxun" class="layui-btn">查询</button>
+                    <button class="layui-btn" id="chongzhi">重置</button>
+                </div>
+
+                <!--数据表格-->
+                <table id="demo" lay-filter="test"></table>
+
+                <!--修改弹出框-->
+                <div id="xiugai" hidden="hidden">
+                    <form class="layui-form">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">投诉编号</label>
+                            <div class="layui-input-inline">
+                                <input type="hidden" name="Cid" value=0 />
+                                <input type="text" id="ICnumber" name="Cnumber" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">投诉类别</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="ICtype" name="Ctype" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">身份信息</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="ICrole" name="Crole" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">姓名</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="ICname" name="Cname" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">电话</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="ICphone" name="Cphone" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">微信</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="IWeChat" name="WeChat" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">邮箱</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="ICemail" name="Cemail" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">投诉人IP</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="IComplainPerson" name="ComplainPerson" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">是否有附件</label>
+                            <div class="layui-input-inline">
+                                <input type="radio" id="ICaccessory" name="Caccessory" value="是" title="是">
+                                <input type="radio" name="Caccessory" value="否" title="否">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">状态</label>
+                            <div class="layui-input-inline">
+                                <input type="radio" id="ICstate" name="Cstate" value="true" title="已处理">
+                                <input type="radio" name="Cstate" value="false" title="待处理">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">投诉时间</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="IComplainTime" name="ComplainTime" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">处理人</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="ICdisposePerson" name="CdisposePerson" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+                <!--详情查看弹出框-->
+                <div id="xiangqing" hidden="hidden">
+                    <form class="layui-form">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">投诉编号</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="Cnumber" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">投诉类别</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="Ctype" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">身份信息</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="Crole" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">姓名</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="Cname" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">电话</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="Cphone" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">微信</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="WeChat" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">邮箱</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="Cemail" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">投诉人IP</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="ComplainPerson" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">是否有附件</label>
+                            <div class="layui-input-inline">
+                                <input type="radio" name="Caccessory" value="是" title="是">
+                                <input type="radio" name="Caccessory" value="否" title="否">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">状态</label>
+                            <div class="layui-input-inline">
+                                <input type="radio" name="Cstate" value="true" title="已处理">
+                                <input type="radio" name="Cstate" value="false" title="待处理">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">投诉时间</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="ComplainTime" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">处理人</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="CdisposePerson" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="~/layui-v2.5.7/layui/layui.js"></script>
+    <script src="~/Jquery/jquery-3.3.1.js"></script>
+    <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+
+
+</body>
+</html>
+<script>
+
+    //JavaScript代码区域
+    layui.use('element', function () {
+        var element = layui.element;
+
+    });
+
+    layui.use(['table', 'form'], function () {
+        var table = layui.table;
+        var form = layui.form;
+        //第一个实例
+        var tableObj = table.render({
+            elem: '#demo'
+            , height: 500
+            , width: 1750
+            , url: 'http://localhost:64502/api/Complain' //数-据接口
+            , page: true //开启分页
+            , cols: [[ //表头
+                { field: 'Cid', title: '序号', width: 80, sort: true, fixed: 'left' }
+                , { field: 'Cnumber', title: '投诉编号', width: 180 }
+                , { field: 'Ctype', title: '投诉类别', width: 100 }
+                , { field: 'Crole', title: '身份信息', width: 100 }
+                , { field: 'Cname', title: '姓名', width: 100 }
+                , { field: 'Cphone', title: '电话', width: 150 }
+                , { field: 'WeChat', title: '微信', width: 50 }
+                , { field: 'Cemail', title: '邮箱', width: 100 }
+                , { field: 'ComplainPerson', title: '投诉人IP', width: 120 }
+                , { field: 'Caccessory', title: '是否有附件', width: 100 }
+                , {
+                    field: 'Cstate', title: '状态', width: 80,
+                    templet: function (d)
+                    {
+                        return d.Cstate ? "已处理" : "待处理";
+                    }
+                }
+                , { field: 'ComplainTime', title: '投诉时间', width: 180 }
+                , { field: 'CdisposePerson', title: '处理人', width: 150 }
+                , { title: '操作', toolbar: '#barDemo', width: 300 }
+            ]]
+        });
+        //重置按钮点击事件
+        $("#chongzhi").click(function () {
+            $("[id=tel1]").val("");
+            tableObj.reload();
+        });
+
+        //查询
+        $("#chaxun").click(function () {
+            //tableObj为第一次加载数据时的表格，见代码142行
+            tableObj.reload({
+                where: { //设定异步数据接口的额外参数，传的条件
+                    Cname: $("[name=CName]").val()
+                }
+                , page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+            });
+        })
+
+        //监听工具条
+        table.on('tool(test)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+            var data = obj.data; //获得当前行数据
+            var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+            var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
+
+            if (layEvent === 'edit') { //编辑
+                index = layer.open({
+                    type: 1,
+                    width: 400
+                    , btn: ['修改','关闭']
+                    , title: "修改"
+                    , closeBtn: 1,
+                    success: function () {
+                        $("[name=Cnumber]").val(data.Cnumber);
+                        $("[name=Ctype]").val(data.Ctype);
+                        $("[name=Crole]").val(data.Crole);
+                        $("[name=Cname]").val(data.Cname);
+                        $("[name=Cphone]").val(data.Cphone);
+                        $("[name=WeChat]").val(data.WeChat);
+                        $("[name=Cemail]").val(data.Cemail);
+                        $("[name=ComplainPerson]").val(data.ComplainPerson);
+                        $("[name=Caccessory]").val(data.Caccessory);
+                        $("[name=Cstate]").val(data.Cstate);
+                        $("[name=ComplainTime]").val(data.ComplainTime);
+                        $("[name=CdisposePerson]").val(data.CdisposePerson);
+                    }
+                    , content: $('#xiugai') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+                    , yes: function (index, layero) {
+                        $.ajax({
+                            url: "http://localhost:64502/api/Complain?Cid=" + data.Cid,
+                            type: "put",
+                            data: JSON.stringify({
+                                Cid: data.Cid,
+                                Cnumber: $("#ICnumber").val(),
+                                Ctype: $("#ICtype").val(),
+                                Crole: $("#ICrole").val(),
+                                Cname: $("#ICname").val(),
+                                Cphone: $("#ICphone").val(),
+                                WeChat: $("#IWeChat").val(),
+                                Cemail: $("#ICemail").val(),
+                                ComplainPerson: $("#IComplainPerson").val(),
+                                Caccessory: $("#ICaccessory").prop("checked") == true ? "是" : "否",
+                                Cstate: $("#ICstate").prop("checked") == true ? true : false,
+                                ComplainTime: $("#IComplainTime").val(),
+                                CdisposePerson: $("#ICdisposePerson").val(),
+                            }),
+                            success: function (result) {
+                                if (result > 0) {
+                                    layer.msg("修改成功");
+                                    layer.close(index);
+                                    tableObj.reload();
+                                } else {
+                                    layer.msg("修改失败");
+                                }
+                            },
+                            contentType: "application/json",
+                        });
+                        return false;
+                    },
+                    btn2: function (index, layero) {
+                        layer.close(index); //如果设定了yes回调，需进行手工关闭
+                    },
+                });
+            } else if (layEvent === 'del') {//删除
+                layer.confirm('确定删除吗?', function (index) {
+                    $.ajax({
+                        url: "http://localhost:64502/api/Complain?Cid=" + data.Cid,
+                        type: "delete",
+                        success: function (result) {
+                            if (result > 0) {
+                                layer.msg("删除成功");
+                                tableObj.reload();//重载表格
+                            }
+                            else {
+                                layer.msg("删除失败");
+                            }
+                        }
+                    })
+                });
+            } else if (layEvent === 'detail') {
+                //查看
+                index = layer.open({
+                    type: 1,
+                    width: 400
+                    , btn: ['关闭']
+                    , closeBtn: 1,
+                    yes: function (index, layero) {
+                        layer.close(index); //如果设定了yes回调，需进行手工关闭
+                    },
+                    success: function () {
+                        $("[name=Cnumber]").val(data.Cnumber);
+                        $("[name=Ctype]").val(data.Ctype);
+                        $("[name=Crole]").val(data.Crole);
+                        $("[name=Cname]").val(data.Cname);
+                        $("[name=Cphone]").val(data.Cphone);
+                        $("[name=WeChat]").val(data.WeChat);
+                        $("[name=Cemail]").val(data.Cemail);
+                        $("[name=ComplainPerson]").val(data.ComplainPerson);
+                        $("[name=Caccessory]").val(data.Caccessory);
+                        $("[name=Cstate]").val(data.Cstate);
+                        $("[name=ComplainTime]").val(data.ComplainTime);
+                        $("[name=CdisposePerson]").val(data.CdisposePerson);
+                    }
+                    , content: $('#xiangqing') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+                });
+            }
+        });
+
+
+
+
+    });
+
+    layui.use('element', function () {
+        var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+        //监听导航点击
+        element.on('nav(demo)', function (elem) {
+            //console.log(elem)
+            layer.msg(elem.text());
+        });
+    });
+</script>
+<script type="text/html" id="barDemo">
+    <button type="button" lay-event="detail" class="layui-btn layui-btn-normal">查看</button>
+    <button type="button" lay-event="edit" class="layui-btn">修改</button>
+    <button type="button" lay-event="del" class="layui-btn layui-btn-danger">删除</button>
+</script>

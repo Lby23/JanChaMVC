@@ -21,22 +21,18 @@
                 <tr>
                     <td>
                         <div class="layui-form-item">
-                            <label class="layui-form-label">作品名称</label>
+                            <label class="layui-form-label">栏目</label>
                             <div class="layui-input-block">
-
-                                <input id="Hidden2" type="hidden" value="@ViewBag.data" name="pro_userid" />
-                                <input type="text" name="pro_name" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                                <select id="artname" name="artname" class="layui-input artname">
+                                </select>
                             </div>
                         </div>
                     </td>
                     <td>
                         <div class="layui-form-item">
-                            <label class="layui-form-label">作品分类</label>
+                            <label class="layui-form-label">题目</label>
                             <div class="layui-input-block">
-                                <select name="pro_classify" id="fen" lay-verify="required">
-                                    <option value=""></option>
-
-                                </select>
+                                <input type="text" name="name" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                     </td>
@@ -51,12 +47,27 @@
                     </td>
                     <td>
                         <div class="layui-form-item">
-                            <label class="layui-form-label">作品属性</label>
+                            <label class="layui-form-label">状态</label>
                             <div class="layui-input-block">
-                                <select name="pro_proid" id="shu" lay-verify="required">
-                                    <option value=""></option>
-
-                                </select>
+                                <input type="text" name="status" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">排序</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="sort" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">链接地址</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="jumpurl" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                     </td>
@@ -66,19 +77,9 @@
                 <tr>
                     <td>
                         <div class="layui-form-item layui-form-text">
-                            <label class="layui-form-label">备注</label>
-                            <div class="layui-input-block">
-                                <textarea name="pro_remark" placeholder="请输入备注" style="width:462px" class="layui-textarea"></textarea>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="layui-form-item layui-form-text">
                             <label class="layui-form-label">内容</label>
                             <div class="layui-input-block">
-                                <textarea name="pro_content" placeholder="请输入内容" class="layui-textarea"></textarea>
+                                <textarea name="countnt" style="width:462px" class="layui-textarea"></textarea>
                             </div>
                         </div>
                     </td>
@@ -94,34 +95,27 @@
         </form>
     </div>
     <script>
+        //绑定查询下拉框
+        $(function () {
+            $.ajax({
+                url: 'http://localhost:64502/api/Folder/GetFolders',
+                type: 'get',
+                success: function (result) {
+                    var strHtml = '';
+                    strHtml += '<option value="0">-请选择-</option>';
+                    $(result.data).each(function () {
+                        strHtml += '<option value="' + this.id + '">' + this.name + '</option>';
+                    });
+                    $('.artname').empty().append(strHtml);
+                    //渲染下拉
+                    form.render('select');
+                }
+            })
+        })
+
+
         layui.use('form', function () {
             var form = layui.form;
-            $.ajax({
-                url: 'http://localhost:54470/api/con_Show',
-                type: 'get',
-                dataType: 'json',
-                success: function (data) {
-                    var str = "";
-                    $(data).each(function () {
-                        str += '<option value="' + this.con_id + '">' + this.con_name + '</option>'
-                    })
-                    $("#fen").append(str);
-                    form.render('select');
-                }
-            })
-            $.ajax({
-                url: 'http://localhost:54470/api/prop_Show',
-                type: 'get',
-                dataType: 'json',
-                success: function (data) {
-                    var str = "";
-                    $(data).each(function () {
-                        str += '<option value="' + this.pro_id + '">' + this.pro_name + '</option>'
-                    })
-                    $("#shu").append(str);
-                    form.render('select');
-                }
-            })
             //监听提交
             form.on('submit(formDemo)', function (data) {
 
@@ -136,42 +130,6 @@
                     }
                 })
                 return false;
-            });
-        });
-        //上传相片
-        layui.use('upload', function () {
-            var $ = layui.jquery
-                , upload = layui.upload;
-
-            //普通图片上传
-            var uploadInst = upload.render({
-                elem: '#test1'
-                , url: '/Default/Upload'
-                , before: function (obj) {
-                    //预读本地文件示例，不支持ie8
-                    obj.preview(function (index, file, result) {
-                        $('#demo1').attr('src', result); //图片链接（base64）
-                    });
-                }
-                , done: function (res) {
-                    //如果上传失败
-                    if (res.code > 0) {
-                        return layer.msg('上传失败');
-                    }
-                    else {
-                        $("#Hidden1").val(res.data);
-                    }
-
-                    //上传成功
-                }
-                , error: function () {
-                    //演示失败状态，并实现重传
-                    var demoText = $('#demoText');
-                    demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
-                    demoText.find('.demo-reload').on('click', function () {
-                        uploadInst.upload();
-                    });
-                }
             });
         });
 
