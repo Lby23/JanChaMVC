@@ -107,7 +107,7 @@
                         </h3>
                     </div>
                     <div style="float:left;">
-                        <table class="layui-hide" id="tab" lay-skin="nob"></table>
+                        <table class="layui-table" id="tab" lay-skin="nob"></table>
                     </div>
                 </div>
             </div>
@@ -199,7 +199,6 @@
                     url: 'http://localhost:64502/api/RegisteredUsers/GetUsers',
                     type: 'get',
                     success: function (data) {
-                        //alert(123);
                         var str = '';
                         $(data.data).each(function () {
                             str += '<tr>'

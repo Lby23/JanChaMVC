@@ -135,18 +135,18 @@
                     <label class="layui-form-label">状态</label>
                     <div class="layui-input-inline">
                         <input id="status2" type="radio" name="status" value="2" title="隐藏">
-                        <input id="status1" type="radio" name="status" value="1" title="显示">
+                        <input id="status1" type="radio" name="status" value="1" title="显示" checked>
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">是否评论</label>
                     <div class="layui-input-inline">
-                        <input id="isComment1" type="radio" name="isComment" value="1" title="是">
+                        <input id="isComment1" type="radio" name="isComment" value="1" title="是" checked>
                         <input id="isComment2" type="radio" name="isComment" value="2" title="否">
                     </div>
                     <label class="layui-form-label">是否推荐</label>
                     <div class="layui-input-inline">
-                        <input id="isRecommend1" type="radio" name="isRecommend" value="1" title="是">
+                        <input id="isRecommend1" type="radio" name="isRecommend" value="1" title="是" checked>
                         <input id="isRecommend2" type="radio" name="isRecommend" value="2" title="否">
                     </div>
                 </div>
@@ -175,11 +175,15 @@
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">图片</label>
-                    <div class="layui-input-inline">
-                        <input id="File1" type="file" name="image" />
+                    <button type="button" class="layui-btn" id="test1">上传图片</button>
+                    <div class="layui-upload-list">
+                        <img class="layui-upload-img" id="demo1" style="width:85px;height:80px;position:relative;left:215px;top:-50px">
+                        <p id="demoText"></p>
                     </div>
+                    
                     <div class="layui-input-inline">
-                        <input type="text" name="空" required lay-verify="required" placeholder="网络图片url" autocomplete="off" class="layui-input">
+                        <input id="image" type="hidden" />
+                        @*<input type="text" name="空" required lay-verify="required" placeholder="网络图片url" autocomplete="off" class="layui-input">*@
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -200,15 +204,10 @@
 
     <script src="~/layui-v2.5.7/layui/layui.js"></script>
     <script src="~/Jquery/jquery-3.3.1.js"></script>
+    <script src="~/js/Setcookie.js"></script>
     <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 
     <script>
-
-        //JavaScript代码区域
-        layui.use('element', function () {
-            var element = layui.element;
-
-        });
 
         layui.use('element', function () {
             var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
@@ -369,7 +368,7 @@
                             form.render('select')
                             form.render('radio')
                         }
-                        , btn1: function (index, layero) {                            
+                        , btn1: function (index, layero) {
 
                             //修改方法
                             //alert(data.id);
@@ -391,7 +390,7 @@
                                     type: $('[name="type"]').val(),
                                     jumpUrl: $('[name="jumpUrl"]').val(),
                                     image: $('[name="image"]').val()
-                                    
+
                                 }),
                                 success: function (data) {
                                     if (data > 0) {
@@ -422,7 +421,7 @@
 
             });
             //绑定查询下拉框
-            $(function () {                
+            $(function () {
                 $.ajax({
                     url: 'http://localhost:64502/api/Article/GetFolder',
                     type: 'get',
@@ -439,8 +438,29 @@
                 })
             })
 
-            
-        });       
+            //普通图片上传
+            upload.render({
+                elem: '#test1'
+                , url: '@Url.Action("Upload", "MVCController1")' //改成自己的上传接口
+                , before: function (obj) {
+                    //预读本地文件示例，不支持ie8
+                    obj.preview(function (index, file, result) {
+                        $('#demo1').attr('src', result); //图片链接（base64）
+                    });
+                }
+                , done: function (res) {
+                    //如果上传失败
+                    if (res.code > 0) {
+                        return layer.msg('上传失败');
+                    }
+                    else {
+                        $('#image').val(res.path)
+                        layer.msg('上传成功');
+                    }
+                    //上传成功
+                }
+            });
+        });
         //重置按钮
         $('#btnchong').click(function () {
 
@@ -459,7 +479,11 @@
                 , btn: ['提交','关闭全部']
                 , btnAlign: 'c' //按钮居中
                 , shade: 0 //不显示遮罩
-                , btn1: function () {                   
+                , success: function () {
+                    $("#create")[0].reset();
+                    layui.form.render();
+                }
+                , btn1: function () {
                     //alert(JSON.stringify(data.field));
                     //添加方法
                     $.ajax({
@@ -478,14 +502,11 @@
                             endTime: $('[name="endTime"]').val(),
                             type: $('[name="type"]').val(),
                             jumpUrl: $('[name="jumpUrl"]').val(),
-                            image: $('[name="image"]').val()
+                            image: $('#image').val()
                         }),
                         success: function (data) {
                             if (data > 0) {
-                                alert("添加成功");
-
-                                $("#create")[0].reset();
-                                layui.form.render();
+                                alert("添加成功");                               
                                 location.reload();
                                 table.reload('test', {
                                     where: { //设定异步数据接口的额外参数，任意设
