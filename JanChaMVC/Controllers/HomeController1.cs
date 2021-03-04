@@ -19,5 +19,10 @@ namespace JanChaMVC.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public IActionResult jkl()
+        {
+            return View();
+        }
     }
 }

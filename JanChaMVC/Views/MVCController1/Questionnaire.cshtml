@@ -94,7 +94,7 @@
             <div class="layui-form-item">
                 <div class="layui-input-block">
                     <button class="layui-btn" lay-submit lay-filter="add" type="submit">保存</button>
-                    <button class="layui-btn"  type="button" onclick="TT()">关闭</button>
+                    <button class="layui-btn" type="button" onclick="TT()">关闭</button>
                 </div>
             </div>
         </form>
@@ -104,7 +104,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">问卷标题</label>
                 <div class="layui-input-block">
-                    <input type="hidden" name="QuesId" value=0/>
+                    <input type="hidden" name="QuesId" value=0 />
                     <input type="text" id="ttl1" name="Title" required lay-verify="required" placeholder="问卷标题" autocomplete="off" class="layui-input">
                 </div>
             </div>
@@ -130,6 +130,41 @@
             </div>
         </form>
     </div>
+    <div id="xia2" hidden="hidden" style="width:350px">
+        <form class="layui-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">请编辑问题?</label>
+                <div class="layui-input-block">
+                    <input type="hidden" name="TqueId" value="0" />
+                    <textarea name="Issue" id="iss" class="layui-textarea" required lay-verify="required" placeholder="请编辑问题"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">题目类型</label>
+                <div class="layui-input-block">
+                    <select name="Choice" id="cho" lay-verify="required">
+                        <option value="">请选择</option>
+                        <option value="单选">单选</option>
+                        <option value="多选">多选</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="xia3" hidden="hidden" style="width:800px">
+        <table id="demo1" lay-filter="test" width="10%"></table>
+    </div>
+    <div id="xia4" hidden="hidden">
+        <form class="layui-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">请输入选项</label>
+                <div class="layui-input-block">
+                    <input type="hidden" name="Otid" value="0" />
+                    <input type="text" id="onm" name="Oname" required lay-verify="required"  autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </form>
+    </div>
     <!-- 内容主体区域 -->
     <table id="demo" lay-filter="test" width="100%"></table>
     <script src="~/layui-v2.5.7/layui/layui.js"></script>
@@ -143,10 +178,14 @@
         <button type="button" class="layui-btn layui-btn-normal layui-btn-xs">推邮箱</button>
     </script>
     <script type="text/html" id="barDemo1">
-        <button type="button" class="layui-btn layui-btn-xs  layui-btn-xs">新增题目</button>
+        <button type="button" class="layui-btn layui-btn-xs  layui-btn-xs" lay-event="add">新增题目</button>
+        <button type="button" class="layui-btn layui-btn-xs  layui-btn-xs" lay-event="select">新增选项</button>
     </script>
     <script type="text/html" id="barDemo2">
         <button type="button" class="layui-btn layui-btn-normal  layui-btn-xs">查看</button>
+    </script>
+    <script type="text/html" id="barDemo3">
+        <button type="button" class="layui-btn layui-btn-xs  layui-btn-xs" lay-event="xx">新增选项</button>
     </script>
     <script>
         layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element', 'slider', 'form'], function () {
@@ -185,12 +224,13 @@
                                 field: 'createTime', title: '创建时间', width: 250
                                 , templet: "<div>{{layui.util.toDateString(d.createTime, 'yyyy年-MM月-dd日 HH:mm:ss')}}</div>"
                               }
-                            , { field: 'createPeople', title: '创建人', width: 200 }
-                            , { fixed: 'right', title: '新增题目', toolbar: '#barDemo1', width: 138 }
+                            , { field: 'createPeople', title: '创建人', width: 138 }
+                            , { fixed: 'right', title: '新增题目', toolbar: '#barDemo1', width: 200 }
                             , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 270 }
                             , { fixed: 'right', title: '查看邮件', toolbar: '#barDemo2', width: 100 }
                         ]]
                     });
+
                     //查询
                     $("#seach").click(function () {
                         var tle = $("#tl").val();
@@ -204,6 +244,7 @@
                         });
                     });
 
+                    //重置
                     $("#Cz").click(function () {
                         $("#tl").val("");
                         tb.reload({
@@ -288,6 +329,126 @@
                                 }
                                 , btn2: function (index, layero) {
                                     layer.closeAll();
+                                }
+                            })
+                        }
+                        else if (obj.event === 'add') {
+                            lxx1 = layer.open({
+                                type: 1,
+                                btn: ['保存', '关闭'],
+                                area: ['400px', '300px']
+                                , resize: false
+                                , title: "新增题目"
+                                , skin: 'demo-class'
+                                , btnAlign: 'c'
+                                , success: function () {
+                                    $("[name=Issue]").val("");
+                                    $("[name=Choice]").val("");
+                                    form.render();
+                                }
+                                , content: $('#xia2') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+                                , yes: function (index, layero) {
+                                    $.ajax({
+                                        url: 'http://localhost:64502/api/Questionnaire/topic',
+                                        type: 'POST',
+                                        data: JSON.stringify({
+                                            TqueId: data.quesId,
+                                            Issue: $("#iss").val(),
+                                            Choice: $("#cho").val(),
+                                        }),
+                                        success: function (result) {
+                                            if (result > 0) {
+                                                layer.msg("添加成功!");
+                                                layer.close(lxx1);
+                                                tb.reload();
+                                            }
+                                            else {
+                                                layer.msg("添加失败!");
+                                            }
+                                        },
+                                        //dataType: "json",
+                                        contentType: "application/json",
+                                    });
+                                    return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+                                }
+                                , btn2: function (index, layero) {
+                                    layer.closeAll();
+                                }
+                            })
+                        }
+                        else if (obj.event === 'select') {
+                            layer.open({
+                                type: 1,
+                                btn: ['关闭'],
+                                area: ['550px', '300px']
+                                , resize: false
+                                , title: "题目显示"
+                                , skin: 'demo-class'
+                                , btnAlign: 'c'
+                                , success: function () {
+                                    //第二个实例
+                                    var tb1 = table.render({
+                                        elem: '#demo1'
+                                        , height: 200
+                                        , limit: 5
+                                        , limits: [5, 10, 15, 20]
+                                        , method: 'get'
+                                        , url: 'http://localhost:64502/api/Questionnaire/topic?id=' + data.quesId //数据接口
+                                        , page: true //开启分页
+                                        , cols: [[ //表头
+                                            { field: 'topicId', title: '序号', width: 100, sort: true, fixed: 'left' }
+                                            , { field: 'choice', title: '题目名称', width: 100 }
+                                            , { field: 'issue', title: '题目类型', width: 100 }
+                                            , { fixed: 'right', title: '增加选项', toolbar: '#barDemo3', width: 100 }
+                                        ]]
+                                    });
+
+                                }
+                                , content: $('#xia3') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+                                , yes: function (index, layero) {
+                                    layer.closeAll();
+                                }
+                            })
+                        }
+                        else if (obj.event === 'xx')
+                        {
+                            lxx2 = layer.open({
+                                type: 1,
+                                btn: ['保存', '关闭'],
+                                area: ['400px', '300px']
+                                , resize: false
+                                , title: "新增选项"
+                                , skin: 'demo-class'
+                                , btnAlign: 'c'
+                                , success: function () {
+                                    $("[name=Oname]").val("");
+                                }
+                                , content: $('#xia4') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+                                , yes: function (index, layero) {
+                                    $.ajax({
+                                        url: 'http://localhost:64502/api/Questionnaire/option',
+                                        type: 'POST',
+                                        data: JSON.stringify({
+                                            Otid: data.topicId,
+                                            Oname: $("#onm").val()
+                                        }),
+                                        success: function (result) {
+                                            if (result > 0) {
+                                                layer.msg("添加成功!");
+                                                layer.close(lxx2);
+                                                tb.reload();
+                                            }
+                                            else {
+                                                layer.msg("添加失败!");
+                                            }
+                                        },
+                                        //dataType: "json",
+                                        contentType: "application/json",
+                                    });
+                                    return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+                                }
+                                , btn2: function (index, layero) {
+                                    layer.close(lxx2);
                                 }
                             })
                         }
