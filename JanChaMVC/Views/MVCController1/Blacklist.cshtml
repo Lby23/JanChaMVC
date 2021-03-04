@@ -81,25 +81,29 @@
                         <div class="layui-form-item">
                             <label class="layui-form-label">违纪类别</label>
                             <div class="layui-input-inline">
-                                <input type="text" id="IBtype" name="Btype" placeholder="请输入" autocomplete="off" class="layui-input">
+                                @*<input type="text" placeholder="请输入" autocomplete="off" class="layui-input">*@
+                                <input type="text" id="IBtype" name="Btype" lay-verify="required" lay-reqtext="请输入违纪类别" placeholder="请输入" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label">违纪单位/人</label>
                             <div class="layui-input-inline">
-                                <input type="text" id="IBunit" name="Bunit" placeholder="请输入" autocomplete="off" class="layui-input">
+                                @*<input type="text" id="IBunit" name="Bunit" placeholder="请输入" autocomplete="off" class="layui-input">*@
+                                <input type="text" id="IBunit" name="Bunit" lay-verify="required" lay-reqtext="请输入违纪单位/人" placeholder="请输入" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label">证件号</label>
                             <div class="layui-input-inline">
-                                <input type="text" id="IBpapersNumber" name="BpapersNumber" placeholder="请输入" autocomplete="off" class="layui-input">
+                                @*<input type="text" id="IBpapersNumber" name="BpapersNumber" placeholder="请输入" autocomplete="off" class="layui-input">*@
+                                <input type="text" id="IBpapersNumber" name="BpapersNumber" lay-verify="required" lay-reqtext="请输入证件号" placeholder="请输入" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label">违纪事项</label>
                             <div class="layui-input-inline">
-                                <input type="text" id="IBmatter" name="Bmatter" placeholder="请输入" autocomplete="off" class="layui-input">
+                                @*<input type="text" id="IBmatter" name="Bmatter" placeholder="请输入" autocomplete="off" class="layui-input">*@
+                                <input type="text" id="IBmatter" name="Bmatter" lay-verify="required" lay-reqtext="请输入违纪事项" placeholder="请输入" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-form-item">
@@ -118,7 +122,8 @@
                         <div class="layui-form-item">
                             <label class="layui-form-label">发布人</label>
                             <div class="layui-input-inline">
-                                <input type="text" id="IPubLishPerson" name="PubLishPerson" placeholder="请输入" autocomplete="off" class="layui-input">
+                                @*<input type="text" id="IPubLishPerson" name="PubLishPerson" placeholder="请输入" autocomplete="off" class="layui-input">*@
+                                <input type="text" id="IPubLishPerson" name="PubLishPerson" lay-verify="required" lay-reqtext="请输入发布人" placeholder="请输入" autocomplete="off" class="layui-input">
                             </div>
                         </div>
 
@@ -242,9 +247,13 @@
 
         });
 
-        layui.use(['table', 'form'], function () {
+        layui.use(['table', 'form','laydate'], function () {
             var table = layui.table;
             var form = layui.form;
+            var laydate = layui.laydate;
+            laydate.render({
+                elem: '#IBUpdateTime'
+            });
             //第一个实例
             var tableObj = table.render({
                 elem: '#demo'
