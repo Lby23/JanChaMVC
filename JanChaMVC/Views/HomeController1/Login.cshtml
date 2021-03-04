@@ -159,6 +159,7 @@
         function login() {
             if (!validateCode('#loginCard', '#loginCode')) {
                 //阻断提示
+                return;
             } else {
                 //var loginUsername = $('#loginUsername').val();
                 //var loginPassword = $('#loginPassword').val();
@@ -167,22 +168,20 @@
                 //params.loginPassword = loginPassword;
                 //var loginLoadIndex = layer.load(2);
                 $.ajax({
-                    type: 'post',
+                    type: 'get',
                     url: 'http://localhost:64502/api/Login/Login',
-                    dataType: "json",
-                    data: JSON.stringify({
+                    data: {
                         Number: $('input[name ="Number"]').val(),
                         Password: $('input[name ="Password"]').val(),
-                    }),
+                    },
                     success: function (result) {
-                        if (result > 0) {
+                        if (result!="") {
                             alert("登录成功");
                             Setcookie("name", result.Number);
-                            Setcookie("email", "814096262@qq.com");
+                            Setcookie("email", result.Email);
                             Setcookie("phone", result.phone);
                             Setcookie("content", result.userName);
-                            Setcookie("Id", result.uId);
-                            Setcookie("pass", result.Password);
+                            Setcookie("Id", result.uId); 
                             location.href = '/MVCController1/Index';
                             return false;
                         } else {

@@ -56,11 +56,11 @@
         <div class="layui-body">
             <!-- 内容主体区域 -->
             <div class="demoTable">
-                用户名：
+                账号：
                 <div class="layui-inline">
                     <input class="layui-input" name="UserName" id="demoReload" autocomplete="off">
                 </div>
-                账号：
+                密码：
                 <div class="layui-inline">
                     <input class="layui-input" name="Number" id="demoReload" autocomplete="off">
                 </div>
@@ -87,8 +87,8 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">性别</label>
                 <div class="layui-input-inline">
-                    <input type="radio" name="UserSex" value="男" >男
-                    <input type="radio" name="UserSex" value="女"  checked>女
+                    <input type="radio" name="UserSex" value="男">男
+                    <input type="radio" name="UserSex" value="女" checked>女
                 </div>
             </div>
             <div class="layui-form-item">
@@ -290,7 +290,7 @@
             table.on('tool(user)', function (obj) {
                 var data = obj.data;
                 //console.log(obj)
-                if (obj.event === 'detail'){//显示
+                if (obj.event === 'detail') {//显示
                     layer.open({
                         type: 1,
                         title: '查看',
@@ -306,8 +306,7 @@
                                 $('input[name="sex"]:checked').val(data.userSex),
                                 $('input[name ="Age"]').val(data.age),
                                 $('input[name ="Phone"]').val(data.phone),
-                                $('input[name ="Number"]').val(data.number),
-                                $('input[name ="Password"]').val(data.password)
+                                $('input[name ="Number"]').val(data.number)
                         }
                     })
                 } else if (obj.event === 'del') {//删除
@@ -367,7 +366,7 @@
                             layer.closeAll();
                         }
                         , success: function () {
-                                $('input[name ="UId"]').val(data.uId),
+                            $('input[name ="UId"]').val(data.uId),
                                 $('input[name ="UserName"]').val(data.userName),
                                 $('input[name="sex"]:checked').val(data.userSex),
                                 $('input[name ="Age"]').val(data.age),
@@ -462,7 +461,6 @@
                     }
                 })
             });
-
         });
     </script>
 </body>
