@@ -157,13 +157,13 @@
                         Password: $('input[name ="Password"]').val(),
                     },
                     success: function (result) {
-                        if (result!="") {
+                        if (result != "") {
                             alert("登录成功");
                             Setcookie("name", result.Number);
                             Setcookie("email", result.Email);
                             Setcookie("phone", result.phone);
                             Setcookie("content", result.userName);
-                            Setcookie("Id", result.uId); 
+                            Setcookie("Id", result.uId);
                             location.href = '/MVCController1/Index';
                             return false;
                         } else {
@@ -176,8 +176,8 @@
                     //    $('#loginBtn').val("登录");
                     //}
                 });
-
-
+            }
+        }
 
     </script>
 
