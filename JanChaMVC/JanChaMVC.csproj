@@ -13,8 +13,4 @@
     <Folder Include="Views\RegisteredUsersConTroller\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="wwwroot\Img\-8d9ff779e1e113a.jpg" />
-  </ItemGroup>
-
 </Project>

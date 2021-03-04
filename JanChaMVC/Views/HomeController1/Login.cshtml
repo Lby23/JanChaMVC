@@ -87,10 +87,9 @@
                 createCode('#loginCode');
             });
             // 登陆事件
-            $('#loginBtn').click(function () {
-                login();
-                validateCode('#loginCard', '#loginCode');
-            });
+            //$('#loginBtn').click(function () {
+            //    validateCode('#loginCard', '#loginCode');
+            //});
             // 注册事件
             $('#loginRegister').click(function () {
                 location.href = "/HomeController1/Registration";
@@ -136,23 +135,6 @@
                 layer.alert("请输入正确验证码");
                 return false;
             }
-            //$.ajax({
-            //    url: 'http://localhost:64502/api/Login/Login',
-            //    type: 'post',
-            //    data: {
-            //        Number: loginUsername,
-            //        Password: loginPassword
-            //    },
-            //    success: function (data) {
-            //        alert(data);
-            //        if (data > 0) {
-            //            alert(123);
-            //        }
-            //        else {
-            //            alert(data);
-            //        }
-            //    }
-            //})
             return true;
         }
         //登录流程
@@ -196,9 +178,7 @@
                 });
 
 
-            }
 
-        }
     </script>
 
 </body>
