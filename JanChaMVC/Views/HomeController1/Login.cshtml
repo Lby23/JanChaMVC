@@ -20,10 +20,12 @@
 </head>
 <body>
     <div class="wrap">
-        <img src="~/Img/-8d9ff779e1e113a.jpg" style="width:100%;height:100%" />
+        <img src="~/Img/asd (122).jpg" style="width:100%;height:100%" />
+        @*<img src="~/Img/null-f1c8026a1a928ed.jpg"  style="width:100%;height:100%"  />*@
+
         <div class="loginForm" style="
-        width: 50%;
-        height: 60%;">
+        width: 0px;
+        height: 0px;">
             <form>
                 <div class="usernameWrapDiv">
                     <div class="usernameLabel">
@@ -86,10 +88,11 @@
             $('#loginCode').click(function () {
                 createCode('#loginCode');
             });
-            // 登陆事件
-            //$('#loginBtn').click(function () {
-            //    validateCode('#loginCard', '#loginCode');
-            //});
+             //登陆事件
+            $('#loginBtn').click(function () { 
+                login();
+                validateCode('#loginCard', '#loginCode');
+            });
             // 注册事件
             $('#loginRegister').click(function () {
                 location.href = "/HomeController1/Registration";
@@ -142,7 +145,8 @@
             if (!validateCode('#loginCard', '#loginCode')) {
                 //阻断提示
                 return;
-            } else {
+            }
+            else {
                 //var loginUsername = $('#loginUsername').val();
                 //var loginPassword = $('#loginPassword').val();
                 //var params = {};
@@ -157,13 +161,14 @@
                         Password: $('input[name ="Password"]').val(),
                     },
                     success: function (result) {
-                        if (result!="") {
+                        alert(result);
+                        if (result != "") {
                             alert("登录成功");
                             Setcookie("name", result.Number);
                             Setcookie("email", result.Email);
                             Setcookie("phone", result.phone);
                             Setcookie("content", result.userName);
-                            Setcookie("Id", result.uId); 
+                            Setcookie("Id", result.uId);
                             location.href = '/MVCController1/Index';
                             return false;
                         } else {
@@ -177,11 +182,11 @@
                     //}
                 });
 
-
-
+            }
+        }
     </script>
 
-</body>
+ </body>
 </html>
 
 
