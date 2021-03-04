@@ -87,8 +87,8 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">性别</label>
                 <div class="layui-input-inline">
-                    <input type="radio" name="UserSex" value="男" >
-                    <input type="radio" name="UserSex" value="女"  checked>
+                    <input type="radio" name="UserSex" value="男">男
+                    <input type="radio" name="UserSex" value="女" checked>女
                 </div>
             </div>
             <div class="layui-form-item">
@@ -210,12 +210,7 @@
                     <input type="text" name="Number" required lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
-            <div class="layui-form-item layui-form-text">
-                <label class="layui-form-label">密码</label>
-                <div class="layui-input-inline">
-                    <input type="password" name="Password" required lay-verify="required" autocomplete="off" class="layui-input">
-                </div>
-            </div>
+           
         </form>
     </div>
     <script src="~/layui-v2.5.7/layui/layui.js"></script>
@@ -306,8 +301,7 @@
                                 $('input[name="sex"]:checked').val(data.userSex),
                                 $('input[name ="Age"]').val(data.age),
                                 $('input[name ="Phone"]').val(data.phone),
-                                $('input[name ="Number"]').val(data.number),
-                                $('input[name ="Password"]').val(data.password)
+                                $('input[name ="Number"]').val(data.number)
                         }
                     })
                 } else if (obj.event === 'del') {//删除
@@ -367,7 +361,7 @@
                             layer.closeAll();
                         }
                         , success: function () {
-                                $('input[name ="UId"]').val(data.uId),
+                            $('input[name ="UId"]').val(data.uId),
                                 $('input[name ="UserName"]').val(data.userName),
                                 $('input[name="sex"]:checked').val(data.userSex),
                                 $('input[name ="Age"]').val(data.age),
@@ -462,7 +456,6 @@
                     }
                 })
             });
-
         });
     </script>
 </body>
