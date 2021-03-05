@@ -13,5 +13,16 @@ namespace JanChaMVC.Areas.Admin.Controllers
         {
             return View();
         }
+        [Area("Admin")]
+        public IActionResult Vocation()
+        {
+            return View();
+        }
+        [Area("Admin")]
+        public IActionResult service()
+        {
+            return View();
+        }
+        
     }
 }
