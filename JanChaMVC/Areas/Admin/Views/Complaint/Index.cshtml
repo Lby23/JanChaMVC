@@ -305,6 +305,44 @@
         font-weight: bold;
     }
 </style>
+@*返回顶部*@
+<style>
+    .arrow {
+        border: 9px solid transparent;
+        border-bottom-color: #3DA0DB;
+        width: 0px;
+        height: 0px;
+        top: 0px
+    }
+
+    .stick {
+        width: 8px;
+        height: 14px;
+        border-radius: 1px;
+        background-color: #3DA0DB;
+        top: 15px;
+    }
+
+    #back_top div {
+        position: absolute;
+        margin: auto;
+        right: 0px;
+        left: 0px;
+    }
+
+    #back_top {
+        background-color: #dddddd;
+        height: 38px;
+        width: 38px;
+        border-radius: 3px;
+        display: block;
+        cursor: pointer;
+        position: fixed;
+        right: 50px;
+        bottom: 100px;
+        display: none;
+    }
+</style>
 <div>
     <!-- 内容区域 -->
     <section class="content">
@@ -322,7 +360,7 @@
                     </span>
                 </p>
                 @*<div class="line" style="z-index: 0;">
-                        <img alt="" src="~/img//斜线.png">
+                        <img alt="" src="~/img/斜线.png">
                     </div>*@
             </div>
 
@@ -440,10 +478,10 @@
                 if (time == 0) {
                     $('.btn-complain').attr("disabled", false).removeClass("disabled");
                     $('.div-btn-complain .btn1').click(function () {
-                        location.href = "realName.html?tz=1";
+                        location.href = "http://localhost:65188/Admin/Complaint/realName";
                     })
                     $('.div-btn-complain .btn2').click(function () {
-                        location.href = "noName.html?tz=1";
+                        location.href = "/Admin/Complaint/noName";
                     })
                     clearInterval(timer)
                 }
@@ -463,20 +501,25 @@
 
     <a class="icon" href="http://www.wsttop.com/complain.html#icon-icon"><img src="~/Img/more.png"></a>
 </div>
-<div class="returns">
-    <a href="javascript:history.go(-1)">
+<script src="~/lib/jquery/dist/jquery.js"></script>
+@*<div class="returns">
+        <a href="javascript:history.go(-1)">
 
-        <svg aria-hidden="true" class="icon">
-            <use xlink:href="#icon-iconfanhuishangyiji"></use>
-        </svg>
-    </a>
-</div>
+            <svg aria-hidden="true" class="icon">
+                <use xlink:href="#icon-iconfanhuishangyiji"></use>
+            </svg>
+        </a>
+    </div>*@
 <div class="back">
-    <svg aria-hidden="true" class="icon" style="display: inline;">
-        <use xlink:href="#icon-huidaodingbu"></use>
-    </svg>
+        <svg aria-hidden="true" class="icon" style="display: block;">
+            <use xlink:href="#icon-huidaodingbu"></use>
+        </svg>
+    </div>
+@*返回顶部*@
+<div id="back_top">
+    <div class="arrow"></div>
+    <div class="stick"></div>
 </div>
-<div class="shades"></div>
 <div class="menu">
     <p class="menu_title" style="padding-left: 29px;">
 
@@ -509,4 +552,30 @@
 
 </div>
 
+<script>
+    $(function () {
 
+        $(window).scroll(function () {  //只要窗口滚动,就触发下面代码
+
+            var scrollt = document.documentElement.scrollTop + document.body.scrollTop; //获取滚动后的高度
+
+            if (scrollt > 200) {  //判断滚动后高度超过200px,就显示
+
+                $("#back_top").fadeIn(400); //淡入
+
+            } else {
+
+                $("#back_top").stop().fadeOut(400); //如果返回或者没有超过,就淡出.必须加上stop()停止之前动画,否则会出现闪动
+
+            }
+
+        });
+
+        $("#back_top").click(function () { //当点击标签的时候,使用animate在200毫秒的时间内,滚到顶部
+
+            $("html,body").animate({ scrollTop: "0px" }, 200);
+
+        });
+
+    });
+</script>
