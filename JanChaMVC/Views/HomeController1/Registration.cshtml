@@ -131,7 +131,7 @@
                     success: function (resut) {
                         if (resut > 0) {
                             alert("注册成功");
-
+                            location.href = "/HomeController1/Login";
                         } else {
                             alert("注册失败");
                             location.reload();
@@ -142,64 +142,7 @@
                 
                 return false;
             });
-        })
-        function AA(data) {
-            //var UserName = $('#UserName').val();
-            //var UserSex = $('#wrap input[name="UserSex"]:checked ').val();
-            //UserSex = UserSex == "0" ? true : false;
-            //var Age = $('#Age').val();
-            //var Phone = $('#Phone').val();
-            //var Emile = $('#Emile').val();
-            //var Note = $('#Note').val();
-            //var Number = $('#Number').val();
-            //var Password = $('#Password').val();
-            //if (UserName == "") {
-            //    alert("用户名不为空");
-            //    location.reload();
-            //} else if (UserSex != "") {
-            //    alert("用户性别不为空");
-            //    location.reload();
-            //} else if (Phone == "" || $.trim(Phone).length != 11) {
-            //    alert("用户手机号不为空");
-            //    location.reload();
-            //} else if (Emile == "") {
-            //    alert("电子邮件不为空" || $.trim(Emile).match);
-            //    location.reload();
-            //} else if (Number == "") {
-            //    alert("账号不为空");
-            //    location.reload();
-            //} else if (Password == "") {
-            //    alert("密码不为空");
-            //    location.reload();
-            //}
-
-            //$.ajax({
-
-            //    url: "http://localhost:64502/api/Login/Registration",
-            //    data: JSON.stringify({
-            //        UserName: UserName,
-            //        UserSex: UserSex,
-            //        Age: Age,
-            //        Phone: Phone,
-            //        Emile: Emile,
-            //        Note: Note,
-            //        Number: Number,
-            //        Password: Password
-            //    }),
-            //    type: 'post',
-            //    success: function (resut) {
-            //        if (resut > 0) {
-            //            alert("注册成功");
-
-            //        } else {
-            //            alert("注册失败");
-            //            location.reload();
-            //        }
-            //    },
-            //    contentType: 'application/json;'
-            //})
-        }
-
+        }) 
     </script>
 
 </body>
