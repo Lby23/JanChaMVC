@@ -25,5 +25,11 @@ namespace JanChaMVC.Areas.Admin.Controllers
         {
             return View();
         }
+
+        [Area("Admin")]
+        public IActionResult blackList()
+        {
+            return View();
+        }
     }
 }
