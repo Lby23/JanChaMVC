@@ -147,12 +147,7 @@
                 return;
             }
             else {
-                //var loginUsername = $('#loginUsername').val();
-                //var loginPassword = $('#loginPassword').val();
-                //var params = {};
-                //params.loginUsername = loginUsername;
-                //params.loginPassword = loginPassword;
-                //var loginLoadIndex = layer.load(2);
+                 
                 $.ajax({
                     type: 'get',
                     url: 'http://localhost:64502/api/Login/Login',
@@ -176,10 +171,7 @@
                         }
                     },
                     contentType: 'application/json',
-                    //error: function () {
-                    //    //layer.close(loginLoadIndex);
-                    //    $('#loginBtn').val("登录");
-                    //}
+                    
                 });
 
             }
