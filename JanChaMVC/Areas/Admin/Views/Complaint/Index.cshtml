@@ -3,6 +3,7 @@
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+<script src="~/Jquery/jquery-3.3.1.js"></script>
 <style type="text/css">
     .map > .icon {
         width: 32px;
@@ -176,145 +177,12 @@
             border: 1px solid #aaa
         }
 
-            .returns.icon: hover {
+            .returns.icon:hover {
                 background: #0e74d9;
                 color: #fff;
                 border: none
             }
 </style>
-<style type="text/css">
-    .boxCenter {
-        width: 1200px;
-        margin: 0 auto;
-    }
-
-    .fl {
-        float: left !important;
-    }
-
-    form > .pText > .icon {
-        /*position: absolute;
-                        left: 53px;
-                        top: 8px;*/
-        width: 10px;
-        height: 10px;
-    }
-
-    .btn {
-        background-color: #337ab7;
-        border-color: #337ab7;
-        display: inline-block;
-        padding: 6px 12px;
-        margin-bottom: 0;
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 1.42857143;
-        text-align: center;
-        white-space: nowrap;
-        vertical-align: middle;
-        -ms-touch-action: manipulation;
-        touch-action: manipulation;
-        cursor: pointer;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        background-image: none;
-        border: 1px solid transparent;
-        border-radius: 4px;
-    }
-
-    .complain-content .div-btn-complain {
-        text-align: center;
-    }
-
-        .complain-content .div-btn-complain .btn-complain {
-            background-color: #337ab7;
-            border-color: #337ab7;
-            color: #fff;
-            margin-left: 30px;
-            margin-right: 30px;
-        }
-
-        .complain-content .div-btn-complain .disabled {
-            background-color: #c7c7c7;
-            border-color: #c7c7c7;
-        }
-
-    .complain-content .cc-menu-title {
-        font-size: 20px;
-        background-color: #9ad1ff;
-        color: white;
-        padding: 30px;
-        /* font-weight: bold; */
-        text-align: center;
-    }
-
-    .complain-content .cc-menu {
-        padding: 10px 40px;
-        background-color: #ebf5fe;
-    }
-
-        .complain-content .cc-menu > div {
-            padding: 30px;
-            text-align: center;
-            border-top: 3px #d3ebff solid;
-        }
-            /* .complain-content .cc-menu >div[class*='act']:hover, */
-            .complain-content .cc-menu > div.zxjb {
-                background: #d3ebff;
-            }
-
-    .complain-content .cc-bar {
-        background-color: #fff;
-    }
-
-    .complain-content .cc-content {
-        background: #ebf5fe;
-    }
-
-    .cc-content .div-table {
-        margin: 68px auto;
-        text-align: center;
-    }
-
-        .cc-content .div-table td {
-            padding: 0 90px;
-        }
-
-    .mainBox .mainMsg {
-        margin-top: 94px;
-    }
-
-        .mainBox .mainMsg .textBox .list span {
-            font-size: 18px;
-            color: #333;
-            line-height: 36px;
-            font-weight: 600
-        }
-
-        .mainBox .mainMsg .textBox .list p {
-            font-size: 16px;
-            color: #666;
-            line-height: 36px;
-            text-indent: 2em;
-        }
-
-    strong {
-        font-weight: bold;
-    }
-</style>
-<style>
-    .content .banner {
-        width: 100%;
-        overflow: hidden;
-        overflow-x: hidden;
-        overflow-y: hidden;
-        position: relative;
-        z-index: 2;
-    }
-</style>
-
 <style type="text/css">
     .boxCenter {
         width: 1200px;
@@ -437,44 +305,53 @@
         font-weight: bold;
     }
 </style>
+@*返回顶部*@
+<style>
+    .arrow {
+        border: 9px solid transparent;
+        border-bottom-color: #3DA0DB;
+        width: 0px;
+        height: 0px;
+        top: 0px
+    }
+
+    .stick {
+        width: 8px;
+        height: 14px;
+        border-radius: 1px;
+        background-color: #3DA0DB;
+        top: 15px;
+    }
+
+    #back_top div {
+        position: absolute;
+        margin: auto;
+        right: 0px;
+        left: 0px;
+    }
+
+    #back_top {
+        background-color: #dddddd;
+        height: 38px;
+        width: 38px;
+        border-radius: 3px;
+        display: block;
+        cursor: pointer;
+        position: fixed;
+        right: 50px;
+        bottom: 100px;
+        display: none;
+    }
+</style>
 <div>
     <!-- 内容区域 -->
     <section class="content">
         <header>
-            @*<img class="erwei" src="~/Img/touch3.png">*@
-            <!--<div class="header">-->
-            @*<div class="header_left">
-                    <img src="~/Img/logo1.png">
-                </div>*@
-            <!--<div class="header_right">
-                    <div class="header_right_right">
-
-                        <div class="two twos">
-                            <div id="">
-                                <input class="suo" id="" name="" placeholder="输入关键词" type="text" value="">
-                                <button class="sou">
-                                    <img src="~/Img/searchs.png">
-                                </button>
-                            </div>
-                        </div>
-                        <div class="three">
-                            <img src="~/Img/ban.png">
-                            <span class="pg">办公通道</span>
-                            <p>
-                                <a href="https://exmail.qq.com/cgi-bin/loginpage" target="_blank"><img src="~/Img/emails.png"><span>邮箱</span></a>
-
-                                <a href="http://js.wsttop.com/" target="_blank"><img src="~/Img/work.png"><span>平台</span></a>
-                            </p>
-                        </div>
-
-                    </div>
-                </div>
-            </div>-->
-            <div class="banner">
+            <div class="banner" style="width: 100%; overflow: hidden; position: relative; z-index: 2;">
                 <img alt="" src="~/Img/banner.png">
             </div>
-            <div class="researchTitle">
-                <a href="http://www.wsttop.com/complain.html#searchResult" id="tosearchResult"></a>
+            <div class="researchTitle" style="text-align: center; font-size: 38px; padding: 70px 0 68px 0; color: #333333; position: relative;">
+                <a href="#searchResult" id="tosearchResult"></a>
                 <input id="hd_tz" type="hidden" value="">
                 <p style="position: relative;z-index: 1;background: #fff;">
                     <span>
@@ -482,18 +359,13 @@
                         投诉举报
                     </span>
                 </p>
-                <div class="line" style="z-index: 0;">
-                    <img alt="" src="~/Img/斜线.png">
-                </div>
+                @*<div class="line" style="z-index: 0;">
+                        <img alt="" src="~/img/斜线.png">
+                    </div>*@
             </div>
 
             <div class="boxCenter contentBox clearfix" style="overflow:hidden;">
                 <table class="complain-content">
-                    @*<colgroup>
-                            <col width="28%">
-                            <col width="5px">
-                            <col width="">
-                        </colgroup>*@
                     <tbody>
                         <tr>
                             <td rowspan="2" style="background-color: #ebf5fe;" valign="top">
@@ -606,10 +478,10 @@
                 if (time == 0) {
                     $('.btn-complain').attr("disabled", false).removeClass("disabled");
                     $('.div-btn-complain .btn1').click(function () {
-                        location.href = "realName.html?tz=1";
+                        location.href = "http://localhost:65188/Admin/Complaint/realName";
                     })
                     $('.div-btn-complain .btn2').click(function () {
-                        location.href = "noName.html?tz=1";
+                        location.href = "/Admin/Complaint/noName";
                     })
                     clearInterval(timer)
                 }
@@ -629,20 +501,25 @@
 
     <a class="icon" href="http://www.wsttop.com/complain.html#icon-icon"><img src="~/Img/more.png"></a>
 </div>
-<div class="returns">
-    <a href="javascript:history.go(-1)">
+<script src="~/lib/jquery/dist/jquery.js"></script>
+@*<div class="returns">
+        <a href="javascript:history.go(-1)">
 
-        <svg aria-hidden="true" class="icon">
-            <use xlink:href="#icon-iconfanhuishangyiji"></use>
-        </svg>
-    </a>
-</div>
+            <svg aria-hidden="true" class="icon">
+                <use xlink:href="#icon-iconfanhuishangyiji"></use>
+            </svg>
+        </a>
+    </div>*@
 <div class="back">
-    <svg aria-hidden="true" class="icon" style="display: inline;">
-        <use xlink:href="#icon-huidaodingbu"></use>
-    </svg>
+        <svg aria-hidden="true" class="icon" style="display: block;">
+            <use xlink:href="#icon-huidaodingbu"></use>
+        </svg>
+    </div>
+@*返回顶部*@
+<div id="back_top">
+    <div class="arrow"></div>
+    <div class="stick"></div>
 </div>
-<div class="shades"></div>
 <div class="menu">
     <p class="menu_title" style="padding-left: 29px;">
 
@@ -674,46 +551,31 @@
     </div>
 
 </div>
-<div class="links">
-    <p class="lianjie">
-        <img src="~/Img/lj.png">
-        <span>相关链接</span>
-    </p>
-    <p>
 
-        <a href="http://www.audit.gov.cn/index.html" target="_blank">中华人民共和国审计署</a>
+<script>
+    $(function () {
 
-        <span id="">
-            |
-        </span>
+        $(window).scroll(function () {  //只要窗口滚动,就触发下面代码
 
+            var scrollt = document.documentElement.scrollTop + document.body.scrollTop; //获取滚动后的高度
 
+            if (scrollt > 200) {  //判断滚动后高度超过200px,就显示
 
+                $("#back_top").fadeIn(400); //淡入
 
-        <a href="http://www.ciia.com.cn/index.html" target="_blank">中国内部审计协会</a>
+            } else {
 
-        <span id="">
-            |
-        </span>
+                $("#back_top").stop().fadeOut(400); //如果返回或者没有超过,就淡出.必须加上stop()停止之前动画,否则会出现闪动
 
+            }
 
+        });
 
+        $("#back_top").click(function () { //当点击标签的时候,使用animate在200毫秒的时间内,滚到顶部
 
-        <a href="http://www.fanwubi.org/" target="_blank">企业反舞弊联盟</a>
+            $("html,body").animate({ scrollTop: "0px" }, 200);
 
-        <span id="">
-            |
-        </span>
+        });
 
-
-
-
-        <a href="https://www.ctiea.com/" target="_blank">阳光诚信联盟</a>
-
-
-
-
-
-    </p>
-</div>
-
+    });
+</script>

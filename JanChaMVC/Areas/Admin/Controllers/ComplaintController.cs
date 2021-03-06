@@ -13,5 +13,23 @@ namespace JanChaMVC.Areas.Admin.Controllers
         {
             return View();
         }
+
+        [Area("Admin")]
+        public IActionResult realName()
+        {
+            return View();
+        }
+
+        [Area("Admin")]
+        public IActionResult noName()
+        {
+            return View();
+        }
+
+        [Area("Admin")]
+        public IActionResult blackList()
+        {
+            return View();
+        }
     }
 }

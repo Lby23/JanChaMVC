@@ -1,0 +1,373 @@
+﻿
+@{
+    ViewData["Title"] = "blackList";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style type="text/css">
+    .boxCenter {
+        width: 1200px;
+        margin: 0 auto;
+    }
+
+    .fl {
+        float: left !important;
+    }
+
+    form > .pText > .icon {
+        /*position: absolute;
+                left: 53px;
+                top: 8px;*/
+        width: 10px;
+        height: 10px;
+    }
+
+    .btn {
+        background-color: #337ab7;
+        border-color: #337ab7;
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -ms-touch-action: manipulation;
+        touch-action: manipulation;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-image: none;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+
+    .btn-search {
+        background-color: #337ab7;
+        border-color: #337ab7;
+        color: #fff;
+        width: 80px;
+    }
+
+    table.complain-content {
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .complain-content .cc-menu-title {
+        font-size: 20px;
+        background-color: #9ad1ff;
+        color: white;
+        padding: 30px;
+        text-align: center;
+    }
+
+    .complain-content .cc-menu {
+        padding: 10px 40px;
+        background-color: #ebf5fe;
+    }
+
+        .complain-content .cc-menu > div {
+            padding: 30px;
+            text-align: center;
+            border-top: 3px #d3ebff solid;
+        }
+
+            /* 	.complain-content .cc-menu >div[class*='act']:hover, */
+            .complain-content .cc-menu > div.active {
+                background: #d3ebff;
+            }
+
+    .complain-content .cc-bar {
+        background-color: #fff;
+    }
+
+    .complain-content .cc-content {
+        background: #ebf5fe;
+        padding-top: 100px;
+    }
+
+        .complain-content .cc-content .company, .idcard {
+            padding: 4px 6px;
+            width: 280px;
+            height: 30px;
+        }
+
+    .blackList {
+        text-align: left;
+        width: 100%;
+        background: #ebf5fe;
+        margin-left: 0px;
+        border: 0px;
+        padding-top: 50px;
+    }
+</style>
+@*返回顶部*@
+<style>
+    .arrow {
+        border: 9px solid transparent;
+        border-bottom-color: #3DA0DB;
+        width: 0px;
+        height: 0px;
+        top: 0px
+    }
+
+    .stick {
+        width: 8px;
+        height: 14px;
+        border-radius: 1px;
+        background-color: #3DA0DB;
+        top: 15px;
+    }
+
+    #back_top div {
+        position: absolute;
+        margin: auto;
+        right: 0px;
+        left: 0px;
+    }
+
+    #back_top {
+        background-color: #dddddd;
+        height: 38px;
+        width: 38px;
+        border-radius: 3px;
+        display: block;
+        cursor: pointer;
+        position: fixed;
+        right: 50px;
+        bottom: 100px;
+        display: none;
+    }
+</style>
+
+<section class="content">
+    <!-- main S -->
+    <div class="banner">
+        <img alt="" src="~/Img/banner.png" />
+    </div>
+    <div class="researchTitle">
+        <a href="#searchResult" id="tosearchResult"></a>
+        <input id="hd_tz" type="hidden" value="1" />
+        <p style="position: relative;z-index: 1;background: #fff;">
+            <span>
+                <i></i>
+                黑名单
+            </span>
+        </p>
+        @*<div class="line" style="z-index: 0;">
+                <img alt="" src="~/Img/斜线.png" />
+            </div>*@
+    </div>
+
+    <div class="boxCenter contentBox clearfix" style="overflow:hidden;">
+        <table class="complain-content">
+            <tbody>
+                <tr>
+                    <td valign="top">
+                        <div class="cc-menu-title">
+                            举报途径
+                            <br /><font style="color: #ddeaea ;">Report way</font>
+                        </div>
+                        <div class="cc-menu">
+                            <div class="zxjb act" style="color:#337ab7;">
+                                <a href="/Admin/Complaint/realName" style="color:#337ab7;">
+                                    在线举报
+                                    <br /><br />
+                                    <img class="icon" src="~/Img/zxjb.png" />
+                                </a>
+                            </div>
+                            <div class="active" style="color:#337ab7;">
+                                黑 名 单
+                                <br /><br />
+                                <img class="icon" src="~/Img/hmd.png" />
+                            </div>
+                            <div>
+                                电话举报<br /><br />
+                                <img class="icon" src="~/Img/dhjb.png" />
+                                <br /><br />
+                                4006561700
+                            </div>
+                            <div>
+                                邮箱举报<br /><br />
+                                <img class="icon" src="~/Img/yxjb.png" />
+                                <br /><br />
+                                zldcsjb@zldcgroup.com
+                            </div>
+                            <div>
+                                微信举报<br /><br />
+                                <img class="icon" src="~/Img/wxjb.png" /><br />
+                                <br /><img src="~/Img/code.png" style="width:120px;height:120px; " />
+                            </div><br />
+                            <div style="border-bottom:3px #d3ebff solid ;">
+                                非舞弊相关投诉请<br /><br />
+                                通过如下方式进行<br /><br />
+                                <a href="hotService.html" style="color:#337ab7" target="_black">
+                                    客服专线<br /><br />
+                                    <img class="icon" src="~/Img/kfzx.png" />
+                                </a>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="cc-bar">&nbsp;</td>
+                    <td align="center" class="cc-content mainBox" style="padding: 0px 15%;" valign="top">
+                        <div class="blackList fl">
+                            <!-- <a href="#searchResult" id="tosearchResult"></a> -->
+                            <input id="hd_type" type="hidden" value="" />
+                            <form id="blackForm" style="padding-left: 80px;" method="get" action="/blackList?pn=1">
+                                <div id="div-radio" style="text-align: left;padding:20px 10px;font-weight: bold;">
+                                    <label style="cursor: pointer;padding:20px;">
+                                        <input checked="checked" class="blackType" name="type" type="radio" value="1" />&nbsp;企业
+                                    </label>
+                                    <label style="margin-left: 30px;cursor: pointer;padding:20px;">
+                                        <input class="blackType" id="radioBlackType" name="type" type="radio" value="2" />&nbsp;个人
+                                    </label>
+                                </div>
+                                <div style="height: 260px;padding-left:10px;">
+                                    <div id="div-company" style="padding-top: 10px;">
+                                        <div class="div-name1" style="font-weight: bold; padding-bottom: 10px; display: block;">企业名称<span style="color:red;">★</span></div>
+                                        <div class="div-name2" style="font-weight: bold;padding-bottom: 10px;display: none;">姓名<span style="color:red;">★</span></div>
+                                    </div>
+                                    <input class="company" name="company" placeholder="输入关键词" type="text" value="" />
+                                    <div id="div-persional" style="padding-top: 20px;">
+                                        <div class="div-idcard1" style="font-weight: bold;padding-bottom: 10px;">统一社会信用代码<span style="color:red;">★</span></div>
+                                        <div class="div-idcard2" style="font-weight: bold;padding-bottom: 10px;display: none;">身份证<span style="color:red;">★</span></div>
+                                    </div>
+                                    <input class="idcard" name="idcard" placeholder="输入关键词" type="text" value="" />
+                                </div>
+
+                                <div class="searchs" style="padding-left:10px;">
+                                    <input class="btn btn-search" id="btnSearch" type="button" value="搜索" />
+                                </div>
+
+                            </form>
+                            <div style="padding:20px 20px 50px 0px;font-size:14px;line-height:25px;width:100%;">
+                                <p style="color: #262626; padding: 20px 0px; font-size: 18px;">注意事项:</p>
+                                <div style="padding-top:0px;text-indent:2em; ">该查询仅提供人员/单位在中梁集团就职或合作期间是否存在违规、违纪或违法等不诚信行为相关信息。（如需进一步了解详情，请发函至jc@wsttop.com)</div>
+                                <div style="padding-top:5px;">特别提示</div>
+                                <div style="padding-top:5px;text-indent:2em;">不诚信行为信息仅限于供企业人力资源有关的员工背景审查;若违法使用或以任何形式泄露、公开被查询员工的个人信息，所造成的一切法律后果由非法使用者及其所在单位承担。</div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+
+    <form id="searchForm" method="post" action="/search">
+        <input id="hdSearchText" name="text" type="hidden" />
+    </form>
+</section>
+@*返回顶部*@
+<div id="back_top">
+    <div class="arrow"></div>
+    <div class="stick"></div>
+</div>
+<script src="~/Jquery/jquery-3.3.1.js"></script>
+<script>
+    $(function () {
+        var returnCitySN = { "cip": "36.113.99.129", "cid": "330000", "cname": "浙江省" };
+        $("#visitIP").val(returnCitySN.cip);
+        if ($("#hd_tz").val()) {
+            var t = $('#tosearchResult').offset().top;
+            $(window).scrollTop(t); //滚动到锚点位置
+        }
+        if ($("input[name='company']").val() != null && $("input[name='company']").val() != '') {
+            var t = $('#tosearchResult').offset().top;
+            $(window).scrollTop(t); //滚动到锚点位置
+
+            if ($("#div-blackInfo span.span-com").text()) {
+                setTimeout(function () {
+                    alert($("#div-blackInfo").text().replace(new RegExp("_@@_", "gm"), "\n"));
+                }, 200);
+            }
+            if ($("#div-blackSize").text()) {
+                setTimeout(function () {
+                    alert($("#div-blackSize").text());
+                }, 200);
+            }
+        }
+        $("#div-radio .blackType").click(function () {
+            if ($(this).val() == "1") {
+                $("#div-company .div-name1").show();
+                $("#div-persional .div-idcard1").show();
+                $("#div-company .div-name2").hide();
+                $("#div-persional .div-idcard2").hide();
+            } else {
+                $("#div-company .div-name1").hide();
+                $("#div-persional .div-idcard1").hide();
+                $("#div-company .div-name2").show();
+                $("#div-persional .div-idcard2").show();
+            }
+        });
+        if ($("#hd_type").val() == "2") {
+            $("#radioBlackType").attr("checked", true);
+            $("#div-company .div-name1").hide();
+            $("#div-persional .div-idcard1").hide();
+            $("#div-company .div-name2").show();
+            $("#div-persional .div-idcard2").show();
+        }
+        $("#btnSearch").click(function () {
+            if (sousuo()) {
+                $("#blackForm")[0].submit();
+            }
+        });
+    })
+    // 搜索
+    function sousuo() {
+        var button = $("#div-radio .blackType:checked").val();
+        var company = $(".company").val();
+        var idcard = $(".idcard").val();
+        // 					console.log(company,idcard);
+        var nulls = /^\s*$/;
+        if (nulls.test(company) || nulls.test(idcard) || company.length == 0 || idcard.length == 0) {
+            alert('搜索内容都为必填');
+            return false;
+        }
+        return true;
+    }
+    //回车搜索
+    document.onkeydown = function (event) {
+        e = event ? event : (window.event ? window.event : null);
+        if (e.keyCode == 13) {
+            //执行的方法
+            $('.sou').click();
+        }
+    }
+</script>
+
+<script>
+    $(function () {
+
+        $(window).scroll(function () {  //只要窗口滚动,就触发下面代码
+
+            var scrollt = document.documentElement.scrollTop + document.body.scrollTop; //获取滚动后的高度
+
+            if (scrollt > 200) {  //判断滚动后高度超过200px,就显示
+
+                $("#back_top").fadeIn(400); //淡入
+
+            } else {
+
+                $("#back_top").stop().fadeOut(400); //如果返回或者没有超过,就淡出.必须加上stop()停止之前动画,否则会出现闪动
+
+            }
+
+        });
+
+        $("#back_top").click(function () { //当点击标签的时候,使用animate在200毫秒的时间内,滚到顶部
+
+            $("html,body").animate({ scrollTop: "0px" }, 200);
+
+        });
+
+    });
+</script>
