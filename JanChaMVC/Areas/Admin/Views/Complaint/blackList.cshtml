@@ -191,7 +191,7 @@
                                 </div>
                                 <div style="height: 260px;padding-left:10px;">
                                     <div id="div-company" style="padding-top: 10px;">
-                                        <div class="div-name1" style="font-weight: bold;padding-bottom: 10px;">企业名称<span style="color:red;">★</span></div>
+                                        <div class="div-name1" style="font-weight: bold; padding-bottom: 10px; display: block;">企业名称<span style="color:red;">★</span></div>
                                         <div class="div-name2" style="font-weight: bold;padding-bottom: 10px;display: none;">姓名<span style="color:red;">★</span></div>
                                     </div>
                                     <input class="company" name="company" placeholder="输入关键词" type="text" value="" />
@@ -228,9 +228,10 @@
         <input id="hdSearchText" name="text" type="hidden" />
     </form>
 </section>
-<script src="http://pv.sohu.com/cityjson?ie=utf-8" type="text/javascript"></script>
+<script src="~/Jquery/jquery-3.3.1.js"></script>
 <script>
     $(function () {
+        var returnCitySN = { "cip": "36.113.99.129", "cid": "330000", "cname": "浙江省" };
         $("#visitIP").val(returnCitySN.cip);
         if ($("#hd_tz").val()) {
             var t = $('#tosearchResult').offset().top;
