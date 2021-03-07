@@ -31,5 +31,11 @@ namespace JanChaMVC.Areas.Admin.Controllers
         {
             return View();
         }
+
+        [Area("Admin")]
+        public IActionResult hotService()
+        {
+            return View();
+        }
     }
 }
