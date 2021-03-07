@@ -4,5 +4,350 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>维生特企业管理咨询（上海）有限公司</title>
 
+    <link href="~/layui-v2.5.7/layui/css/layui.css" rel="stylesheet" />
+    <style>
+        .shade {
+            position: absolute;
+            width: 100%;
+            /*left: 15%;*/
+            height: 118px;
+            background: rgba(0,0,0,0.3);
+            bottom: 4px;
+            z-index: 11;
+        }
+
+            .shade > ul {
+                width: 75%;
+                margin: 0px auto;
+            }
+
+                .shade > ul li {
+                    float: right;
+                    width: 18.75%;
+                    top:100px;
+                    margin-right: 15px;
+                    margin-top: 16px;
+                    padding-left: 20px;
+                    padding-top: 11px;
+                    padding-bottom: 10px;
+                    position: relative;
+                }
+
+                    .shade > ul li > a {
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                    .shade > ul li > a {
+                        text-decoration: none;
+                    }
+
+                    .shade > ul li:nth-child(4) {
+                        background: #005ed7;
+                    }
+
+                        .shade > ul li:nth-child(4) p {
+                            color: #6e95e3;
+                        }
+
+                    .shade > ul li:nth-child(3) {
+                        background: #38418c;
+                    }
+
+                        .shade > ul li:nth-child(3) p {
+                            color: #575e9a;
+                        }
+
+                    .shade > ul li:nth-child(2) {
+                        background: #f97d47;
+                    }
+
+                        .shade > ul li:nth-child(2) p {
+                            color: #fa9974;
+                        }
+
+                    .shade > ul li:nth-child(1) {
+                        background: #f9c647;
+                    }
+
+                        .shade > ul li:nth-child(1) p {
+                            color: #fad279;
+                        }
+
+                    .shade > ul li:first-child {
+                        margin-right: 0px;
+                    }
+
+                    .shade > ul li:hover {
+                        /*height: 200px;
+                        cursor: pointer;
+                        transform: scale(1.1) translateY(-100);*/
+                        /*transform: rotateY(130deg);
+                        -webkit-transform: rotateY(130deg); */ /* Safari 与 Chrome */
+                        height: 200px;
+                        top:0px;
+                        transition: all 2s;
+                        /*-moz-transition: height 2s;*/ /* Firefox 4 */
+                        /*-webkit-transition: height 2s;*/ /* Safari 和 Chrome */
+                        /*-o-transition: height 2s;*/ /* Opera */
+                    }
+
+                    .shade > ul li p {
+                        font-size: 18px;
+                    }
+
+                        .shade > ul li p:last-child {
+                            color: #fff;
+                            margin-top: 9px;
+                            font-size: 18px;
+                        }
+    </style>
+</head>
+<body>
+    <!--轮播图-->
+    <div style="width:1920px;height:788px;background-color:deepskyblue;margin:0px auto;position:relative">
+        <div class="layui-carousel" id="test1" lay-filter="test1">
+            <div carousel-item="" id="preview">
+
+            </div>
+        </div>
+    </div>
+    <!--滑块-->
+    <div style="width:100%;height:130px;position:relative;top:-130px;">
+        <div class="shade">
+            <ul style="margin-right:12%">
+                <li style="top: 0px;"  onmouseover="this.style.height= '500px;'">
+                    <a href="getLatestExam.html" target="_blank" style="bottom: 1px; padding-bottom: 0px;">
+                        <p style="height: 48px; opacity: 1;">QUESTIONNAIRE</p>
+                        <p style="font-size: 18px;">调查问卷</p>
+                    </a>
+                </li>
+                <li style="top: 0px;">
+                    <a href="complain.html" style="bottom: 1px; padding-bottom: 0px;">
+                        <p style="height: 48px; opacity: 1;">MAKE A COMPLAINT</p>
+                        <p style="font-size: 18px;">投诉举报</p>
+                    </a>
+                </li>
+                <li style="top: 0px;">
+                    <a href="getRecruitmentByType" style="bottom: 1px; padding-bottom: 0px;">
+                        <p style="height: 48px; opacity: 1;">JOIN US</p>
+                        <p style="font-size: 18px;">加入我们</p>
+                    </a>
+                </li>
+                <li style="top: 0px;">
+                    <a href="touchUS.html" style="bottom: 1px; padding-bottom: 0px;">
+                        <p style="height: 48px; opacity: 1;">CONTACT US</p>
+                        <p style="font-size: 18px;">联系我们</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div style="width:1427.25px;height:251px;margin:0 auto">
+        <div style="width:570.89px;height:251px;float:left;margin-left:20px;">
+
+            <div style="height:59px;">
+                <h2 style="color:#808080">NEWS INFORMATION</h2>
+                <h2 style="background-color:yellow; width:110px;margin-top:10px;">要闻资讯</h2>
+            </div>
+            <div style="width:536.63px;height:117px;margin-top:20px;">
+                <div class="layui-carousel" id="test3" lay-filter="test4">
+                    <div carousel-item="">
+                        <div>条目1</div>
+                        <div>条目2</div>
+                        <div>条目3</div>
+                        <div>条目4</div>
+                        <div>条目5</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="width:561.33px;height:250px;float:left;background-color:aqua">
+            <div style="width:561.33px;height:250px">
+                <div class="layui-carousel" id="test2" lay-filter="test4">
+                    <div carousel-item="">
+                        <div>条目1</div>
+                        <div>条目2</div>
+                        <div>条目3</div>
+                        <div>条目4</div>
+                        <div>条目5</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="width:235.25px;height:250px;background-color:#181E6B;float:left;color:#551A8B;margin-left:20px">
+            <a href="news.html">
+                <div id="" style="margin-top:190px">
+                    <p style="color:#2B3073;margin:0px 0px 0px 20px;font:20px;width:124.97px;height:26px">MORE NEWS</p>
+                    <p style="color:#FFFFFF;margin:0px 0px 0px 20px;width:56px;height:19px">更多新闻</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <br />
+    <br />
+    @*热门推荐*@
+    <div style="width:1427.25px;height:483px;margin:50px auto ">
+        <div style="height:59px;">
+            <h2 style="color:#808080">HOT RECOMMEND</h2>
+            <h2 style="background-color:yellow; width:110px;margin-top:10px;">热门推荐</h2>
+        </div>
+        <br />
+        <div style="width:1427.25px;height:384px;">
+            <div style="width:670.8px;height:380px;float:left">
+                <a style="opacity: 1;" href="/newsDetail/4408">
+                    @*<img src="~/images/热1.png" />*@
+                    <img src="~/Img/20190823_160223_717912.jpg" style="width:670px;height:380px;"/>
+                    <p style="color:#FFFFFF;background-color:rgba(0,0,0,0.5);font:16px;margin-top:-30px;">一笺说丨有信用，走大道</p>
+                </a>
+            </div>
+            <div style="width:713.63px;height:380px;float:left;margin-left:30px">
+                <div style="width:335.39px;height:175px;float:left; margin-right:25px;margin-bottom:30px;">
+                    <a style="opacity: 1;" href="/newsDetail/4407">
+                        @*<img src="~/images/热2.png" />*@
+                        <img src="~/Img/20210204_160818_630396.png" style="width:335px;height:175px;" />
+                        <p style="color:#FFFFFF;background-color:rgba(0,0,0,0.5);font:16px;margin-top:-30px;">一笺说丨成功=思维方式×热情×能力</p>
+                        
+                    </a>   
+                </div>
+                <div style="width:335.39px;height:175px;float:left; margin-bottom:30px;">
+                    <a style="opacity: 1;" href="/newsDetail/4409">
+                        @*<img src="~/images/热3.png" />*@
+                        <img src="~/Img/20210204_160818_630396.png" style="width:335px;height:175px;" />
+                        <p style="color:#FFFFFF;background-color:rgba(0,0,0,0.5);font:16px;margin-top:-30px;">一笺说丨为什么要跟懂规矩的人一起“玩”</p>
+                    </a>
+                </div>
+                <div style="width:335.39px;height:175px;float:left; margin-right:25px;margin-bottom:30px; ">
+                    <a style="opacity: 1;" href="/newsDetail/4401">
+                        @*<img src="~/images/热4.png" />*@
+                        <img src="~/Img/20210204_160818_630396.png" style="width:335px;height:175px;" />
+                        <p style="color:#FFFFFF;background-color:rgba(0,0,0,0.5);font:16px;margin-top:-30px;">共建廉洁共同体，打造合规生态圈——阳光诚信联...</p>
+                    </a>
+                </div>
+                <div style="width:335.39px;height:175px;float:left; margin-bottom:30px;">
+                    <a style="opacity: 1;" href="/newsDetail/4396">
+                        @*<img src="~/images/热5.png" />*@
+                        <img src="~/Img/20210204_160818_630396.png" style="width:335px;height:175px;" />
+                        <p style="color:#FFFFFF;background-color:rgba(0,0,0,0.5);font:16px;margin-top:-30px;">稳健前行！中梁首入中国民企500强，并获上海...</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/layui-v2.5.7/layui/layui.js"></script>
+    <script src="~/layui-v2.5.7/layui/layui.all.js"></script>
+    <script src="~/Jquery/jquery-3.3.1.js"></script>
+    <script>
+        //轮播
+        function initCarousel() {
+            layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element', 'slider', 'form'], function () {
+                var laydate = layui.laydate //日期
+                    , laypage = layui.laypage //分页
+                    , layer = layui.layer //弹层
+                    , table = layui.table //表格
+                    , carousel = layui.carousel //轮播
+                    , upload = layui.upload //上传
+                    , element = layui.element //元素操作
+                    , slider = layui.slider //滑块
+                    , form = layui.form   //表单
+
+                //常规轮播
+                $.ajax({
+                    url: 'http://localhost:53305/api/WST_Scroll_Picture',
+                    type: 'get',
+                    data: {
+                        isDisplay: 1
+                    },
+                    dataType: 'json',
+                    success: function (result) {
+                        var str = '';
+                        $(result.data).each(function () {
+                            str += '<div><img src="' + this.simg + '"  alt="" style="width: 100%;height: 788px;"></div>';
+                        });
+                        $('#preview').append(str);
+
+                        //改变下时间间隔、动画类型、高度
+                        var ins = carousel.render({
+                            elem: '#test1'
+                            , interval: 2000
+                            , arrow: 'hover'
+                            , anim: 'default'
+                            , width: '1920px'
+                            , height: '788px'
+                        });
+                        ins.reload({
+                            elem: '#test1'
+                            , interval: 2000
+                            , arrow: 'hover'
+                            , anim: 'default'
+                            , width: '1920px'
+                            , height: '788px'
+                        });
+                    },
+                    error: function () {
+                        alert("数据库查询失败，请联系管理员！")
+                    }
+                });
+
+
+                //图片轮播
+                carousel.render({
+                    elem: '#test3'
+                    , width: '536.63px'
+                    , height: '117px'
+                    , interval: 5000
+                    , anim: 'updown'
+                    , autoplay: 'true'
+                    , interval: '2000'
+                    , arrow: 'none'
+                });
+                //图片轮播
+                carousel.render({
+                    elem: '#test2'
+                    , width: '561.33px'
+                    , height: '250px'
+                    , interval: 5000
+                    , anim: 'updown'
+                    , autoplay: 'true'
+                    , interval: '2000'
+                    , arrow: 'none'
+                    , indicator: 'none'
+                });
+            });
+        }
+        initCarousel();
+
+        layui.use(['util', 'laydate', 'layer'], function () {
+            var util = layui.util
+                , laydate = layui.laydate
+                , $ = layui.$
+                , layer = layui.layer;
+            //固定块
+            util.fixbar({
+                bar1: false
+                , bar2: false
+                , css: { right: 50, bottom: 100 }
+                , bgcolor: '#393D49'
+                , click: function (type) {
+                    if (type === 'bar1') {
+                        layer.msg('www.xdpsg.com')
+                    } else if (type === 'bar2') {
+                        layer.msg('www.xdpsg.com')
+                    }
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>

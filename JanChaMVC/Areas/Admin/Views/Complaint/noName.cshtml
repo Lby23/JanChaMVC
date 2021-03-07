@@ -1,0 +1,380 @@
+﻿
+@{
+    ViewData["Title"] = "noName";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style type="text/css">
+    .boxCenter {
+        width: 1200px;
+        margin: 0 auto;
+    }
+
+    .fl {
+        float: left !important;
+    }
+
+    form > .pText > .icon {
+        /*position: absolute;
+                left: 53px;
+                top: 8px;*/
+        width: 10px;
+        height: 10px;
+    }
+
+    .btn {
+        background-color: #337ab7;
+        border-color: #337ab7;
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -ms-touch-action: manipulation;
+        touch-action: manipulation;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-image: none;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+
+    .btn-submit {
+        background-color: #337ab7;
+        border-color: #337ab7;
+        color: #fff;
+        width: 80px;
+    }
+
+    .complain-content {
+        margin: 0 auto
+    }
+
+        .complain-content .cc-menu-title {
+            font-size: 20px;
+            background-color: #9ad1ff;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .complain-content .cc-menu {
+            padding: 10px 40px;
+            background-color: #ebf5fe;
+        }
+
+            .complain-content .cc-menu > div {
+                padding: 30px;
+                text-align: center;
+                border-top: 3px #d3ebff solid;
+            }
+                /* 	.complain-content .cc-menu >div[class*='act']:hover, */
+                .complain-content .cc-menu > div.zxjb {
+                    background: #d3ebff;
+                }
+
+        .complain-content .cc-bar {
+            background-color: #fff;
+        }
+
+        .complain-content .cc-content {
+            background: #ebf5fe;
+            padding-top: 100px;
+        }
+</style>
+
+<!-- 内容区域 -->
+<section class="content">
+    <!-- main S -->
+    <div class="banner">
+        <img alt="" src="~/img/banner.png">
+    </div>
+    <div class="researchTitle" style="text-align: center; font-size: 38px; padding: 70px 0 68px 0; color: #333333; position: relative;">
+        <a href="http://www.wsttop.com/realName.html?tz=1#searchResult" id="tosearchResult"></a>
+        <input id="hd_tz" type="hidden" value="1">
+        <p style="position: relative;z-index: 1;background: #fff;">
+            <span>
+                <i></i>
+                匿名举报
+            </span>
+        </p>
+        @*<div class="line" style="z-index: 0;">
+                <img alt="" src="./实名举报_files/斜线.png">
+            </div>*@
+    </div>
+
+    <div class="boxCenter contentBox clearfix" style="overflow:hidden;">
+        <table class="complain-content">
+            <tbody>
+                <tr>
+                    <td valign="top">
+                        <div class="cc-menu-title">
+                            举报途径
+                            <br><font style="color: #ddeaea ">Report way</font>
+                        </div>
+                        <div class="cc-menu">
+                            <div class="zxjb active" style="color:#337ab7;">
+                                <a href="http://www.wsttop.com/complain.html?tz=1" style="color:#337ab7;">
+                                    在线举报
+                                    <br><br>
+                                    <img class="icon" src="~/img/zxjb.png">
+                                </a>
+                            </div>
+                            <div class="act" style="color:#337ab7;">
+                                <a href="http://www.wsttop.com/blackList.html?tz=1" style="color:#337ab7;">
+                                    黑 名 单
+                                    <br><br>
+                                    <img class="icon" src="~/img/hmd.png">
+                                </a>
+                            </div>
+                            <div>
+                                电话举报<br><br>
+                                <img class="icon" src="~/img/dhjb.png">
+                                <br><br>
+                                4006561700
+                            </div>
+                            <div>
+                                邮箱举报<br><br>
+                                <img class="icon" src="~/img/yxjb.png">
+                                <br><br>
+                                zldcsjb@zldcgroup.com
+                            </div>
+                            <div>
+                                微信举报<br><br>
+                                <img class="icon" src="~/img/wxjb.png"><br>
+                                <br><img src="~/img/code.png" style="width:120px;height:120px; ">
+                            </div><br>
+                            <div style="border-bottom:3px #d3ebff solid ;color:#777777;">
+                                非舞弊相关投诉请<br><br>
+                                通过如下方式进行<br><br>
+                                <a href="http://www.wsttop.com/hotService.html" style="color:#337ab7" target="_black">
+                                    客服专线<br><br>
+                                    <img class="icon" src="~/img/kfzx.png">
+                                </a>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="cc-bar">&nbsp;</td>
+                    <td align="center" class="cc-content mainBox" valign="top">
+                        <form action="http://www.wsttop.com/addComplain" enctype="multipart/form-data" id="form" method="post">
+                            <input name="type" type="hidden" value="2">
+                            <input id="visitIP" name="visitIP" type="hidden" value="36.113.99.129">
+                            <table class="realName-table">
+                                <tbody>
+                                    <tr>
+                                        <td align="right" class="names">
+                                            <span>您的姓名(选填)</span>
+                                        </td>
+                                        <td class="names">
+                                            <input id="name" name="name" placeholder="请输入您的姓名" value="">
+                                        </td>
+                                    </tr>
+                                    <tr class="radios">
+                                        <td align="right"><span>您的身份(选填)</span></td>
+                                        <td>
+                                            <label>
+                                                <input checked="" id="" name="idtype" type="radio" value="1">&nbsp;员工&nbsp;
+                                            </label>
+                                            <label>
+                                                <input id="" name="idtype" type="radio" value="2"> &nbsp;供应商&nbsp;
+                                            </label>
+                                            <label>
+                                                <input id="" name="idtype" type="radio" value="3"> &nbsp;客户&nbsp;
+                                            </label>
+                                            <label>
+                                                <input id="" name="idtype" type="radio" value="4"> &nbsp;其他&nbsp;
+                                            </label>
+                                            <label>
+                                                <input class="other" name="remark" style="width: 100px;display: none;" type="text">
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr class="phone">
+                                        <td align="right">
+                                            <span>您的联系方式(选填)</span>
+                                        </td>
+                                        <td>(请至少填写其中一项)</td>
+                                    </tr>
+                                    <tr class="types">
+                                        <td align="right"><span>电话</span></td>
+                                        <td class="names phones"><input id="tel" name="tel" placeholder="请输入您的电话" value=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right"><span>邮箱</span></td>
+                                        <td class="names"><input id="email" name="email" placeholder="请输入您的邮箱" value=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right"><span>微信</span></td>
+                                        <td class="names"><input id="wchat" name="wchat" placeholder="请输入您的微信" value=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right" class="contents" style="padding-top:20px;" valign="top">
+                                            <span>举报内容</span>
+                                            <img class="icon" src="~/img/xing.png" style=" position: relative; width: 10px; height: 10px;">
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="contents" colspan="2">
+                                            <textarea id="content" name="content" rows="8" style="width: 395px; border: 1px solid #ccc; margin: 10px auto; display: block;"></textarea>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td align="center" colspan="2">
+                                            <span class="upload">
+                                                <input class="file" id="file" name="file" type="file">上传附件
+                                            </span>
+                                            <span style="font-size: 12px;color: #333;">（上传的附件总大小不能超过50M，总数量不能超过1个）</span>
+                                            <div class="" id="errorTip" style="margin: 6px 10px; color: red; font-size: 20px;"></div>
+                                            <div id="fileName"></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center" colspan="2">
+                                            <input class="btn btn-submit submit fr" type="button" value="提交">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+    <form id="searchForm" method="post" action="http://www.wsttop.com/search">
+        <input id="hdSearchText" name="text" type="hidden">
+    </form>
+</section>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    $(function () {
+        $("#visitIP").val(returnCitySN.cip);
+        if ($("#hd_tz").val()) {
+            var t = $('#tosearchResult').offset().top;
+            $(window).scrollTop(t); //滚动到锚点位置
+        }
+        $('.btn-complain').attr("disabled", true).addClass("disabled");
+        if ($("input[name='company']").val() != null && $("input[name='company']").val() != '') {
+            var t = $('#tosearchResult').offset().top;
+            $(window).scrollTop(t); //滚动到锚点位置
+        }
+    })
+    // 搜索
+    function sousuo() {
+        var company = $(".company").val();
+        var idcard = $(".idcard").val();
+        // 						console.log(company,idcard);
+        var val;
+        var nulls = /^\s*$/;
+        if (nulls.test(company) || nulls.test(idcard)) {
+            alert('搜索内容都为必填');
+            val = false;
+        } else if (company.length == 0 && idcard.length == 0) {
+            alert('搜索内容都为必填');
+            val = false;
+        } else {
+            val = true;
+        }
+        return val;
+    }
+    //回车搜索
+    document.onkeydown = function (event) {
+        e = event ? event : (window.event ? window.event : null);
+        if (e.keyCode == 13) {
+            //执行的方法
+            $('.sou').click();
+        }
+    }
+    $('input:radio[name="idtype"]').on('change', function () {
+        var radioVal = $('input:radio[name="idtype"]:checked').attr('value');
+        if (radioVal == '4') {
+            $('.other').css('display', 'inline-block')
+        } else {
+            $('.other').css('display', 'none');
+        }
+    })
+    var i = 0;
+    $('.upload').on('change', '#file', function () {
+        /* $('#file').change(function(){ */
+        var fileBig = $('#file')[0].files[0].size / 1024 / 1000;
+        if (fileBig > 50) {
+            alert('上传附件的总大小不能超过50M！')
+            return;
+        }
+        i++;
+        if ($(this).val() != '') {
+            //1.正则表达式
+            var file = $('#file').val();
+            var strFileName = file.replace(/^.+?\\([^\\]+?)(\.[^\.\\]*?)?$/gi, "$1");
+            //正则表达式获取文件名，不带后缀
+            var FileExt = file.replace(/.+\./, ""); //正则表达式获取后缀
+            $('#fileName').html(strFileName + "." + FileExt);
+            $("#fileName").append("&nbsp;&nbsp;<input type='button' id='delFile' value='删除'/>");
+            //http://47.101.57.129:8080/jscms/
+        } else {
+            return;
+        }
+        if (i >= 1) {
+            alert('上传成功！只能上传1个附件。')
+            //	$('#file').attr('disabled','disabled')
+            return
+        }
+    });
+    $('.submit').on('click', function () {
+        var name = $("#name").val();
+        var tel = $("#tel").val();
+        var content = $("#content").val();
+        var email = $("#email").val();
+        var wchat = $("#wchat").val();
+        var p = /^1[34578]\d{9}$/;
+        var e = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
+        var nulls = /^\s*$/;
+        if (nulls.test(name) || nulls.test(content)) {
+            $("#errorTip").html("必填字段未填写，请补充完整");
+            return false;
+        }
+        if (nulls.test(tel) && nulls.test(email) && nulls.test(wchat)) {
+            $("#errorTip").html("请在电话，邮箱，微信之中选择填一项作为您的联系方式");
+            return false;
+        } else {
+            if (!nulls.test(tel)) {
+                if (!p.test(tel)) {
+                    $("#errorTip").html("您的电话格式有误");
+                    return false;
+                } else {
+                    $("#form").submit();
+                    $("#form input").val('');
+                    $('#form textarea').val('');
+                }
+            } else if (!nulls.test(email)) {
+                if (!e.test(email)) {
+                    $("#errorTip").html("您的邮箱格式有误");
+                    return false;
+                } else {
+                    $("#form").submit();
+                    $("#form input").val('');
+                    $('#form textarea').val('');
+                }
+            } else if (!nulls.test(wchat)) {
+                $("#form").submit();
+                $("#form input").val('');
+                $('#form textarea').val('');
+                return true;
+            }
+        }
+    })
+</script>

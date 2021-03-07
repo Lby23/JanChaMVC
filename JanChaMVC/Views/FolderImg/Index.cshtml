@@ -22,11 +22,7 @@
 </div>
 
 <table class="layui-hide" id="test"></table>
-<script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
-    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-</script>
+
 <form class="layui-form" id="create" hidden="hidden">
     <table>
         <tr>
@@ -34,7 +30,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">栏目</label>
                     <div class="layui-input-block">
-                        <select id="artname" name="artname" class="layui-input artname">
+                        <select id="q" name="artname" class="layui-input artname">
                         </select>
                     </div>
                 </div>
@@ -60,7 +56,10 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">状态</label>
                     <div class="layui-input-block">
-                        <input type="text" name="status" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                        <div class="layui-input-inline">
+                            <input type="radio" name="status" value="1" title="隐藏">
+                            <input type="radio" name="status" value="2" title="显示" checked>
+                        </div>
                     </div>
                 </div>
             </td>
@@ -103,7 +102,11 @@
         </div>
     </div>
 </form>
-
+<script type="text/html" id="barDemo">
+    <button type="button" class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</button>
+    <button type="button" class="layui-btn layui-btn-xs" lay-event="edit"> 编辑</button>
+    <button type="button" class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</button>
+</script>
 <script>
 
     //JavaScript代码区域
@@ -123,15 +126,15 @@
     });
     //数据表格
     layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element', 'slider', 'form'], function () {
-        var laydate = layui.laydate ,//日期
-             laypage = layui.laypage, //分页
-             layer = layui.layer, //弹层
-             table = layui.table ,//表格
-             carousel = layui.carousel ,//轮播
-             upload = layui.upload ,//上传
-             element = layui.element ,//元素操作
-             slider = layui.slider, //滑块
-             form = layui.form
+        var laydate = layui.laydate,//日期
+            laypage = layui.laypage, //分页
+            layer = layui.layer, //弹层
+            table = layui.table,//表格
+            carousel = layui.carousel,//轮播
+            upload = layui.upload,//上传
+            element = layui.element,//元素操作
+            slider = layui.slider, //滑块
+            form = layui.form
         //显示数据
         table.render({
             elem: '#test',
@@ -164,7 +167,7 @@
                 {
                     field: 'createTime', width: 110, title: '更新时间', sort: true, templet: "<div>{{layui.util.toDateString(d.createTime,'yyyy年-MM月-dd日 HH:mm:ss')}}</div>"
                 },
-                { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150 }
+                { fixed: 'right', title: '操作', width: 178, align: 'center', toolbar: '#barDemo' }
             ]]
         });
 
@@ -178,16 +181,37 @@
                 }
             }); //只重载数据
         });
-        //重置
-        $('#btnchong').click(function () {
-                $('#status').val(0);
-        })
+
+
+        //普通图片上传
+            upload.render({
+                elem: '#test1'
+                , url: '/FolderImg/Upload' //改成自己的上传接口
+                , before: function (obj) {
+                    //预读本地文件示例，不支持ie8
+                    obj.preview(function (index, file, result) {
+                        $('#demo1').attr('src', result); //图片链接（base64）
+                    });
+                }
+                , done: function (res) {
+                    //如果上传失败
+                    if (res.code > 0) {
+                        return layer.msg('上传失败');
+                    }
+                    else {
+                        $('#image').val(res.path)
+                        layer.msg('上传成功');
+                    }
+                    //上传成功
+                }
+            });
+
 
         //右侧点击按钮
         table.on('tool(test)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
             var data = obj.data //获得当前行数据
                 , layEvent = obj.event; //获得 lay-event 对应的值
-            if (layEvent === 'detail') {
+            if (obj.event === 'detail') {
                 layer.msg('查看当前栏目详情');
                 layer.open({
                     type: 1,
@@ -200,19 +224,18 @@
                     shade: 0,//不显示遮罩
                     success: function () {
                         //反填数据
-                        $('[name="parentId"]').val(data.parentId);
+                        $('[name="folderId"]').val(data.folderId);
                         $('[name="name"]').val(data.name);
-                        $('[name="key"]').val(data.key);
-                        $('[name="path"]').val(data.path);
+                        $('[name="countnt"]').val(data.countnt);
                         $('[name="sort"]').val(data.sort);
                         if (data.status == 1) {
                             $("#status1").prop('checked', true)
                         } else if (data.status == 2) {
                             $("#status2").prop('checked', true)
                         };
-                        $('[name="type"]').val(data.type);
+                        $('[name="img"]').val(data.img);
                         $('[name="jumpUrl"]').val(data.jumpUrl);
-                        $('[name="content"]').val(data.content);
+                        $('[name="createTime"]').val(data.createTime);
                         form.render('select')
                         form.render('radio')
                     }, btn1: function (index, layero) {
@@ -253,19 +276,18 @@
                     shade: 0,//不显示遮罩
                     success: function () {
                         //反填数据
-                        $('[name="parentId"]').val(data.parentId);
+                        $('[name="folderId"]').val(data.folderId);
                         $('[name="name"]').val(data.name);
-                        $('[name="key"]').val(data.key);
-                        $('[name="path"]').val(data.path);
+                        $('[name="countnt"]').val(data.countnt);
                         $('[name="sort"]').val(data.sort);
                         if (data.status == 1) {
                             $("#status1").prop('checked', true)
                         } else if (data.status == 2) {
                             $("#status2").prop('checked', true)
                         };
-                        $('[name="type"]').val(data.type);
+                        $('[name="img"]').val(data.img);
                         $('[name="jumpUrl"]').val(data.jumpUrl);
-                        $('[name="content"]').val(data.content);
+                        $('[name="createTime"]').val(data.createTime);
                         form.render('select')
                         form.render('radio')
                     }, btn1: function (index, layero) {
@@ -277,15 +299,14 @@
                             type: 'put',
                             data: JSON.stringify({
                                 id: data.id,
-                                parentId: $('[name="parentId"]').val(),
+                                folderId: $('[name="folderId"]').val(),
                                 name: $('[name="name"]').val(),
-                                key: $('[name="key"]').val(),
-                                path: $('[name="path"]').val(),
+                                countnt: $('[name="countnt"]').val(),
                                 sort: $('[name="sort"]').val(),
                                 status: $('[name="status"]:checked').val(),
-                                type: $('[name="type"]').val(),
+                                img: $('[name="img"]').val(),
                                 jumpUrl: $('[name="jumpUrl"]').val(),
-                                content: $('[name="content"]').val()
+                                createTime: $('[name="createTime"]').val()
                             }),
                             success: function (data) {
                                 if (data > 0) {
@@ -315,6 +336,30 @@
 
         });
 
+        //绑定查询下拉框
+        $(function () {
+            $.ajax({
+                url: 'http://localhost:64502/api/FolderImg/GetFolderImgs',
+                type: 'get',
+                success: function (result) {
+                    var strHtml = '';
+                    strHtml += '<option value="0">-请选择-</option>';
+                    $(result.data).each(function () {
+                        strHtml += '<option value="' + this.id + '">' + this.name + '</option>';
+                    });
+                    $('.artname').empty().append(strHtml);
+                    //渲染下拉
+                    form.render('select');
+                }
+            })
+        })
+    });
+      //重置
+     $('#btnchong').click(function () {
+        $('#status').val(0);
+    })
+
+
 
 
         ////新增弹出方法
@@ -335,5 +380,61 @@
         //        });
         //    })
         //})
-    });
+
+    //新增弹出方法
+    $('#btnzeng').click(function () {
+        layer.open({
+            type: 1
+            , title: '添加文章'
+            , content: $('#create')
+            , width: '500px'
+            , area: ["700px", "450px"]
+            , btn: ['提交', '关闭全部']
+            , btnAlign: 'c' //按钮居中
+            , shade: 0 //不显示遮罩
+            , success: function () {
+                $("#create")[0].reset();
+                layui.form.render();
+            }
+            , btn1: function () {
+                //alert(JSON.stringify(data.field));
+                //添加方法
+                $.ajax({
+                    url: 'http://localhost:64502/api/FolderImg/Add',
+                    type: 'post',
+                    data: JSON.stringify({
+                        folderId: $('[name="artname"]').val(),
+                        name: $('[name="name"]').val(),
+                        countnt: $('[name="countnt"]').val(),
+                        sort: $('[name="sort"]').val(),
+                        status: $('[name="status"]:checked').val(),
+                        img: $('[name="img"]').val(),
+                        jumpUrl: $('[name="jumpUrl"]').val(),
+                        createTime: $('[name="createTime"]').val()
+                    }),
+                    success: function (data) {
+                        if (data > 0) {
+                            alert("添加成功");
+                            location.reload();
+                            table.reload('test', {
+                                where: { //设定异步数据接口的额外参数，任意设
+                                }
+                                , page: {
+                                    curr: 1 //重新从第 1 页开始
+                                }
+                            }); //只重载数据
+                        } else {
+                            alert("添加失败");
+                        }
+                    },
+                    dataType: "json",
+                    contentType: "application/json"
+                });
+                return false;
+            },
+            btn2: function () {
+                layer.closeAll();
+            }
+        });
+    })
 </script>
