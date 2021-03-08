@@ -6,12 +6,175 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     @*<title>@ViewData["Title"] - 开始使用layui</title>*@
-
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <link href="~/src/cssreset.css" rel="stylesheet" />
+    <link href="~/src/headers.css" rel="stylesheet" />
+    <script src="~/src/headers.js"></script>
+    <script src="~/src/iconfont.js"></script>
+    <link href="~/src/index.css" rel="stylesheet" />
+    <link href="~/src/index_new.css" rel="stylesheet" />
+    <script src="~/src/jquery.js"></script>
+    <script src="~/src/jquery-1.4.4.min.js"></script>
+    <link href="~/src/swiper-4.2.6.min.css" rel="stylesheet" />
+    <script src="~/src/swiper-4.2.6.min.js"></script>
     <link href="~/layui-v2.5.7/layui/css/layui.css" rel="stylesheet" />
+    @*<style type="text/css">
+
+            footer {
+                width: 1920px;
+                height: 250px;
+                background: #141414;
+                box-sizing: border-box;
+                position: relative
+            }
+
+                footer .footer {
+                    padding-top: 55px;
+                    position: relative
+                }
+
+                    footer .footer .logo {
+                        width: 200px
+                    }
+
+                    footer .footer .footerUl {
+                        position: absolute;
+                        top: 40px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        color: #fff;
+                        font-size: 0
+                    }
+
+                        footer .footer .footerUl li {
+                            float: left;
+                            margin: 0 5px;
+                            font-size: 12px
+                        }
+
+                            footer .footer .footerUl li > p:first-child {
+                                font-size: 14px;
+                                margin-bottom: 10px;
+                                cursor: pointer;
+                                color: #fff
+                            }
+
+                            footer .footer .footerUl li p:first-child span {
+                                margin-left: 12px
+                            }
+
+                            footer .footer .footerUl li div {
+                                color: #ccc;
+                                cursor: pointer
+                            }
+
+                                footer .footer .footerUl li div a {
+                                    text-decoration: none;
+                                    color: #ccc;
+                                    cursor: pointer
+                                }
+
+                                    footer .footer .footerUl li div a:hover {
+                                        color: #fff
+                                    }
+
+                    footer .footer .codeBox {
+                        position: absolute;
+                        right: 25px;
+                        top: 0;
+                        color: #fff;
+                        font-size: 14px;
+                        text-align: center
+                    }
+
+                    footer .footer .footerUl li p a {
+                        text-decoration: none;
+                        color: #fff
+                    }
+
+                    footer .footer .codeBox .span {
+                        padding-right: 15px;
+                        border-right: 1px solid #ccc
+                    }
+
+                    footer .footer .codeBox .wx {
+                        width: 20px;
+                        height: 20px;
+                        vertical-align: middle;
+                        margin-left: 10px
+                    }
+
+                footer .code {
+                    width: 80px;
+                    height: 80px;
+                    margin-top: 40px
+                }
+
+                    footer .code img {
+                        width: 132%;
+                        height: 132%;
+                    }
+
+            .footer .text {
+                padding-top: 10px;
+                color: #ccc;
+                font-size: 12px
+            }
+
+            footer .footerText {
+                width: 100%;
+                text-align: center;
+                padding: 20px 0;
+                border-top: 1px solid #000;
+                color: #fff;
+                position: absolute;
+                bottom: 20px;
+                left: 0;
+                font-size: 13px;
+                color: #eee
+            }
+        </style>*@
     <style type="text/css">
+        /**/
+        .links {
+            width: 75%;
+            margin: 20px auto 0
+        }
+
+            .links > p:nth-child(2) {
+                margin: 40px auto;
+                color: #474747
+            }
+
+            .links > p > a {
+                display: inline
+            }
+
+            .links > p:nth-child(2) > a {
+                text-decoration: none;
+                color: #474747;
+                font-weight: 600
+            }
+
+            .links > p:nth-child(2) > span {
+                margin: 0 25px;
+                font-weight: 600
+            }
+
+        .lianjie {
+            position: relative
+        }
+
+            .lianjie > span {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                color: #09093b;
+                font-size: 24px;
+                font-family: "微软雅黑"
+            }
 
         footer {
-            width: 1920px;
             height: 250px;
             background: #141414;
             box-sizing: border-box;
@@ -123,6 +286,183 @@
             font-size: 13px;
             color: #eee
         }
+
+        .map > .icon {
+            width: 32px;
+            height: 32px;
+            vertical-align: -.15em;
+            fill: currentColor;
+            overflow: hidden;
+            margin-top: 7px;
+            color: #aaa;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            position: fixed;
+            top: 16px;
+            right: 30px;
+            z-index: 5;
+            padding: 4px;
+            cursor: pointer
+        }
+
+            .map > .icon img {
+                width: 100%;
+            }
+
+        .back > .icon {
+            width: 30px;
+            height: 30px;
+            vertical-align: -.15em;
+            fill: currentColor;
+            overflow: hidden;
+            position: fixed;
+            bottom: 29%;
+            right: 30px;
+            z-index: 5;
+            cursor: pointer;
+            display: none;
+            color: #0e74d9
+        }
+
+        .menu {
+            width: 370px;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 7;
+            background: #fff;
+            display: none
+        }
+
+        .menu_title {
+            width: 100%;
+            height: 95px;
+            line-height: 80px;
+            color: #444;
+            font-size: 22px;
+            border-bottom: 1px solid #dcdcdc;
+            box-sizing: border-box;
+            padding: 5px 10px;
+        }
+
+            .menu_title > img.img1 {
+                width: 84px;
+                float: left;
+                margin-right: 20px;
+            }
+
+            .menu_title > img.img2 {
+                width: 36px;
+                position: absolute;
+                right: 10px;
+                top: 24px;
+                cursor: pointer;
+            }
+
+        .menu_count {
+            padding-left: 30px;
+            padding-top: 20px;
+        }
+
+        .shades {
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,.5);
+            position: fixed;
+            z-index: 6;
+            top: 0;
+            left: 0;
+            display: none
+        }
+
+        .menu_a > h3, .menu_b > h3, .menu_c > h3, .menu_d > h3 {
+            height: 50px;
+            line-height: 50px
+        }
+
+        .menu_b > h3, .menu_d > h3 {
+        }
+
+            .menu_a > h3 > a, .menu_b > h3 > a, .menu_c > h3 > a, .menu_d > h3 > a {
+                text-decoration: none;
+                color: #333;
+                font-size: 20px;
+            }
+
+        .menu_a > p, .menu_c > p {
+            color: #999;
+            font-size: 12px;
+            height: 26px;
+            line-height: 26px;
+        }
+
+            .menu_a > p > a, .menu_c > p > a {
+                text-decoration: none;
+                color: #999;
+                font-size: 14px;
+                display: inline
+            }
+
+            .menu_a > p > span, .menu_c > p > span {
+                margin: 0 15px
+            }
+
+        .menu_e {
+            position: absolute;
+            bottom: 10px;
+            left: 30px
+        }
+
+            .menu_e > p {
+                color: #999;
+                font-size: 20px;
+                margin-bottom: 10px
+            }
+
+            .menu_e > img {
+                position: relative;
+                left: -5px
+            }
+
+        .menu_a, .menu_b, .menu_c, .menu_d, .menu_e {
+            border-bottom: 1px solid #999;
+            padding-bottom: 15px;
+        }
+
+        .returns {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            position: fixed;
+            bottom: 50%;
+            margin-bottom: -15px;
+            right: 30px;
+            z-index: 5
+        }
+
+            .returns .icon {
+                width: 22px;
+                height: 22px;
+                padding: 4px;
+                border-radius: 50%;
+                position: fixed;
+                bottom: 37%;
+                margin-bottom: -15px;
+                right: 30px;
+                z-index: 5;
+                color: #0e74d9;
+                vertical-align: -.15em;
+                fill: currentColor;
+                overflow: hidden;
+                border: 1px solid #aaa
+            }
+
+                .returns .icon:hover {
+                    background: #0e74d9;
+                    color: #fff;
+                    border: none
+                }
     </style>
     <style type="text/css">
         .swiper-slide > a {
@@ -179,20 +519,40 @@
         }
     </style>
 </head>
-<body>
+<body style="position: relative; background: #fff; max-width: 1920px; min-width: 1200px; margin: 0 auto; ">
 
     <!-- 你的HTML代码 -->
     <!--头部-->
-    <header>
-        <div class="header" @*style="margin-top:20px;"*@>
-            <div class="header_left">
-
+    <header style="width: 100%; height: 144px; line-height: 80px; border-bottom: 2px solid #a3bdcc; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: rgb(163, 189, 204); ">
+        <div class="header" @*style="margin-top:20px;"*@ style="width: 75%; height: 79px; line-height: 80px; margin: 0 auto;">
+            <div class="header_left" style="width: 20%; float: left; height: 80px; line-height: 80px;">
                 <img style="position:relative;left:10%" src="~/Img/Logo白.png" />
+            </div>
+            <div class="header_right">
+                <div class="header_right_right" style="float: right; height: 80px; line-height: 80px; margin-left: 5px;">
+                    <div class="two twos">
+                        <div id="">
+                            <input class="suo" id="" name="" placeholder="输入关键词" type="text" value="">
+                            <button class="sou">
+                                <img src="~/Img/searchs.png">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="three">
+                        <img src="~/Img/ban.png">
+                        <span class="pg">办公通道</span>
+                        <p>
+                            <a href="https://exmail.qq.com/cgi-bin/loginpage" target="_blank"><img src="~/Img/emails.png"><span>邮箱</span></a>
 
+                            <a href="http://js.wsttop.com/" target="_blank"><img src="~/Img/work.png"><span>平台</span></a>
+                        </p>
+                    </div>
+
+                </div>
             </div>
         </div>
-        <hr style="position:relative;top:-22px;margin-top:20px;" />
-        <div style="border-bottom:1px solid;height:37px;border-color:gainsboro">
+        @*<hr style="position:relative;top:-22px;margin-top:20px;" />*@
+        <div class="gao-header-nav" style="border-top: 1px solid #ccc; line-height: 63px;">
             <ul style="font-size:20px;color:black;">
                 <li style="float:left;list-style-type:none;position:relative;margin-left:33%;font-size:20px;" class=" layui-nav-item">
                     <div id="">
@@ -245,11 +605,7 @@
         </div>
     </div>
 
-    @*返回顶部*@
-    <div id="back_top">
-        <div class="arrow"></div>
-        <div class="stick"></div>
-    </div>
+
     <!--底部-->
     <footer>
         <div class="boxCenter footer" style="width:75%;margin:0px auto;padding-top:40px;">
@@ -317,18 +673,226 @@
             <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010702004283" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;color: #eee;" target="_blank"><img style="width:16px;height:16px;margin:0px 2px -3px 6px;" src="~/Img/警徽.png">沪公网安备  31010702004283号</a>
         </p>
     </footer>
+    @*返回顶部*@
+    <div id="back_top">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+    </div>
 
     <script src="~/layui-v2.5.7/layui/layui.js"></script>
     <script src="~/Jquery/jquery-3.3.1.js"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-    <script>
-        //一般直接写在一个js文件中
-        layui.use(['layer', 'form'], function () {
-            var layer = layui.layer
-                , form = layui.form;
+    @*@await RenderSectionAsync("Scripts", required: false)
+        <script>
+            //一般直接写在一个js文件中
+            layui.use(['layer', 'form'], function () {
+                var layer = layui.layer
+                    , form = layui.form;
 
 
+            });
+        </script>*@
+    <script type="text/javascript">
+        var mySwiper = new Swiper('.swiper-containers', {
+            speed: 800,
+            loop: true,
+            // autoplay: true,
+            // disableOnInteraction:false,
+            autoplay: {
+                delay: 5000,
+                stopOnLastSlide: false,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+
+            },
+            // 如果需要前进后退按钮
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            }
+        })
+        //左右按钮的显示和隐藏
+        $(".swiper-container").hover(function () {
+            $(".swiper-button-prev").fadeIn();
+            $(".swiper-button-next").fadeIn();
+        }, function () {
+            $(".swiper-button-prev").fadeOut();
+            $(".swiper-button-next").fadeOut();
+        })
+        var swiper = new Swiper('.new_swiper', {
+            speed: 800,
+            loop: true,
+            // autoplay: true,
+            // disableOnInteraction:false,
+            autoplay: {
+                delay: 3000,
+                stopOnLastSlide: false,
+                disableOnInteraction: false,
+            },
+            direction: 'vertical',
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
         });
+
+        //卡片效果
+        $(".shade>ul li").hover(function () {
+            //$(this).addClass('active1');
+            $(this).stop().animate({
+                'top': '-112px'
+            });
+            $(this).children().stop().animate({
+                'bottom': '97px',
+                'padding-bottom': '93px',
+            })
+            //$(this).children('a').children('p').eq(0).stop().animate({'opacity':'1'});
+            $(this).children('a').children('p').eq(0).stop().animate({ 'opacity': '0' });
+            $(this).children('a').children('p').eq(1).stop().animate({ 'font-size': '26px' });
+        }, function () {
+            $(this).children().stop().animate({
+                'bottom': '1px',
+                'padding-bottom': '0px',
+            })
+            $(this).stop().animate({
+                'top': '0px'
+            });
+            //$(this).children('a').children('p').eq(0).stop().animate({'opacity':'0'});
+            $(this).children('a').children('p').eq(0).stop().animate({ 'opacity': '1' });
+            $(this).children('a').children('p').eq(1).stop().animate({ 'font-size': '18px' });
+        })
+        //导航栏
+        /* $(".header_right>ul li").eq(1).hover(function(){
+                $('ol').css('display','block');
+                $("ol li").eq(1).css('display','block');
+                $("ol li").eq(1).siblings().css('display','none');
+
+        })
+        $(".header_right>ul li").eq(3).hover(function(){
+                $('ol').css('display','block');
+                $("ol li").eq(3).css('display','block');
+                $("ol li").eq(3).siblings().css('display','none');
+
+        }) */
+        var index;
+        $(".header_right>ul li").hover(function () {
+            if ($(this).index() == 0 || $(this).index() == 2 || $(this).index() == 4) {
+                $("ol").css('display', 'none');
+            }
+            $(this).children().children('a').css('color', '#fff');
+            $(this).siblings().children().children('a').css('color', '#747474');
+            index = $(this).index();
+
+            $(this).children().children('.bgs').stop().animate({
+                'top': '15px'
+            }, 200)
+            $(this).siblings().children().children('.bgs').stop().animate({
+                'top': '80px'
+            }, 200)
+        }, function () {
+            if ($(this).index() == 0 || $(this).index() == 2 || $(this).index() == 4) {
+                $(this).children().children('a').css('color', '#747474');
+                $(this).children().children('.bgs').stop().animate({
+                    'top': '80px'
+                }, 200)
+                $('.a').stop().animate({
+                    'top': '15px'
+                }, 200);
+                $('.a').siblings().css('color', '#fff');
+            }
+        })
+
+        $('ol').hover(function () {
+
+        }, function () {
+            $(this).css('display', 'none');
+            $('.header_right>ul li').eq(index).children().children('a').css('color', '#747474');
+            $('.header_right>ul li').eq(index).children().children('.bgs').stop().animate({
+                'top': '80px'
+            }, 200)
+            $('.a').stop().animate({
+                'top': '15px'
+            }, 200);
+            $('.a').siblings().css('color', '#fff');
+        })
+        /* //搜索框
+        $(".one").hover(function(){
+            $(this).css('display','none');
+            $('.two').removeClass('twos');
+        })
+       $("header").hover(function(){
+
+       },function(){
+
+                    $('.one').css('display','inline');
+            $('.two').addClass('twos');
+       }) */
+
+        //搜索
+        $(".sou").click(function () {
+            var text = $(".suo").val();
+            // 			console.log(text);
+            // 			window.location.href = "search?text=" + text;window.event.returnValue = false;
+            $("#hdSearchText").val(text);
+            $("#searchForm").submit();
+        });
+        //回车点击搜索
+        document.onkeydown = function (event) {
+            e = event ? event : (window.event ? window.event : null);
+            if (e.keyCode == 13) {
+                //执行的方法
+                $('.sou').click();
+            }
+        }
+
+        //字数超出显示
+        var len = $(".news_lists>.new_swiper .swiper-slide").length;
+        for (var i = 0; i < len; i++) {
+            var texts = $(".news_lists>.new_swiper .swiper-slide").eq(i).children('a').children('div').children('p').html();
+            // 	    	console.log(texts.length);
+            if (texts.length > 104) {
+                texts = texts.substr(0, 104) + '...'
+                // 	    		console.log(texts);
+            }
+            $(".news_lists>.new_swiper .swiper-slide").eq(i).children('a').children('div').children('p').html(texts);
+        }
+        //新闻大
+        $(".information_img>a").hover(function () {
+            $(this).css('opacity', '0.5');
+        }, function () {
+            $(this).css('opacity', '1');
+        })
+        //新闻列表
+        $("#information_list>a").hover(function () {
+            $(this).css('opacity', '0.5');
+            $(this).siblings().css('opacity', '1');
+        }, function () {
+            $(this).css('opacity', '1');
+        })
+        /* //办公通道
+              $(".three").hover(function(){
+            $(this).stop().animate({
+                'width':'176px'
+            })
+            $(this).children('img').stop().animate({
+                'left':'-30px',
+            })
+            $(this).children('p').stop().animate({
+                'opacity':'1'
+            })
+        },function(){
+            $(this).stop().animate({
+                'width':'27px'
+            })
+            $(this).children('img').stop().animate({
+                'left':'6px',
+            })
+            $(this).children('p').stop().animate({
+                'opacity':'0'
+            })
+        }) */
     </script>
     <script>
         $(function () {
