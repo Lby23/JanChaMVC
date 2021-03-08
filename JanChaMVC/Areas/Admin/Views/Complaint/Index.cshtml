@@ -309,113 +309,111 @@
 <div>
     <!-- 内容区域 -->
     <section class="content">
-        <header>
-            <div class="banner" style="width: 100%; overflow: hidden; position: relative; z-index: 2;top:-50px">
-                <img alt="" src="~/Img/banner.png">
-            </div>
-            <hr class="layui-bg-gray" style="height:10px;border:1px solid #808080;">
-            <div style="width:250px;height:160px;background-color:#fff;margin-left:45%; margin-top:-70px;">
-                <p style="width:160px; padding:20px 0;border-bottom:1px solid;font-size:40px;margin-left:50px;">
-                    投<span style="border-bottom:5px solid; padding:20px 0;">诉举</span>报
-                </p>
-            </div>
 
-            <div class="boxCenter contentBox clearfix" style="overflow:hidden;">
-                <table class="complain-content">
-                    <tbody>
-                        <tr>
-                            <td rowspan="2" style="background-color: #ebf5fe;" valign="top">
-                                <div class="cc-menu-title">
-                                    举报途径
-                                    <br><font style="color: #ddeaea;font-size:18px;">Report way</font>
-                                </div>
-                                <div class="cc-menu">
-                                    <div class="zxjb active" style="color:#337ab7;">
-                                        <a href="/Admin/Complaint/Index" style="color:#337ab7;">
-                                            在线举报
-                                            <br><br>
-                                            <img class="icon" src="~/Img/zxjb.png">
-                                        </a>
-                                    </div>
-                                    <div class="act" style="color:#337ab7;">
-                                        <a href="/Admin/Complaint/blackList" style="color:#337ab7;">
-                                            黑 名 单
-                                            <br><br>
-                                            <img class="icon" src="~/Img/hmd.png">
-                                        </a>
-                                    </div>
-                                    <div>
-                                        电话举报<br><br>
-                                        <img class="icon" src="~/Img/dhjb.png">
+        <div class="banner" style="width: 100%; overflow: hidden; position: relative; z-index: 2;">
+            <img alt="" src="~/Img/banner.png">
+        </div>
+        <hr class="layui-bg-gray" style="height:10px;border:1px solid #808080;">
+        <div style="width:250px;height:160px;background-color:#fff;margin-left:45%; margin-top:-70px;">
+            <p style="width:160px; padding:20px 0;border-bottom:1px solid;font-size:40px;margin-left:50px;">
+                投<span style="border-bottom:5px solid; padding:20px 0;">诉举</span>报
+            </p>
+        </div>
+
+        <div class="boxCenter contentBox clearfix" style="overflow:hidden;">
+            <table class="complain-content">
+                <tbody>
+                    <tr>
+                        <td rowspan="2" style="background-color: #ebf5fe;" valign="top">
+                            <div class="cc-menu-title">
+                                举报途径
+                                <br><font style="color: #ddeaea;font-size:18px;">Report way</font>
+                            </div>
+                            <div class="cc-menu">
+                                <div class="zxjb active" style="color:#337ab7;">
+                                    <a href="/Admin/Complaint/Index" style="color:#337ab7;">
+                                        在线举报
                                         <br><br>
-                                        4006561700
-                                    </div>
-                                    <div>
-                                        邮箱举报<br><br>
-                                        <img class="icon" src="~/Img/yxjb.png">
-                                        <br><br>
-                                        jc@wsttop.com
-                                    </div>
-                                    <div>
-                                        微信举报<br><br>
-                                        <img class="icon" src="~/Img/wxjb.png"><br>
-                                        <br><img src="~/Img/code.png" style="width:120px;height:120px; ">
-                                    </div><br>
-                                    <div style="color:#777777;border-bottom:3px #d3ebff solid ;">
-                                        非舞弊相关投诉请<br><br>
-                                        通过如下方式进行<br><br>
-                                        <a href="/Admin/Complaint/hotService" style="color:#337ab7" target="_black">
-                                            客服专线<br><br>
-                                            <img class="icon" src="~/Img/kfzx.png">
-                                        </a>
-                                    </div>
+                                        <img class="icon" src="~/Img/zxjb.png">
+                                    </a>
                                 </div>
-                            </td>
-                            <td class="cc-bar" rowspan="2">&nbsp;</td>
-                            <td class="cc-content mainBox" valign="top">
+                                <div class="act" style="color:#337ab7;">
+                                    <a href="/Admin/Complaint/blackList" style="color:#337ab7;">
+                                        黑 名 单
+                                        <br><br>
+                                        <img class="icon" src="~/Img/hmd.png">
+                                    </a>
+                                </div>
                                 <div>
-                                    <table class="div-table">
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <img class="icon" src="~/Img/jbbm.png"><br>
-                                                    举报保密
-                                                </td>
-                                                <td>
-                                                    <img class="icon" src="~/Img/glsm.png"><br>
-                                                    鼓励实名
-                                                </td>
-                                                <td>
-                                                    <img class="icon" src="~/Img/csyj.png"><br>
-                                                    查实有奖
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    电话举报<br><br>
+                                    <img class="icon" src="~/Img/dhjb.png">
+                                    <br><br>
+                                    4006561700
                                 </div>
-                                <div class="mainMsg">
-                                    <p class="title1" style="font-size: 25px;">举报须知</p>
-                                    <div class="textBox"><p style="text-align: center;"><strong><span class="sp" style="color: rgb(51, 51, 51); line-height: 36px; font-size: 18px;"><span class="sp" style="color: rgb(51, 51, 51); line-height: 36px; font-size: 18px;"><span style="font-family: 微软雅黑, quot;MicrosoftYaHei&quot;;"><span class="sp" style="line-height: 36px;">《<span style="font-size:20px;font-family:仿宋_GB2312">中梁控股集团火炉法则（2020版）</span>》</span></span></span></span></strong></p><p style="text-align: justify;"><strong style="font-family: 微软雅黑, quot;MicrosoftYaHei&quot;;"><span class="sp" style="color: rgb(51, 51, 51); line-height: 36px; font-size: 18px;"></span></strong></p><p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-size: 16px; color: rgb(102, 102, 102); line-height: 36px; text-indent: 2em;">为捍卫中梁文化价值观，规范员工职业行为，预防及惩处各类违规违纪行为，强化各级组织及人员底线、红线意识，维护企业的生产、经营、管理秩序及利益，营造清廉自律、阳光健康的生态环境。</p><p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-size: 16px; color: rgb(102, 102, 102); line-height: 36px; text-indent: 2em;"><br></p><p><span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;"><strong><span class="sp" style="font-size: 18px; color: rgb(51, 51, 51); line-height: 36px; font-weight: 600;">举报范围</span></strong></span><br></p><p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-size: 16px; color: rgb(102, 102, 102); line-height: 36px; text-indent: 2em;">监察中心受理中梁集团范围内任何违反中梁文化价值观、违反公司各项规章制度、损害公司利益、不良风气、违纪、舞弊、廉洁等问题的举报。</p><p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-size: 16px; color: rgb(102, 102, 102); line-height: 36px; text-indent: 2em;"><br></p><p><span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;"><strong><span class="sp" style="font-size: 18px; color: rgb(51, 51, 51); line-height: 36px; font-weight: 600;">举报责任</span></strong></span><br></p><p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-size: 16px; color: rgb(102, 102, 102); line-height: 36px; text-indent: 2em;">1、举报人提出的举报事项应当客观真实，不得捏造、歪曲事实，不得诬告、陷害他人。</p><p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-size: 16px; color: rgb(102, 102, 102); line-height: 36px; text-indent: 2em;">2、举报人应对提供的证据资料负责，不得仅凭道听途说，冤枉他人。</p><p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-size: 16px; color: rgb(102, 102, 102); line-height: 36px; text-indent: 2em;">3、举报人应遵守国家法律法规，不得损害他人合法权益。</p><p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-size: 16px; color: rgb(102, 102, 102); line-height: 36px; text-indent: 2em;"><br></p><p><span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;"><strong><span class="sp" style="font-size: 18px; color: rgb(51, 51, 51); line-height: 36px; font-weight: 600;">举报奖励</span></strong></span><br></p><p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-size: 16px; color: rgb(102, 102, 102); line-height: 36px; text-indent: 2em;">我们鼓励实名举报，对实名举报的个人信息及举报内容严格保密。举报内容一经查实，</p><p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-size: 16px; color: rgb(102, 102, 102); line-height: 36px; text-indent: 2em;">予以发放现金奖励。根据贡献，实名实证最高奖励可达300万元奖励。</p><p style="text-align: justify;"><strong style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;"><span class="sp" style="color: rgb(51, 51, 51); line-height: 36px; font-size: 18px;"><br></span></strong><br></p><p style="padding: 0px; color: rgb(102, 102, 102); line-height: 36px; text-indent: 2em; font-size: 16px; margin-top: 0px; margin-bottom: 0px;"><br></p><p style="padding: 0px; color: rgb(102, 102, 102); line-height: 36px; text-indent: 2em; font-size: 16px; margin-top: 0px; margin-bottom: 0px;"><br></p><p><br></p></div>
+                                <div>
+                                    邮箱举报<br><br>
+                                    <img class="icon" src="~/Img/yxjb.png">
+                                    <br><br>
+                                    jc@wsttop.com
                                 </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="cc-content" style="padding:30px 0 60px;">
-                                <div class="div-btn-complain">
-                                    <input class="btn btn-complain btn1" type="button" value="实名举报">
-                                    倒计时<span class="timeDown" style="color:#F22222">0</span>秒可选择
-                                    <input class="btn btn-complain btn2" type="button" value="匿名举报">
+                                <div>
+                                    微信举报<br><br>
+                                    <img class="icon" src="~/Img/wxjb.png"><br>
+                                    <br><img src="~/Img/code.png" style="width:120px;height:120px; ">
+                                </div><br>
+                                <div style="color:#777777;border-bottom:3px #d3ebff solid ;">
+                                    非舞弊相关投诉请<br><br>
+                                    通过如下方式进行<br><br>
+                                    <a href="/Admin/Complaint/hotService" style="color:#337ab7" target="_black">
+                                        客服专线<br><br>
+                                        <img class="icon" src="~/Img/kfzx.png">
+                                    </a>
                                 </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-            </div>
-            <form id="searchForm" method="post" action="http://www.wsttop.com/search">
-                <input id="hdSearchText" name="text" type="hidden">
-            </form>
-        </header>
+                            </div>
+                        </td>
+                        <td class="cc-bar" rowspan="2">&nbsp;</td>
+                        <td class="cc-content mainBox" valign="top">
+                            <div>
+                                <table class="div-table">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <img class="icon" src="~/Img/jbbm.png"><br>
+                                                举报保密
+                                            </td>
+                                            <td>
+                                                <img class="icon" src="~/Img/glsm.png"><br>
+                                                鼓励实名
+                                            </td>
+                                            <td>
+                                                <img class="icon" src="~/Img/csyj.png"><br>
+                                                查实有奖
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="mainMsg">
+                                <p class="title1" style="font-size: 25px;">举报须知</p>
+                                <div class="textBox"><p style="text-align: center;"><strong><span class="sp" style="color: rgb(51, 51, 51); line-height: 36px; font-size: 18px;"><span class="sp" style="color: rgb(51, 51, 51); line-height: 36px; font-size: 18px;"><span style="font-family: 微软雅黑, quot;MicrosoftYaHei&quot;;"><span class="sp" style="line-height: 36px;">《<span style="font-size:20px;font-family:仿宋_GB2312">中梁控股集团火炉法则（2020版）</span>》</span></span></span></span></strong></p><p style="text-align: justify;"><strong style="font-family: 微软雅黑, quot;MicrosoftYaHei&quot;;"><span class="sp" style="color: rgb(51, 51, 51); line-height: 36px; font-size: 18px;"></span></strong></p><p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-size: 16px; color: rgb(102, 102, 102); line-height: 36px; text-indent: 2em;">为捍卫中梁文化价值观，规范员工职业行为，预防及惩处各类违规违纪行为，强化各级组织及人员底线、红线意识，维护企业的生产、经营、管理秩序及利益，营造清廉自律、阳光健康的生态环境。</p><p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-size: 16px; color: rgb(102, 102, 102); line-height: 36px; text-indent: 2em;"><br></p><p><span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;"><strong><span class="sp" style="font-size: 18px; color: rgb(51, 51, 51); line-height: 36px; font-weight: 600;">举报范围</span></strong></span><br></p><p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-size: 16px; color: rgb(102, 102, 102); line-height: 36px; text-indent: 2em;">监察中心受理中梁集团范围内任何违反中梁文化价值观、违反公司各项规章制度、损害公司利益、不良风气、违纪、舞弊、廉洁等问题的举报。</p><p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-size: 16px; color: rgb(102, 102, 102); line-height: 36px; text-indent: 2em;"><br></p><p><span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;"><strong><span class="sp" style="font-size: 18px; color: rgb(51, 51, 51); line-height: 36px; font-weight: 600;">举报责任</span></strong></span><br></p><p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-size: 16px; color: rgb(102, 102, 102); line-height: 36px; text-indent: 2em;">1、举报人提出的举报事项应当客观真实，不得捏造、歪曲事实，不得诬告、陷害他人。</p><p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-size: 16px; color: rgb(102, 102, 102); line-height: 36px; text-indent: 2em;">2、举报人应对提供的证据资料负责，不得仅凭道听途说，冤枉他人。</p><p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-size: 16px; color: rgb(102, 102, 102); line-height: 36px; text-indent: 2em;">3、举报人应遵守国家法律法规，不得损害他人合法权益。</p><p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-size: 16px; color: rgb(102, 102, 102); line-height: 36px; text-indent: 2em;"><br></p><p><span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;"><strong><span class="sp" style="font-size: 18px; color: rgb(51, 51, 51); line-height: 36px; font-weight: 600;">举报奖励</span></strong></span><br></p><p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-size: 16px; color: rgb(102, 102, 102); line-height: 36px; text-indent: 2em;">我们鼓励实名举报，对实名举报的个人信息及举报内容严格保密。举报内容一经查实，</p><p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-size: 16px; color: rgb(102, 102, 102); line-height: 36px; text-indent: 2em;">予以发放现金奖励。根据贡献，实名实证最高奖励可达300万元奖励。</p><p style="text-align: justify;"><strong style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;"><span class="sp" style="color: rgb(51, 51, 51); line-height: 36px; font-size: 18px;"><br></span></strong><br></p><p style="padding: 0px; color: rgb(102, 102, 102); line-height: 36px; text-indent: 2em; font-size: 16px; margin-top: 0px; margin-bottom: 0px;"><br></p><p style="padding: 0px; color: rgb(102, 102, 102); line-height: 36px; text-indent: 2em; font-size: 16px; margin-top: 0px; margin-bottom: 0px;"><br></p><p><br></p></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="cc-content" style="padding:30px 0 60px;">
+                            <div class="div-btn-complain">
+                                <input class="btn btn-complain btn1" type="button" value="实名举报">
+                                倒计时<span class="timeDown" style="color:#F22222">0</span>秒可选择
+                                <input class="btn btn-complain btn2" type="button" value="匿名举报">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <form id="searchForm" method="post" action="http://www.wsttop.com/search">
+            <input id="hdSearchText" name="text" type="hidden">
+        </form>
     </section>
     <script>
         $(function () {
