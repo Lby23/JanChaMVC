@@ -260,23 +260,22 @@
                 , width: 1450
                 , limit: 10
                 , limits: [10, 15, 20, 25, 30, 35, 40, 45, 50]
-                , url: 'http://localhost:64502/api/BlackList/' //数-据接口
+                , url: 'http://localhost:64502/api/BlackList' //数-据接口
                 , page: true //开启分页
                 , cols: [[ //表头
-                    { field: 'Bid', title: '序号', width: 80, sort: true, fixed: 'left' }
-                    , { title: '题号', toolbar: '#indexTpl' },
-                    , { field: 'Btype', title: '违纪类别', width: 100 }
-                    , { field: 'Bunit', title: '违纪单位/人', width: 100 }
-                    , { field: 'BpapersNumber', title: '证件号', width: 350 }
-                    , { field: 'Bmatter', title: '违纪事项', width: 100 }
+                    { field: 'bid', title: '序号', width: 80, sort: true, fixed: 'left' }
+                    , { field: 'btype', title: '违纪类别', width: 100 }
+                    , { field: 'bunit', title: '违纪单位/人', width: 100 }
+                    , { field: 'bpapersNumber', title: '证件号', width: 350 }
+                    , { field: 'bmatter', title: '违纪事项', width: 100 }
                     , {
-                        field: 'Bstate', title: '状态', width: 100,
+                        field: 'bstate', title: '状态', width: 100,
                         templet: function (d) {
                             return d.Bstate ? "启用" : "禁用";
                         }
                     }
-                    , { field: 'BUpdateTime', title: '更新时间', width: 200 }
-                    , { field: 'PubLishPerson', title: '发布人', width: 100 }
+                    , { field: 'bUpdateTime', title: '更新时间', width: 200 }
+                    , { field: 'pubLishPerson', title: '发布人', width: 100 }
                     , { title: '操作', toolbar: '#barDemo', width: 310 }
                 ]]
             });
