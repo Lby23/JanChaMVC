@@ -8,10 +8,163 @@
     @*<title>@ViewData["Title"] - 开始使用layui</title>*@
 
     <link href="~/layui-v2.5.7/layui/css/layui.css" rel="stylesheet" />
+    @*<style type="text/css">
+
+            footer {
+                width: 1920px;
+                height: 250px;
+                background: #141414;
+                box-sizing: border-box;
+                position: relative
+            }
+
+                footer .footer {
+                    padding-top: 55px;
+                    position: relative
+                }
+
+                    footer .footer .logo {
+                        width: 200px
+                    }
+
+                    footer .footer .footerUl {
+                        position: absolute;
+                        top: 40px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        color: #fff;
+                        font-size: 0
+                    }
+
+                        footer .footer .footerUl li {
+                            float: left;
+                            margin: 0 5px;
+                            font-size: 12px
+                        }
+
+                            footer .footer .footerUl li > p:first-child {
+                                font-size: 14px;
+                                margin-bottom: 10px;
+                                cursor: pointer;
+                                color: #fff
+                            }
+
+                            footer .footer .footerUl li p:first-child span {
+                                margin-left: 12px
+                            }
+
+                            footer .footer .footerUl li div {
+                                color: #ccc;
+                                cursor: pointer
+                            }
+
+                                footer .footer .footerUl li div a {
+                                    text-decoration: none;
+                                    color: #ccc;
+                                    cursor: pointer
+                                }
+
+                                    footer .footer .footerUl li div a:hover {
+                                        color: #fff
+                                    }
+
+                    footer .footer .codeBox {
+                        position: absolute;
+                        right: 25px;
+                        top: 0;
+                        color: #fff;
+                        font-size: 14px;
+                        text-align: center
+                    }
+
+                    footer .footer .footerUl li p a {
+                        text-decoration: none;
+                        color: #fff
+                    }
+
+                    footer .footer .codeBox .span {
+                        padding-right: 15px;
+                        border-right: 1px solid #ccc
+                    }
+
+                    footer .footer .codeBox .wx {
+                        width: 20px;
+                        height: 20px;
+                        vertical-align: middle;
+                        margin-left: 10px
+                    }
+
+                footer .code {
+                    width: 80px;
+                    height: 80px;
+                    margin-top: 40px
+                }
+
+                    footer .code img {
+                        width: 132%;
+                        height: 132%;
+                    }
+
+            .footer .text {
+                padding-top: 10px;
+                color: #ccc;
+                font-size: 12px
+            }
+
+            footer .footerText {
+                width: 100%;
+                text-align: center;
+                padding: 20px 0;
+                border-top: 1px solid #000;
+                color: #fff;
+                position: absolute;
+                bottom: 20px;
+                left: 0;
+                font-size: 13px;
+                color: #eee
+            }
+        </style>*@
     <style type="text/css">
+        /**/
+        .links {
+            width: 75%;
+            margin: 20px auto 0
+        }
+
+            .links > p:nth-child(2) {
+                margin: 40px auto;
+                color: #474747
+            }
+
+            .links > p > a {
+                display: inline
+            }
+
+            .links > p:nth-child(2) > a {
+                text-decoration: none;
+                color: #474747;
+                font-weight: 600
+            }
+
+            .links > p:nth-child(2) > span {
+                margin: 0 25px;
+                font-weight: 600
+            }
+
+        .lianjie {
+            position: relative
+        }
+
+            .lianjie > span {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                color: #09093b;
+                font-size: 24px;
+                font-family: "微软雅黑"
+            }
 
         footer {
-            width: 1920px;
             height: 250px;
             background: #141414;
             box-sizing: border-box;
@@ -123,6 +276,183 @@
             font-size: 13px;
             color: #eee
         }
+
+        .map > .icon {
+            width: 32px;
+            height: 32px;
+            vertical-align: -.15em;
+            fill: currentColor;
+            overflow: hidden;
+            margin-top: 7px;
+            color: #aaa;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            position: fixed;
+            top: 16px;
+            right: 30px;
+            z-index: 5;
+            padding: 4px;
+            cursor: pointer
+        }
+
+            .map > .icon img {
+                width: 100%;
+            }
+
+        .back > .icon {
+            width: 30px;
+            height: 30px;
+            vertical-align: -.15em;
+            fill: currentColor;
+            overflow: hidden;
+            position: fixed;
+            bottom: 29%;
+            right: 30px;
+            z-index: 5;
+            cursor: pointer;
+            display: none;
+            color: #0e74d9
+        }
+
+        .menu {
+            width: 370px;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 7;
+            background: #fff;
+            display: none
+        }
+
+        .menu_title {
+            width: 100%;
+            height: 95px;
+            line-height: 80px;
+            color: #444;
+            font-size: 22px;
+            border-bottom: 1px solid #dcdcdc;
+            box-sizing: border-box;
+            padding: 5px 10px;
+        }
+
+            .menu_title > img.img1 {
+                width: 84px;
+                float: left;
+                margin-right: 20px;
+            }
+
+            .menu_title > img.img2 {
+                width: 36px;
+                position: absolute;
+                right: 10px;
+                top: 24px;
+                cursor: pointer;
+            }
+
+        .menu_count {
+            padding-left: 30px;
+            padding-top: 20px;
+        }
+
+        .shades {
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,.5);
+            position: fixed;
+            z-index: 6;
+            top: 0;
+            left: 0;
+            display: none
+        }
+
+        .menu_a > h3, .menu_b > h3, .menu_c > h3, .menu_d > h3 {
+            height: 50px;
+            line-height: 50px
+        }
+
+        .menu_b > h3, .menu_d > h3 {
+        }
+
+            .menu_a > h3 > a, .menu_b > h3 > a, .menu_c > h3 > a, .menu_d > h3 > a {
+                text-decoration: none;
+                color: #333;
+                font-size: 20px;
+            }
+
+        .menu_a > p, .menu_c > p {
+            color: #999;
+            font-size: 12px;
+            height: 26px;
+            line-height: 26px;
+        }
+
+            .menu_a > p > a, .menu_c > p > a {
+                text-decoration: none;
+                color: #999;
+                font-size: 14px;
+                display: inline
+            }
+
+            .menu_a > p > span, .menu_c > p > span {
+                margin: 0 15px
+            }
+
+        .menu_e {
+            position: absolute;
+            bottom: 10px;
+            left: 30px
+        }
+
+            .menu_e > p {
+                color: #999;
+                font-size: 20px;
+                margin-bottom: 10px
+            }
+
+            .menu_e > img {
+                position: relative;
+                left: -5px
+            }
+
+        .menu_a, .menu_b, .menu_c, .menu_d, .menu_e {
+            border-bottom: 1px solid #999;
+            padding-bottom: 15px;
+        }
+
+        .returns {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            position: fixed;
+            bottom: 50%;
+            margin-bottom: -15px;
+            right: 30px;
+            z-index: 5
+        }
+
+            .returns .icon {
+                width: 22px;
+                height: 22px;
+                padding: 4px;
+                border-radius: 50%;
+                position: fixed;
+                bottom: 37%;
+                margin-bottom: -15px;
+                right: 30px;
+                z-index: 5;
+                color: #0e74d9;
+                vertical-align: -.15em;
+                fill: currentColor;
+                overflow: hidden;
+                border: 1px solid #aaa
+            }
+
+                .returns .icon:hover {
+                    background: #0e74d9;
+                    color: #fff;
+                    border: none
+                }
     </style>
     <style type="text/css">
         .swiper-slide > a {
@@ -320,7 +650,7 @@
 
     <script src="~/layui-v2.5.7/layui/layui.js"></script>
     <script src="~/Jquery/jquery-3.3.1.js"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    @*@await RenderSectionAsync("Scripts", required: false)
     <script>
         //一般直接写在一个js文件中
         layui.use(['layer', 'form'], function () {
@@ -329,7 +659,7 @@
 
 
         });
-    </script>
+    </script>*@
     <script>
         $(function () {
 

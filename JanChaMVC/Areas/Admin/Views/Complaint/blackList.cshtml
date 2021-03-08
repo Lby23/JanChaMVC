@@ -110,21 +110,14 @@
 
 <section class="content">
     <!-- main S -->
-    <div class="banner">
-        <img alt="" src="~/Img/banner.png"/>
+    <div class="banner" style="width: 100%; overflow: hidden; position: relative; z-index: 2;top:-50px">
+        <img alt="" src="~/Img/banner.png">
     </div>
-    <div class="researchTitle">
-        <a href="#searchResult" id="tosearchResult"></a>
-        <input id="hd_tz" type="hidden" value="1" />
-        <p style="position: relative;z-index: 1;background: #fff;">
-            <span>
-                <i></i>
-                黑名单
-            </span>
+    <hr class="layui-bg-gray" style="height:10px;border:1px solid #808080;">
+    <div style="width:250px;height:160px;background-color:#fff;margin-left:45%; margin-top:-70px;">
+        <p style="width:160px; padding:20px 0;border-bottom:1px solid;font-size:40px;margin-left:50px;">
+            黑<span style="border-bottom:5px solid; padding:20px 0;">名</span>单
         </p>
-        @*<div class="line" style="z-index: 0;">
-                <img alt="" src="~/Img/斜线.png" />
-            </div>*@
     </div>
 
     <div class="boxCenter contentBox clearfix" style="overflow:hidden;">
@@ -138,7 +131,7 @@
                         </div>
                         <div class="cc-menu">
                             <div class="zxjb act" style="color:#337ab7;">
-                                <a href="/Admin/Complaint/realName" style="color:#337ab7;">
+                                <a href="/Admin/Complaint/Index" style="color:#337ab7;">
                                     在线举报
                                     <br /><br />
                                     <img class="icon" src="~/Img/zxjb.png" />
@@ -184,9 +177,11 @@
                             <form id="blackForm" style="padding-left: 80px;" method="get" action="/blackList?pn=1">
                                 <div id="div-radio" style="text-align: left;padding:20px 10px;font-weight: bold;">
                                     <label style="cursor: pointer;padding:20px;">
-                                    <input checked="checked" class="blackType" name="type" type="radio" value="1" />&nbsp;企业</label>
+                                        <input checked="checked" class="blackType" name="type" type="radio" value="1" />&nbsp;企业
+                                    </label>
                                     <label style="margin-left: 30px;cursor: pointer;padding:20px;">
-                                    <input class="blackType" id="radioBlackType" name="type" type="radio" value="2" />&nbsp;个人</label>
+                                        <input class="blackType" id="radioBlackType" name="type" type="radio" value="2" />&nbsp;个人
+                                    </label>
                                 </div>
                                 <div style="height: 260px;padding-left:10px;">
                                     <div id="div-company" style="padding-top: 10px;">

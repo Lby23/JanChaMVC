@@ -93,21 +93,14 @@
 <!-- 内容区域 -->
 <section class="content">
     <!-- main S -->
-    <div class="banner">
-        <img alt="" src="~/img/banner.png">
+    <div class="banner" style="width: 100%; overflow: hidden; position: relative; z-index: 2;top:-50px">
+        <img alt="" src="~/Img/banner.png">
     </div>
-    <div class="researchTitle" style="text-align: center; font-size: 38px; padding: 70px 0 68px 0; color: #333333; position: relative;">
-        <a href="http://www.wsttop.com/realName.html?tz=1#searchResult" id="tosearchResult"></a>
-        <input id="hd_tz" type="hidden" value="1">
-        <p style="position: relative;z-index: 1;background: #fff;">
-            <span>
-                <i></i>
-                匿名举报
-            </span>
+    <hr class="layui-bg-gray" style="height:10px;border:1px solid #808080;">
+    <div style="width:250px;height:160px;background-color:#fff;margin-left:45%; margin-top:-70px;">
+        <p style="width:160px; padding:20px 0;border-bottom:1px solid;font-size:40px;margin-left:50px;">
+            匿<span style="border-bottom:5px solid; padding:20px 0;">名举</span>报
         </p>
-        @*<div class="line" style="z-index: 0;">
-                <img alt="" src="./实名举报_files/斜线.png">
-            </div>*@
     </div>
 
     <div class="boxCenter contentBox clearfix" style="overflow:hidden;">
@@ -121,14 +114,14 @@
                         </div>
                         <div class="cc-menu">
                             <div class="zxjb active" style="color:#337ab7;">
-                                <a href="http://www.wsttop.com/complain.html?tz=1" style="color:#337ab7;">
+                                <a href="/Admin/Complaint/Index" style="color:#337ab7;">
                                     在线举报
                                     <br><br>
                                     <img class="icon" src="~/img/zxjb.png">
                                 </a>
                             </div>
                             <div class="act" style="color:#337ab7;">
-                                <a href="http://www.wsttop.com/blackList.html?tz=1" style="color:#337ab7;">
+                                <a href="/Admin/Complaint/blackList" style="color:#337ab7;">
                                     黑 名 单
                                     <br><br>
                                     <img class="icon" src="~/img/hmd.png">
@@ -154,7 +147,7 @@
                             <div style="border-bottom:3px #d3ebff solid ;color:#777777;">
                                 非舞弊相关投诉请<br><br>
                                 通过如下方式进行<br><br>
-                                <a href="http://www.wsttop.com/hotService.html" style="color:#337ab7" target="_black">
+                                <a href="/Admin/Complaint/hotService" style="color:#337ab7" target="_black">
                                     客服专线<br><br>
                                     <img class="icon" src="~/img/kfzx.png">
                                 </a>

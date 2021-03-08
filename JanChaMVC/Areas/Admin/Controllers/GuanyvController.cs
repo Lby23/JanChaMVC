@@ -6,34 +6,27 @@ using System.Threading.Tasks;
 
 namespace JanChaMVC.Areas.Admin.Controllers
 {
-    public class ComplaintController : Controller
+    public class GuanyvController : Controller
     {
         [Area("Admin")]
         public IActionResult Index()
         {
             return View();
         }
-
         [Area("Admin")]
-        public IActionResult realName()
+        //招聘信息 详情页面
+        public IActionResult recruit()
         {
             return View();
         }
-
         [Area("Admin")]
-        public IActionResult noName()
+        //行为准则 详情页面
+        public IActionResult criterion()
         {
             return View();
         }
-
         [Area("Admin")]
-        public IActionResult blackList()
-        {
-            return View();
-        }
-
-        [Area("Admin")]
-        public IActionResult hotService()
+        public IActionResult abc()
         {
             return View();
         }
