@@ -6,27 +6,28 @@ using System.Threading.Tasks;
 
 namespace JanChaMVC.Areas.Admin.Controllers
 {
-    public class DefaultController : Controller
+    public class ServiceController : Controller
     {
-        //首页
-        [Area("Admin")]
+        [Area("Admin")]//显示
         public IActionResult Index()
         {
             return View();
         }
-
-        //要闻资讯
+        [Area("Admin")]//行业类型
+        public IActionResult Vocation()
+        {
+            return View();
+        }
+        [Area("Admin")]//服务类型
+        public IActionResult service()//审计
+        {
+            return View();
+        }
         [Area("Admin")]
-        public IActionResult Information()
+        public IActionResult a()
         {
             return View();
         }
 
-        //研究洞察
-        [Area("Admin")]
-        public IActionResult Insight()
-        {
-            return View();
-        }
     }
 }

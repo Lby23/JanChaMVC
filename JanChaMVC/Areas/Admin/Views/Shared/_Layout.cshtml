@@ -1,17 +1,168 @@
 ﻿
-@{
-    ViewData["Title"] = "Index";
-}
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>开始使用layui</title>
+    @*<title>@ViewData["Title"] - 开始使用layui</title>*@
 
     <link href="~/layui-v2.5.7/layui/css/layui.css" rel="stylesheet" />
+    @*<style type="text/css">
+
+            footer {
+                width: 1920px;
+                height: 250px;
+                background: #141414;
+                box-sizing: border-box;
+                position: relative
+            }
+
+                footer .footer {
+                    padding-top: 55px;
+                    position: relative
+                }
+
+                    footer .footer .logo {
+                        width: 200px
+                    }
+
+                    footer .footer .footerUl {
+                        position: absolute;
+                        top: 40px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        color: #fff;
+                        font-size: 0
+                    }
+
+                        footer .footer .footerUl li {
+                            float: left;
+                            margin: 0 5px;
+                            font-size: 12px
+                        }
+
+                            footer .footer .footerUl li > p:first-child {
+                                font-size: 14px;
+                                margin-bottom: 10px;
+                                cursor: pointer;
+                                color: #fff
+                            }
+
+                            footer .footer .footerUl li p:first-child span {
+                                margin-left: 12px
+                            }
+
+                            footer .footer .footerUl li div {
+                                color: #ccc;
+                                cursor: pointer
+                            }
+
+                                footer .footer .footerUl li div a {
+                                    text-decoration: none;
+                                    color: #ccc;
+                                    cursor: pointer
+                                }
+
+                                    footer .footer .footerUl li div a:hover {
+                                        color: #fff
+                                    }
+
+                    footer .footer .codeBox {
+                        position: absolute;
+                        right: 25px;
+                        top: 0;
+                        color: #fff;
+                        font-size: 14px;
+                        text-align: center
+                    }
+
+                    footer .footer .footerUl li p a {
+                        text-decoration: none;
+                        color: #fff
+                    }
+
+                    footer .footer .codeBox .span {
+                        padding-right: 15px;
+                        border-right: 1px solid #ccc
+                    }
+
+                    footer .footer .codeBox .wx {
+                        width: 20px;
+                        height: 20px;
+                        vertical-align: middle;
+                        margin-left: 10px
+                    }
+
+                footer .code {
+                    width: 80px;
+                    height: 80px;
+                    margin-top: 40px
+                }
+
+                    footer .code img {
+                        width: 132%;
+                        height: 132%;
+                    }
+
+            .footer .text {
+                padding-top: 10px;
+                color: #ccc;
+                font-size: 12px
+            }
+
+            footer .footerText {
+                width: 100%;
+                text-align: center;
+                padding: 20px 0;
+                border-top: 1px solid #000;
+                color: #fff;
+                position: absolute;
+                bottom: 20px;
+                left: 0;
+                font-size: 13px;
+                color: #eee
+            }
+        </style>*@
     <style type="text/css">
+        /**/
+        .links {
+            width: 75%;
+            margin: 20px auto 0
+        }
+
+            .links > p:nth-child(2) {
+                margin: 40px auto;
+                color: #474747
+            }
+
+            .links > p > a {
+                display: inline
+            }
+
+            .links > p:nth-child(2) > a {
+                text-decoration: none;
+                color: #474747;
+                font-weight: 600
+            }
+
+            .links > p:nth-child(2) > span {
+                margin: 0 25px;
+                font-weight: 600
+            }
+
+        .lianjie {
+            position: relative
+        }
+
+            .lianjie > span {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                color: #09093b;
+                font-size: 24px;
+                font-family: "微软雅黑"
+            }
 
         footer {
             height: 250px;
@@ -125,46 +276,297 @@
             font-size: 13px;
             color: #eee
         }
+
+        .map > .icon {
+            width: 32px;
+            height: 32px;
+            vertical-align: -.15em;
+            fill: currentColor;
+            overflow: hidden;
+            margin-top: 7px;
+            color: #aaa;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            position: fixed;
+            top: 16px;
+            right: 30px;
+            z-index: 5;
+            padding: 4px;
+            cursor: pointer
+        }
+
+            .map > .icon img {
+                width: 100%;
+            }
+
+        .back > .icon {
+            width: 30px;
+            height: 30px;
+            vertical-align: -.15em;
+            fill: currentColor;
+            overflow: hidden;
+            position: fixed;
+            bottom: 29%;
+            right: 30px;
+            z-index: 5;
+            cursor: pointer;
+            display: none;
+            color: #0e74d9
+        }
+
+        .menu {
+            width: 370px;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 7;
+            background: #fff;
+            display: none
+        }
+
+        .menu_title {
+            width: 100%;
+            height: 95px;
+            line-height: 80px;
+            color: #444;
+            font-size: 22px;
+            border-bottom: 1px solid #dcdcdc;
+            box-sizing: border-box;
+            padding: 5px 10px;
+        }
+
+            .menu_title > img.img1 {
+                width: 84px;
+                float: left;
+                margin-right: 20px;
+            }
+
+            .menu_title > img.img2 {
+                width: 36px;
+                position: absolute;
+                right: 10px;
+                top: 24px;
+                cursor: pointer;
+            }
+
+        .menu_count {
+            padding-left: 30px;
+            padding-top: 20px;
+        }
+
+        .shades {
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,.5);
+            position: fixed;
+            z-index: 6;
+            top: 0;
+            left: 0;
+            display: none
+        }
+
+        .menu_a > h3, .menu_b > h3, .menu_c > h3, .menu_d > h3 {
+            height: 50px;
+            line-height: 50px
+        }
+
+        .menu_b > h3, .menu_d > h3 {
+        }
+
+            .menu_a > h3 > a, .menu_b > h3 > a, .menu_c > h3 > a, .menu_d > h3 > a {
+                text-decoration: none;
+                color: #333;
+                font-size: 20px;
+            }
+
+        .menu_a > p, .menu_c > p {
+            color: #999;
+            font-size: 12px;
+            height: 26px;
+            line-height: 26px;
+        }
+
+            .menu_a > p > a, .menu_c > p > a {
+                text-decoration: none;
+                color: #999;
+                font-size: 14px;
+                display: inline
+            }
+
+            .menu_a > p > span, .menu_c > p > span {
+                margin: 0 15px
+            }
+
+        .menu_e {
+            position: absolute;
+            bottom: 10px;
+            left: 30px
+        }
+
+            .menu_e > p {
+                color: #999;
+                font-size: 20px;
+                margin-bottom: 10px
+            }
+
+            .menu_e > img {
+                position: relative;
+                left: -5px
+            }
+
+        .menu_a, .menu_b, .menu_c, .menu_d, .menu_e {
+            border-bottom: 1px solid #999;
+            padding-bottom: 15px;
+        }
+
+        .returns {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            position: fixed;
+            bottom: 50%;
+            margin-bottom: -15px;
+            right: 30px;
+            z-index: 5
+        }
+
+            .returns .icon {
+                width: 22px;
+                height: 22px;
+                padding: 4px;
+                border-radius: 50%;
+                position: fixed;
+                bottom: 37%;
+                margin-bottom: -15px;
+                right: 30px;
+                z-index: 5;
+                color: #0e74d9;
+                vertical-align: -.15em;
+                fill: currentColor;
+                overflow: hidden;
+                border: 1px solid #aaa
+            }
+
+                .returns .icon:hover {
+                    background: #0e74d9;
+                    color: #fff;
+                    border: none
+                }
+    </style>
+    <style type="text/css">
+        .swiper-slide > a {
+            text-decoration: none;
+        }
+
+        h3 {
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .returns {
+            display: none;
+        }
+    </style>
+    @*返回顶部*@
+    <style>
+        .arrow {
+            border: 9px solid transparent;
+            border-bottom-color: #3DA0DB;
+            width: 0px;
+            height: 0px;
+            top: 0px
+        }
+
+        .stick {
+            width: 8px;
+            height: 14px;
+            border-radius: 1px;
+            background-color: #3DA0DB;
+            top: 15px;
+        }
+
+        #back_top div {
+            position: absolute;
+            margin: auto;
+            right: 0px;
+            left: 0px;
+        }
+
+        #back_top {
+            background-color: #dddddd;
+            height: 38px;
+            width: 38px;
+            border-radius: 3px;
+            display: block;
+            cursor: pointer;
+            position: fixed;
+            right: 50px;
+            bottom: 100px;
+            display: none;
+        }
     </style>
 </head>
-<body>
+<body style="position: relative; background: #fff; max-width: 1920px; min-width: 1200px; margin: 0 auto; ">
 
     <!-- 你的HTML代码 -->
     <!--头部-->
-    <header>
-        <div class="header" @*style="margin-top:20px;"*@>
+    <header style="width: 100%; height: 144px; line-height: 80px; border-bottom: 2px solid #a3bdcc; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: rgb(163, 189, 204); ">
+        <div class="header" @*style="margin-top:20px;"*@ style="width: 75%; height: 79px; line-height: 80px; margin: 0 auto;">
             <div class="header_left">
-
                 <img style="position:relative;left:10%" src="~/Img/Logo白.png" />
+            </div>
+            <div class="header_right">
+                <div class="header_right_right" style="float: right; height: 80px; line-height: 80px; margin-left: 5px;">
+                    <div class="two twos">
+                        <div id="">
+                            <input class="suo" id="" name="" placeholder="输入关键词" type="text" value="">
+                            <button class="sou">
+                                <img src="~/Img/searchs.png">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="three">
+                        <img src="~/Img/ban.png">
+                        <span class="pg">办公通道</span>
+                        <p>
+                            <a href="https://exmail.qq.com/cgi-bin/loginpage" target="_blank"><img src="~/Img/emails.png"><span>邮箱</span></a>
 
+                            <a href="http://js.wsttop.com/" target="_blank"><img src="~/Img/work.png"><span>平台</span></a>
+                        </p>
+                    </div>
+
+                </div>
             </div>
         </div>
         <hr style="position:relative;top:-22px;margin-top:20px;" />
         <div style="border-bottom:1px solid;height:37px;border-color:gainsboro">
             <ul style="font-size:20px;color:black;">
-                <li style="float:left;list-style-type:none;position:relative;margin-left:33%;font-size:20px;">
+                <li style="float:left;list-style-type:none;position:relative;margin-left:33%;font-size:20px;" class=" layui-nav-item">
                     <div id="">
-                        <strong> <a href="" style="color:black">首页</a></strong>
+                        <strong> <a href="/Admin/Default/Index" style="color:black">首页</a></strong>
                     </div>
                 </li>
                 <li style="float:left;list-style-type:none;position:relative;margin-left:50px;">
                     <div id="">
-                        <strong> <a href="" style="color:black">关于我们</a></strong>
+                        <strong> <a href="/Admin/Guanyv/Index" style="color:black">关于我们</a></strong>
                     </div>
                 </li>
                 <li style="float:left;list-style-type:none;position:relative;margin-left:50px;">
                     <div id="">
-                        <strong> <a href="" style="color:black">要闻资讯</a></strong>
+                        <strong> <a href="/Admin/Default/Information" style="color:black">要闻资讯</a></strong>
                     </div>
                 </li>
                 <li style="float:left;list-style-type:none;position:relative;margin-left:50px;">
                     <div id="">
-                        <strong> <a href="" style="color:black">行业/服务</a></strong>
+                        <strong> <a href="/Admin/Service/Index" style="color:black">行业/服务</a></strong>
                     </div>
                 </li>
                 <li style="float:left;list-style-type:none;position:relative;margin-left:50px;">
                     <div>
-                        <strong> <a href="" style="color:black">研究洞察</a></strong>
+                        <strong> <a href="/Admin/Default/Insight" style="color:black">研究洞察</a></strong>
                     </div>
                 </li>
             </ul>
@@ -177,6 +579,20 @@
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
+        <div style="width:1018px;height:200px; margin:0 auto;margin-top:20px;">
+            <div style="height:59px;">
+                <h2 style="color:#808080">RELATED LINKS</h2>
+                <h2 style="background-color:yellow; width:110px;margin-top:10px;">相关链接</h2>
+            </div>
+            <div style="margin-top:50px;">
+                <ul style="font-size:17px;">
+                    <li style="float:left;margin-right:20px;padding-right:20px; border-right:2px solid #000000"><b><a href="http://www.audit.gov.cn/index.html" target="_blank">中华人民共和国审计署</a></b></li>
+                    <li style="float:left;margin-right:20px;padding-right:20px; border-right:2px solid #000000"><b><a href="http://www.ciia.com.cn/index.html" target="_blank">中国内部审计协会</a></b></li>
+                    <li style="float:left;margin-right:20px;padding-right:20px; border-right:2px solid #000000"><b><a href="http://www.fanwubi.org/Index.html" target="_blank">企业反舞弊联盟</a></b></li>
+                    <li style="float:left;margin-right:20px;padding-right:20px;"><b><a href="https://www.ctiea.com/loginPage?ReturnUrl=http%3A%2F%2Fwww.ctiea.com%2Findex%2F" target="_blank">阳光诚信联盟</a></b></li>
+                </ul>
+            </div>
+        </div>
     </div>
 
 
@@ -187,43 +603,43 @@
             <ul class="footerUl" style="list-style-type:none">
                 <li>
                     <p>
-                        <a href="">首页 &nbsp;&nbsp;&nbsp;|</a>
+                        <a href="/Admin/Default/Index">首页 &nbsp;&nbsp;&nbsp;|</a>
                     </p>
                 </li>
                 <li>
                     <p>
-                        <a href="">关于我们 &nbsp;&nbsp;&nbsp;|</a>
+                        <a href="/Admin/Guanyv/Index">关于我们 &nbsp;&nbsp;&nbsp;|</a>
                     </p>
                     <div>
-                        <a href="">
+                        <a href="/Admin/Guanyv/criterion">
                             <p style="padding-top: 5px;">行为准则</p>
                         </a>
-                        <a href="">
+                        <a href="/Admin/Guanyv/recruit">
                             <p style="padding-top: 5px;">招聘信息</p>
                         </a>
                     </div>
                 </li>
                 <li>
                     <p>
-                        <a href="/news">要闻资讯&nbsp;&nbsp;&nbsp; |</a>
+                        <a href="/Admin/Default/Information">要闻资讯&nbsp;&nbsp;&nbsp; |</a>
                     </p>
                 </li>
                 <li>
                     <p>
-                        <a href="">行业/服务 &nbsp;&nbsp;&nbsp;|</a>
+                        <a href="/Admin/Service/Index">行业/服务 &nbsp;&nbsp;&nbsp;|</a>
                     </p>
                     <div>
-                        <a href="">
+                        <a href="/Admin/Service/Vocation">
                             <p style="padding-top: 5px;">行业类型</p>
                         </a>
-                        <a href="">
+                        <a href="/Admin/Service/Service">
                             <p style="padding-top: 5px;">服务类型</p>
                         </a>
                     </div>
                 </li>
                 <li>
                     <p>
-                        <a href="/research">研究洞察</a>
+                        <a href="/Admin/Default/Insight">研究洞察</a>
                     </p>
                 </li>
             </ul>
@@ -243,21 +659,256 @@
             </div>
         </div>
         <p class="footerText">
-            版权所有 © 维生特企业管理服务（上海）有限责任公司&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.beian.miit.gov.cn" style="color: #fff;text-decoration:none;" target="_Blank">沪ICP备18023956号-1</a>
+            版权所有 © 维生特企业管理服务（上海）有限责任公司&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.zldcgroup.com/" style="color: #fff;text-decoration:none;" target="_Blank">沪ICP备18023956号-1</a>
             <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010702004283" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;color: #eee;" target="_blank"><img style="width:16px;height:16px;margin:0px 2px -3px 6px;" src="~/Img/警徽.png">沪公网安备  31010702004283号</a>
         </p>
     </footer>
+    @*返回顶部*@
+    <div id="back_top">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+    </div>
 
     <script src="~/layui-v2.5.7/layui/layui.js"></script>
     <script src="~/Jquery/jquery-3.3.1.js"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-    <script>
-        //一般直接写在一个js文件中
-        layui.use(['layer', 'form'], function () {
-            var layer = layui.layer
-                , form = layui.form;
+    @*@await RenderSectionAsync("Scripts", required: false)
+        <script>
+            //一般直接写在一个js文件中
+            layui.use(['layer', 'form'], function () {
+                var layer = layui.layer
+                    , form = layui.form;
 
-            layer.msg('Hello World');
+
+            });
+        </script>*@
+    <script type="text/javascript">
+        var mySwiper = new Swiper('.swiper-containers', {
+            speed: 800,
+            loop: true,
+            // autoplay: true,
+            // disableOnInteraction:false,
+            autoplay: {
+                delay: 5000,
+                stopOnLastSlide: false,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+
+            },
+            // 如果需要前进后退按钮
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            }
+        })
+        //左右按钮的显示和隐藏
+        $(".swiper-container").hover(function () {
+            $(".swiper-button-prev").fadeIn();
+            $(".swiper-button-next").fadeIn();
+        }, function () {
+            $(".swiper-button-prev").fadeOut();
+            $(".swiper-button-next").fadeOut();
+        })
+        var swiper = new Swiper('.new_swiper', {
+            speed: 800,
+            loop: true,
+            // autoplay: true,
+            // disableOnInteraction:false,
+            autoplay: {
+                delay: 3000,
+                stopOnLastSlide: false,
+                disableOnInteraction: false,
+            },
+            direction: 'vertical',
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+
+        //卡片效果
+        $(".shade>ul li").hover(function () {
+            //$(this).addClass('active1');
+            $(this).stop().animate({
+                'top': '-112px'
+            });
+            $(this).children().stop().animate({
+                'bottom': '97px',
+                'padding-bottom': '93px',
+            })
+            //$(this).children('a').children('p').eq(0).stop().animate({'opacity':'1'});
+            $(this).children('a').children('p').eq(0).stop().animate({ 'opacity': '0' });
+            $(this).children('a').children('p').eq(1).stop().animate({ 'font-size': '26px' });
+        }, function () {
+            $(this).children().stop().animate({
+                'bottom': '1px',
+                'padding-bottom': '0px',
+            })
+            $(this).stop().animate({
+                'top': '0px'
+            });
+            //$(this).children('a').children('p').eq(0).stop().animate({'opacity':'0'});
+            $(this).children('a').children('p').eq(0).stop().animate({ 'opacity': '1' });
+            $(this).children('a').children('p').eq(1).stop().animate({ 'font-size': '18px' });
+        })
+        //导航栏
+        /* $(".header_right>ul li").eq(1).hover(function(){
+                $('ol').css('display','block');
+                $("ol li").eq(1).css('display','block');
+                $("ol li").eq(1).siblings().css('display','none');
+
+        })
+        $(".header_right>ul li").eq(3).hover(function(){
+                $('ol').css('display','block');
+                $("ol li").eq(3).css('display','block');
+                $("ol li").eq(3).siblings().css('display','none');
+
+        }) */
+        var index;
+        $(".header_right>ul li").hover(function () {
+            if ($(this).index() == 0 || $(this).index() == 2 || $(this).index() == 4) {
+                $("ol").css('display', 'none');
+            }
+            $(this).children().children('a').css('color', '#fff');
+            $(this).siblings().children().children('a').css('color', '#747474');
+            index = $(this).index();
+
+            $(this).children().children('.bgs').stop().animate({
+                'top': '15px'
+            }, 200)
+            $(this).siblings().children().children('.bgs').stop().animate({
+                'top': '80px'
+            }, 200)
+        }, function () {
+            if ($(this).index() == 0 || $(this).index() == 2 || $(this).index() == 4) {
+                $(this).children().children('a').css('color', '#747474');
+                $(this).children().children('.bgs').stop().animate({
+                    'top': '80px'
+                }, 200)
+                $('.a').stop().animate({
+                    'top': '15px'
+                }, 200);
+                $('.a').siblings().css('color', '#fff');
+            }
+        })
+
+        $('ol').hover(function () {
+
+        }, function () {
+            $(this).css('display', 'none');
+            $('.header_right>ul li').eq(index).children().children('a').css('color', '#747474');
+            $('.header_right>ul li').eq(index).children().children('.bgs').stop().animate({
+                'top': '80px'
+            }, 200)
+            $('.a').stop().animate({
+                'top': '15px'
+            }, 200);
+            $('.a').siblings().css('color', '#fff');
+        })
+        /* //搜索框
+        $(".one").hover(function(){
+            $(this).css('display','none');
+            $('.two').removeClass('twos');
+        })
+       $("header").hover(function(){
+
+       },function(){
+
+                    $('.one').css('display','inline');
+            $('.two').addClass('twos');
+       }) */
+
+        //搜索
+        $(".sou").click(function () {
+            var text = $(".suo").val();
+            // 			console.log(text);
+            // 			window.location.href = "search?text=" + text;window.event.returnValue = false;
+            $("#hdSearchText").val(text);
+            $("#searchForm").submit();
+        });
+        //回车点击搜索
+        document.onkeydown = function (event) {
+            e = event ? event : (window.event ? window.event : null);
+            if (e.keyCode == 13) {
+                //执行的方法
+                $('.sou').click();
+            }
+        }
+
+        //字数超出显示
+        var len = $(".news_lists>.new_swiper .swiper-slide").length;
+        for (var i = 0; i < len; i++) {
+            var texts = $(".news_lists>.new_swiper .swiper-slide").eq(i).children('a').children('div').children('p').html();
+            // 	    	console.log(texts.length);
+            if (texts.length > 104) {
+                texts = texts.substr(0, 104) + '...'
+                // 	    		console.log(texts);
+            }
+            $(".news_lists>.new_swiper .swiper-slide").eq(i).children('a').children('div').children('p').html(texts);
+        }
+        //新闻大
+        $(".information_img>a").hover(function () {
+            $(this).css('opacity', '0.5');
+        }, function () {
+            $(this).css('opacity', '1');
+        })
+        //新闻列表
+        $("#information_list>a").hover(function () {
+            $(this).css('opacity', '0.5');
+            $(this).siblings().css('opacity', '1');
+        }, function () {
+            $(this).css('opacity', '1');
+        })
+        /* //办公通道
+              $(".three").hover(function(){
+            $(this).stop().animate({
+                'width':'176px'
+            })
+            $(this).children('img').stop().animate({
+                'left':'-30px',
+            })
+            $(this).children('p').stop().animate({
+                'opacity':'1'
+            })
+        },function(){
+            $(this).stop().animate({
+                'width':'27px'
+            })
+            $(this).children('img').stop().animate({
+                'left':'6px',
+            })
+            $(this).children('p').stop().animate({
+                'opacity':'0'
+            })
+        }) */
+    </script>
+    <script>
+        $(function () {
+
+            $(window).scroll(function () {  //只要窗口滚动,就触发下面代码
+
+                var scrollt = document.documentElement.scrollTop + document.body.scrollTop; //获取滚动后的高度
+
+                if (scrollt > 20) {  //判断滚动后高度超过200px,就显示
+
+                    $("#back_top").fadeIn(400); //淡入
+
+                } else {
+
+                    $("#back_top").stop().fadeOut(400); //如果返回或者没有超过,就淡出.必须加上stop()停止之前动画,否则会出现闪动
+
+                }
+
+            });
+
+            $("#back_top").click(function () { //当点击标签的时候,使用animate在200毫秒的时间内,滚到顶部
+
+                $("html,body").animate({ scrollTop: "0px" }, 200);
+
+            });
+
         });
     </script>
 </body>

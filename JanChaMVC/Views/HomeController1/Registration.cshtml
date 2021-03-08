@@ -2,22 +2,23 @@
 
 @{
     ViewData["Title"] = "Registration";
+    Layout = null;
+
 }
 
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>注册</title>
+    <meta charset="UTF-8"> 
     <script src="~/Jquery/jquery-3.3.1.js"></script>
     <link href="~/css/adminlogin.css" rel="stylesheet" />
     <link href="~/layui-v2.5.7/layui/css/layui.css" rel="stylesheet" />
 </head>
 <body>
     <div class="wrap">
-        <img src="~/Img/asd (122).jpg" style="width:100%;height:100%" />
-        @*<img src="~/Img/null-f1c8026a1a928ed.jpg" style="width:100%;height:100%" />*@
-        <div class="loginForm" style="width: 0px;height: 0px;margin-top:10px;">
+        @*<img src="~/Img/asd (122).jpg" style="width:100%;height:100%" />*@
+        <img src="~/Img/20210204_161228_981899.jpg" style="width:100%;height:100%" />
+        <div class="loginForm" style="width: 0px;height: 0px;">
             <form class="layui-form">
                 <div class="layui-form-item">
 
@@ -84,8 +85,7 @@
                 </div>
                 <div class="layui-form-item">
                     <div class="usernameDiv">
-                        <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
-                        <input id="zc" type="submit" class="submit layui-btn layui-btn-fluid layui-btn-normal" value="注册">
+                        <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button> 
                     </div>
                 </div>
             </form>
@@ -106,7 +106,7 @@
 
                 var UserName = $('#UserName').val();
                 var UserSex = $('#wrap input[name="UserSex"]:checked ').val();
-               
+
                 UserSex = UserSex == "0" ? true : false;
                 var Age = $('#Age').val();
                 var Phone = $('#Phone').val();
@@ -116,7 +116,7 @@
                 var Password = $('#Password').val();
                 $.ajax({
                     url: "http://localhost:64502/api/Login/Registration",
-                    data: 
+                    data:
                         JSON.stringify({
                             UserName: UserName,
                             UserSex: UserSex,
@@ -131,7 +131,7 @@
                     success: function (resut) {
                         if (resut > 0) {
                             alert("注册成功");
-
+                            location.href = "/HomeController1/Login";
                         } else {
                             alert("注册失败");
                             location.reload();
@@ -139,67 +139,10 @@
                     },
                     contentType: 'application/json;'
                 })
-                
+
                 return false;
             });
         })
-        function AA(data) {
-            //var UserName = $('#UserName').val();
-            //var UserSex = $('#wrap input[name="UserSex"]:checked ').val();
-            //UserSex = UserSex == "0" ? true : false;
-            //var Age = $('#Age').val();
-            //var Phone = $('#Phone').val();
-            //var Emile = $('#Emile').val();
-            //var Note = $('#Note').val();
-            //var Number = $('#Number').val();
-            //var Password = $('#Password').val();
-            //if (UserName == "") {
-            //    alert("用户名不为空");
-            //    location.reload();
-            //} else if (UserSex != "") {
-            //    alert("用户性别不为空");
-            //    location.reload();
-            //} else if (Phone == "" || $.trim(Phone).length != 11) {
-            //    alert("用户手机号不为空");
-            //    location.reload();
-            //} else if (Emile == "") {
-            //    alert("电子邮件不为空" || $.trim(Emile).match);
-            //    location.reload();
-            //} else if (Number == "") {
-            //    alert("账号不为空");
-            //    location.reload();
-            //} else if (Password == "") {
-            //    alert("密码不为空");
-            //    location.reload();
-            //}
-
-            //$.ajax({
-
-            //    url: "http://localhost:64502/api/Login/Registration",
-            //    data: JSON.stringify({
-            //        UserName: UserName,
-            //        UserSex: UserSex,
-            //        Age: Age,
-            //        Phone: Phone,
-            //        Emile: Emile,
-            //        Note: Note,
-            //        Number: Number,
-            //        Password: Password
-            //    }),
-            //    type: 'post',
-            //    success: function (resut) {
-            //        if (resut > 0) {
-            //            alert("注册成功");
-
-            //        } else {
-            //            alert("注册失败");
-            //            location.reload();
-            //        }
-            //    },
-            //    contentType: 'application/json;'
-            //})
-        }
-
     </script>
 
 </body>
