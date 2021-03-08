@@ -11,8 +11,14 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Img\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Views\RegisteredUsersConTroller\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Img\2036148.jpg" />
+    <None Include="wwwroot\Img\研究与洞察1.jpg" />
   </ItemGroup>
 
 </Project>
