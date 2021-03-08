@@ -272,23 +272,23 @@
             elem: '#demo'
             , height: 500
             , width: 1750
-            , url: 'http://localhost:64502/api/Recruit' //数据接口
+            , url: 'http://localhost:64502/api/Recruit/GetRecruits' //数据接口
             , page: true //开启分页
             , cols: [[ //表头
-                { field: 'Rid', title: '序号', width: 80, fixed: 'left' }
-                , { field: 'Rtype', title: '种类', width: 100 }
-                , { field: 'Rposition', title: '职位', width: 150 }
-                , { field: 'RpositionDescride', title: '职位描述', width: 100 }
-                , { field: 'Rlocation', title: '地址', width: 100 }
-                , { field: 'Rcompany', title: '公司', width: 100 }
+                { field: 'rid', title: '序号', width: 80, fixed: 'left' }
+                , { field: 'rtype', title: '种类', width: 100 }
+                , { field: 'rposition', title: '职位', width: 150 }
+                , { field: 'rpositionDescride', title: '职位描述', width: 100 }
+                , { field: 'rlocation', title: '地址', width: 100 }
+                , { field: 'rcompany', title: '公司', width: 100 }
                 , {
-                    field: 'Rstate', title: '状态', width: 80,
+                    field: 'rstate', title: '状态', width: 80,
                     templet: function (d) {
                         return d.Rstate ? "启用" : "禁用";
                     }
                 }
-                , { field: 'Rtime', title: '发布时间', width: 200 }
-                , { field: 'Rperson', title: '发布人', width: 135 }
+                , { field: 'rtime', title: '发布时间', width: 200 }
+                , { field: 'rperson', title: '发布人', width: 135 }
                 , { title: '操作', width: 300, toolbar: "#bardome" }
             ]]
         });
