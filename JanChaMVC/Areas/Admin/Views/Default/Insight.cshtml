@@ -74,7 +74,7 @@
 </head>
 <body>
     <!--标题栏-->
-    <div style="margin-bottom:100px; margin-top:-40px;">
+    <div style="margin-bottom:100px;">
         <img src="~/Img/研究与洞察1.jpg" style="width:100%;" />@*border:1px solid #808080;*@
     </div>
     <hr class="layui-bg-gray" style="height:10px;border-style:solid;">
@@ -316,12 +316,12 @@
 
             //定义字符串
             var pagerHtml = "";
-            if (currentPageIndex = 1 || empty(currentPageIndex)) {
-                $('li:first').css('display', 'none');
-            }
-            if (currentPageIndex >= nextIndex) {
-                $('li:last').css('display', true);
-            }
+            //if (currentPageIndex = 1 || empty(currentPageIndex)) {
+            //    $('li:first').css('display', 'none');
+            //}
+            //if (currentPageIndex >= nextIndex) {
+            //    $('li:last').css('display', true);
+            //}
             pagerHtml += '   <nav><ul class="pager">';
             pagerHtml += '       <li class="li"><a href="javascript:loadData(' + prevIndex + ')">&lt;</a></li>';
             for (var i = 1; i <= pageCount; i++) {
