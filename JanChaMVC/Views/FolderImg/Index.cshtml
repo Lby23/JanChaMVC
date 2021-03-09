@@ -46,11 +46,12 @@
         </tr>
         <tr>
             <td>
-                <input id="Hidden1" type="hidden" name="pro_picture" />
+                <input id="Hidden1" type="hidden" name="demo1" />
                 <label class="layui-form-label">上传图片</label>
-                <button type="button" name="img" onclick="shang()" class="layui-btn" id="test1">
+                <button type="button" name="img" class="layui-btn" id="test1">
                     <i class="layui-icon" name="img">&#xe67c;</i>上传图片
                 </button>
+                <input id="image" type="hidden" />
             </td>
             <td>
                 <div class="layui-form-item">
@@ -95,12 +96,12 @@
             </td>
         </tr>
     </table>
-    <div class="layui-form-item">
+    @*<div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
         </div>
-    </div>
+    </div>*@
 </form>
 <script type="text/html" id="barDemo">
     <button type="button" class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</button>
@@ -388,7 +389,7 @@
             , title: '添加文章'
             , content: $('#create')
             , width: '500px'
-            , area: ["700px", "450px"]
+            , area: ["700px", "400px"]
             , btn: ['提交', '关闭全部']
             , btnAlign: 'c' //按钮居中
             , shade: 0 //不显示遮罩
@@ -408,7 +409,7 @@
                         countnt: $('[name="countnt"]').val(),
                         sort: $('[name="sort"]').val(),
                         status: $('[name="status"]:checked').val(),
-                        img: $('[name="img"]').val(),
+                        img: $('#image').val(),
                         jumpUrl: $('[name="jumpUrl"]').val(),
                         createTime: $('[name="createTime"]').val()
                     }),
