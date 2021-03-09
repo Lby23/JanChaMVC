@@ -37,5 +37,10 @@ namespace JanChaMVC.Areas.Admin.Controllers
         {
             return View();
         }
+        [Area("Admin")]
+        public IActionResult real_name_Complain()
+        {
+            return View();
+        }
     }
 }
