@@ -4,125 +4,150 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-
-<div class="boxCenter footer" style="margin-top:-50px;padding:1%;">
-    <img alt="" src="~/Img/服务与行业类型.jpg" />
-</div>
-
-<div style="height:872px;width:1200px;border:1px solid;margin:0 auto;">
-    <hr class="layui-bg-gray" style="height:10px;border-style:solid;">
-    <div style="width:250px;height:160px;background-color:#fff;margin-left:45%; margin-top:-70px;">
-        <p style="width:160px; padding:20px 0;border-bottom:1px solid;font-size:40px;margin-left:50px;">
-            行<span style="border-bottom:5px solid; padding:20px 0;">业类</span>型
-        </p>
+    <div class="boxCenter footer" style="margin-top:-50px;padding:1%;">
+        <img alt="" src="~/Img/服务与行业类型.jpg" />
     </div>
-    <div style="width:190px;height:666px;padding:20px,10px;float:left;background-color:aliceblue;margin-left:150px;">
-        <ul style="text-align:center;">
-            <li style="border-bottom: 1px solid;">
 
-                <p style="border-bottom: 1px solid;" id="sj">
-                    <span>审计</span>
-                </p>
+    <div style="height:872px;width:1200px;margin:0 auto;">
+        <hr class="layui-bg-gray" style="height:10px;border-style:solid;">
+        <div style="width:250px;height:160px;background-color:#fff;margin-left:45%; margin-top:-70px;">
+            <p style="width:160px; padding:20px 0;border-bottom:1px solid;font-size:40px;margin-left:50px;">
+                行<span style="border-bottom:5px solid; padding:20px 0;">业类</span>型
+            </p>
+        </div>
+        <div style="width:190px;height:666px;padding:20px,10px;float:left;background-color:aliceblue;margin-left:150px;">
 
-                <dl>
-                    <dd>
-                        <a href="https://www.baidu.com/" target="qwe">投资立项审计</a>
-                    </dd>
-                    <dd>
-                        <a href="javascript:;" id="325" name="设计（勘察）管理审计">设计（勘察）管理审计</a>
-                    </dd>
-                    <dd>
-                        <a href="javascript:;" id="326" name="招投标审计">招投标审计</a>
-                    </dd>
-                    <dd>
-                        <a href="javascript:;" id="327" name="合同管理审计">合同管理审计</a>
-                    </dd>
-                    <dd>
-                        <a href="javascript:;" id="328" name="设备和材料采购审计">设备和材料采购审计</a>
-                    </dd>
-                    <dd>
-                        <a href="javascript:;" id="329" name="工程管理审计">工程管理审计</a>
-                    </dd>
-                    <dd>
-                        <a href="javascript:;" id="330" name="工程造价审计">工程造价审计</a>
-                    </dd>
-                    <dd>
-                        <a href="javascript:;" id="331" name="竣工验收审计">竣工验收审计</a>
-                    </dd>
-                    <dd>
-                        <a href="javascript:;" id="332" name="财务管理审计">财务管理审计</a>
-                    </dd>
-                    <dd>
-                        <a href="javascript:;" id="333" name="后评价审计">后评价审计</a>
-                    </dd>
-                </dl>
-            </li>
-            <li style="border-bottom: 1px solid;">
+            <ul style="text-align:center;">
+                <li style="border-bottom: 1px solid;">
 
-                <p style="border-bottom: 1px solid;">
-                    <span>舞弊调查</span>
-                </p>
+                    <p style="border-bottom: 1px solid;" id="sj">
+                        <span onclick="showHideCode1()">审计</span>
+                    </p>
+                    <div id="showdiv1" style="width:190px;height:280px;float:left;display:none;margin:0 auto;">
 
-                <dl>
-                    <dd>
-                        <a href="javascript:;" id="315" name="舞弊调查">舞弊调查</a>
+                        <dl>
+                            <dd>
+                                <a id="324" name="投资理想审计">投资立项审计</a>
+                            </dd>
+                            <dd>
+                                <a id="325" name="设计（勘察）管理审计">设计（勘察）管理审计</a>
+                            </dd>
+                            <dd>
+                                <a id="326" name="招投标审计">招投标审计</a>
+                            </dd>
+                            <dd>
+                                <a id="327" name="合同管理审计">合同管理审计</a>
+                            </dd>
+                            <dd>
+                                <a id="328" name="设备和材料采购审计">设备和材料采购审计</a>
+                            </dd>
+                            <dd>
+                                <a id="329" name="工程管理审计">工程管理审计</a>
+                            </dd>
+                            <dd>
+                                <a id="330" name="工程造价审计">工程造价审计</a>
+                            </dd>
+                            <dd>
+                                <a id="331" name="竣工验收审计">竣工验收审计</a>
+                            </dd>
+                            <dd>
+                                <a id="332" name="财务管理审计">财务管理审计</a>
+                            </dd>
+                            <dd>
+                                <a id="333" name="后评价审计">后评价审计</a>
+                            </dd>
+                        </dl>
+                    </div>
+                </li>
+                <li style="border-bottom: 1px solid;">
 
-                    </dd>
-                </dl>
-            </li>
-            <li style="border-bottom: 1px solid;">
+                    <p style="border-bottom: 1px solid;" id="wbdc">
+                        <span onclick="showHideCode2()">舞弊调查</span>
+                    </p>
+                    <div id="showdiv2" style="width:190px;height:280px;float:left;display:none;margin:0 auto;">
+                        <dl>
+                            <dd>
+                                <a id="315" name="舞弊调查">舞弊调查</a>
 
-                <p style="border-bottom: 1px solid;">
-                    <span>咨询</span>
-                </p>
+                            </dd>
+                        </dl>
+                    </div>
+                </li>
+                <li style="border-bottom: 1px solid;">
 
-                <dl>
-                    <dd>
-                        <a href="javascript:;" id="317" name="房地产风险管理咨询">房地产风险管理咨询</a>
+                    <p style="border-bottom: 1px solid;" id="zx">
+                        <span onclick="showHideCode3()">咨询</span>
+                    </p>
+                    <div id="showdiv3" style="width:190px;height:280px;float:left;display:none;margin:0 auto;">
+                        <dl>
+                            <dd>
+                                <a id="317" name="房地产风险管理咨询">房地产风险管理咨询</a>
 
-                    </dd>
-                    <dd>
-                        <a href="javascript:;" id="318" name="造价咨询">造价咨询</a>
+                            </dd>
+                            <dd>
+                                <a id="318" name="造价咨询">造价咨询</a>
 
-                    </dd>
-                    <dd>
-                        <a href="javascript:;" id="319" name="信息化咨询">信息化咨询</a>
+                            </dd>
+                            <dd>
+                                <a id="319" name="信息化咨询">信息化咨询</a>
 
-                    </dd>
-                </dl>
-            </li>
-        </ul>
-    </div>
-    <div style="width:700px;height:666px;float:left;padding-left:10px;">
-        <p style="width:380px;height:40px;font-size:20px;background-color:azure;padding-left:300px;">投资立项审计</p>
-        <div style="width:600px;height:180px;padding-top:30px;padding-bottom:50px;padding-left:10px;padding-right:10px;text-align:center;">
-
-            <iframe id="test" src="test.html" name="qwe"></iframe>
-            <div id="showdiv" style="width:600px;height:180px;display:none;">
-                <p></p>
-                <span style="text-align:center;">
-                    asfdgfghhasdfghjasdfghjasdfghjasdfg<br />
-                    asfdghmjsdfghmasdfghjk,,kjhgfddsfghjk,.<br />
-                    ertyujikjkaasdfghjm,,ddfghjk,<br />
-                </span>
+                            </dd>
+                        </dl>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="note" style="width:700px;height:666px;float:left;padding-left:10px;display:none;">
+            <p style="width:380px;height:40px;font-size:20px;background-color:azure;padding-left:300px;">投资立项审计</p>
+            <div style="width:600px;height:180px;padding-top:30px;padding-bottom:50px;padding-left:10px;padding-right:10px;text-align:center;">
+               
+                <div id="showdiv" style="width:600px;height:180px;display:none;">
+                    <p>
+                        <span style="text-align:center;">
+                            asfdgfghhasdfghjasdfghjasdfghjasdfg<br />
+                            asfdghmjsdfghmasdfghjk,,kjhgfddsfghjk,.<br />
+                            ertyujikjkaasdfghjm,,ddfghjk,<br />
+                        </span>
+                    </p>
+                </div>
+                <div id="a" style="margin:0 auto;width:80px;height:20px;">
+                    <a onclick="showHideCode()"> 查看更多</a>
+                </div>
             </div>
-            <div id="a" style="margin:0 auto;width:80px;height:20px;">
-                <a onclick="showHideCode()"> 查看更多</a>
+            <div style="width:750px;height:338px;margin-top:30px;border:1px,solid;">
+                <img src="~/Img/行业类型2.jpg" style="float:left;" />
+                <img src="~/Img/咨询.png" style="float:left;" />
             </div>
         </div>
-        <div style="width:750px;height:338px;margin-top:30px;border:1px,solid;">
-            <img src="~/Img/行业类型2.jpg" style="float:left;" />
-            <img src="~/Img/咨询.png" style="float:left;" />
-        </div>
     </div>
-</div>
-@section scripts{ 
-    <script>  
-            function showHideCode(){
-                $("#showdiv").toggle(); 
-             }
-    </script> 
-}
 
- 
+    <script src="~/layui-v2.5.7/layui/layui.js"></script>
+
+    <script>
+
+        function showHideCode() {
+            $("#showdiv").toggle();
+        }
+        function showHideCode1() {
+            $("#showdiv1").toggle();
+            $("#wbdc").toggle();
+            $("#zx").toggle();
+        }
+        function showHideCode2() {
+            $("#showdiv2").toggle();
+            $("#zx").toggle();
+            $("#sj").toggle();
+        }
+        function showHideCode3() {
+            $("#showdiv3").toggle();
+            $("#sj").toggle();
+            $("#wbdc").toggle();
+        }
+
+        $("#324").click(function () {
+            $("#note").toggle();
+        })
+    </script>
+
+
 

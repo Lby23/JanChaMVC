@@ -13,7 +13,9 @@
         <hr class="layui-bg-gray" style="height:10px;border-style:solid;">
         <div style="width:250px;height:160px;background-color:#fff;margin-left:45%; margin-top:-70px;">
             <p style="width:160px; padding:20px 0;border-bottom:1px solid;font-size:40px;margin-left:50px;">
-                行<span style="border-bottom:5px solid; padding:20px 0;">业服</span>务
+                <span style="border-bottom:5px solid; padding:20px 0;">
+                    行业服务
+                </span>
             </p>
         </div>
         <div>
@@ -74,4 +76,17 @@
     </div>
 
 </div>
+<script>
+    layui.use('table', function () {
+        var table = layui.table;
+
+        //方法级渲染
+        var tableObj = table.render({
+            elem: '#LAY_table_user'
+            , url: 'http://localhost:64502/api/Tab/Index'
+            , height: 310
+        });
+    });
+
+</script>
 
