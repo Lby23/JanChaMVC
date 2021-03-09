@@ -156,7 +156,7 @@
                     </td>
                     <td class="cc-bar">&nbsp;</td>
                     <td align="center" class="cc-content mainBox" valign="top">
-                        <form action="http://www.wsttop.com/addComplain" enctype="multipart/form-data" id="form" method="post">
+                        <form>
                             <input name="type" type="hidden" value="2">
                             <input id="visitIP" name="visitIP" type="hidden" value="36.113.99.129">
                             <table class="realName-table">
@@ -173,19 +173,16 @@
                                         <td align="right"><span>您的身份(选填)</span></td>
                                         <td>
                                             <label>
-                                                <input checked="" id="" name="idtype" type="radio" value="1">&nbsp;员工&nbsp;
+                                                <input checked="checked" name="idtype" type="radio" value="1">&nbsp;员工&nbsp;
                                             </label>
                                             <label>
-                                                <input id="" name="idtype" type="radio" value="2"> &nbsp;供应商&nbsp;
+                                                <input name="idtype" type="radio" value="2"> &nbsp;供应商&nbsp;
                                             </label>
                                             <label>
-                                                <input id="" name="idtype" type="radio" value="3"> &nbsp;客户&nbsp;
+                                                <input name="idtype" type="radio" value="3"> &nbsp;客户&nbsp;
                                             </label>
                                             <label>
-                                                <input id="" name="idtype" type="radio" value="4"> &nbsp;其他&nbsp;
-                                            </label>
-                                            <label>
-                                                <input class="other" name="remark" style="width: 100px;display: none;" type="text">
+                                                <input name="idtype" type="radio" value="4"> &nbsp;其他&nbsp;
                                             </label>
                                         </td>
                                     </tr>
@@ -220,7 +217,7 @@
                                         </td>
                                     </tr>
 
-                                    <tr>
+                                    @*<tr>
                                         <td align="center" colspan="2">
                                             <span class="upload">
                                                 <input class="file" id="file" name="file" type="file">上传附件
@@ -229,7 +226,7 @@
                                             <div class="" id="errorTip" style="margin: 6px 10px; color: red; font-size: 20px;"></div>
                                             <div id="fileName"></div>
                                         </td>
-                                    </tr>
+                                    </tr>*@
                                     <tr>
                                         <td align="center" colspan="2">
                                             <input class="btn btn-submit submit fr" type="button" value="提交">
@@ -247,127 +244,140 @@
     </div>
 
 
-    <form id="searchForm" method="post" action="http://www.wsttop.com/search">
+    @*<form id="searchForm" method="post" action="http://www.wsttop.com/search">
         <input id="hdSearchText" name="text" type="hidden">
-    </form>
+    </form>*@
 </section>
 
 <script src="~/lib/jquery/dist/jquery.js"></script>
 <script>
-    $(function () {
-        $("#visitIP").val(returnCitySN.cip);
-        if ($("#hd_tz").val()) {
-            var t = $('#tosearchResult').offset().top;
-            $(window).scrollTop(t); //滚动到锚点位置
-        }
-        $('.btn-complain').attr("disabled", true).addClass("disabled");
-        if ($("input[name='company']").val() != null && $("input[name='company']").val() != '') {
-            var t = $('#tosearchResult').offset().top;
-            $(window).scrollTop(t); //滚动到锚点位置
-        }
-    })
-    // 搜索
-    function sousuo() {
-        var company = $(".company").val();
-        var idcard = $(".idcard").val();
-        // 						console.log(company,idcard);
-        var val;
-        var nulls = /^\s*$/;
-        if (nulls.test(company) || nulls.test(idcard)) {
-            alert('搜索内容都为必填');
-            val = false;
-        } else if (company.length == 0 && idcard.length == 0) {
-            alert('搜索内容都为必填');
-            val = false;
-        } else {
-            val = true;
-        }
-        return val;
-    }
-    //回车搜索
-    document.onkeydown = function (event) {
-        e = event ? event : (window.event ? window.event : null);
-        if (e.keyCode == 13) {
-            //执行的方法
-            $('.sou').click();
-        }
-    }
-    $('input:radio[name="idtype"]').on('change', function () {
-        var radioVal = $('input:radio[name="idtype"]:checked').attr('value');
-        if (radioVal == '4') {
-            $('.other').css('display', 'inline-block')
-        } else {
-            $('.other').css('display', 'none');
-        }
-    })
-    var i = 0;
-    $('.upload').on('change', '#file', function () {
-        /* $('#file').change(function(){ */
-        var fileBig = $('#file')[0].files[0].size / 1024 / 1000;
-        if (fileBig > 50) {
-            alert('上传附件的总大小不能超过50M！')
-            return;
-        }
-        i++;
-        if ($(this).val() != '') {
-            //1.正则表达式
-            var file = $('#file').val();
-            var strFileName = file.replace(/^.+?\\([^\\]+?)(\.[^\.\\]*?)?$/gi, "$1");
-            //正则表达式获取文件名，不带后缀
-            var FileExt = file.replace(/.+\./, ""); //正则表达式获取后缀
-            $('#fileName').html(strFileName + "." + FileExt);
-            $("#fileName").append("&nbsp;&nbsp;<input type='button' id='delFile' value='删除'/>");
-            //http://47.101.57.129:8080/jscms/
-        } else {
-            return;
-        }
-        if (i >= 1) {
-            alert('上传成功！只能上传1个附件。')
-            //	$('#file').attr('disabled','disabled')
-            return
-        }
-    });
+    //$(function () {
+    //    $("#visitIP").val(returnCitySN.cip);
+    //    if ($("#hd_tz").val()) {
+    //        var t = $('#tosearchResult').offset().top;
+    //        $(window).scrollTop(t); //滚动到锚点位置
+    //    }
+    //    $('.btn-complain').attr("disabled", true).addClass("disabled");
+    //    if ($("input[name='company']").val() != null && $("input[name='company']").val() != '') {
+    //        var t = $('#tosearchResult').offset().top;
+    //        $(window).scrollTop(t); //滚动到锚点位置
+    //    }
+    //})
+    //// 搜索
+    //function sousuo() {
+    //    var company = $(".company").val();
+    //    var idcard = $(".idcard").val();
+    //    // 						console.log(company,idcard);
+    //    var val;
+    //    var nulls = /^\s*$/;
+    //    if (nulls.test(company) || nulls.test(idcard)) {
+    //        alert('搜索内容都为必填');
+    //        val = false;
+    //    } else if (company.length == 0 && idcard.length == 0) {
+    //        alert('搜索内容都为必填');
+    //        val = false;
+    //    } else {
+    //        val = true;
+    //    }
+    //    return val;
+    //}
+    ////回车搜索
+    //document.onkeydown = function (event) {
+    //    e = event ? event : (window.event ? window.event : null);
+    //    if (e.keyCode == 13) {
+    //        //执行的方法
+    //        $('.sou').click();
+    //    }
+    //}
+    //$('input:radio[name="idtype"]').on('change', function () {
+    //    var radioVal = $('input:radio[name="idtype"]:checked').attr('value');
+    //    if (radioVal == '4') {
+    //        $('.other').css('display', 'inline-block')
+    //    } else {
+    //        $('.other').css('display', 'none');
+    //    }
+    //})
+    //var i = 0;
+    //$('.upload').on('change', '#file', function () {
+    //    /* $('#file').change(function(){ */
+    //    var fileBig = $('#file')[0].files[0].size / 1024 / 1000;
+    //    if (fileBig > 50) {
+    //        alert('上传附件的总大小不能超过50M！')
+    //        return;
+    //    }
+    //    i++;
+    //    if ($(this).val() != '') {
+    //        //1.正则表达式
+    //        var file = $('#file').val();
+    //        var strFileName = file.replace(/^.+?\\([^\\]+?)(\.[^\.\\]*?)?$/gi, "$1");
+    //        //正则表达式获取文件名，不带后缀
+    //        var FileExt = file.replace(/.+\./, ""); //正则表达式获取后缀
+    //        $('#fileName').html(strFileName + "." + FileExt);
+    //        $("#fileName").append("&nbsp;&nbsp;<input type='button' id='delFile' value='删除'/>");
+    //        //http://47.101.57.129:8080/jscms/
+    //    } else {
+    //        return;
+    //    }
+    //    if (i >= 1) {
+    //        alert('上传成功！只能上传1个附件。')
+    //        //	$('#file').attr('disabled','disabled')
+    //        return
+    //    }
+    //});
     $('.submit').on('click', function () {
-        var name = $("#name").val();
-        var tel = $("#tel").val();
-        var content = $("#content").val();
-        var email = $("#email").val();
-        var wchat = $("#wchat").val();
-        var p = /^1[34578]\d{9}$/;
-        var e = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
-        var nulls = /^\s*$/;
-        if (nulls.test(name) || nulls.test(content)) {
-            $("#errorTip").html("必填字段未填写，请补充完整");
-            return false;
-        }
-        if (nulls.test(tel) && nulls.test(email) && nulls.test(wchat)) {
-            $("#errorTip").html("请在电话，邮箱，微信之中选择填一项作为您的联系方式");
-            return false;
-        } else {
-            if (!nulls.test(tel)) {
-                if (!p.test(tel)) {
-                    $("#errorTip").html("您的电话格式有误");
-                    return false;
+        var Caccessory = $("#content").val();
+
+        //var p = /^1[34578]\d{9}$/;
+        //var e = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
+        //var nulls = /^\s*$/;
+        //if (nulls.test(name) || nulls.test(content)) {
+        //    $("#errorTip").html("必填字段未填写，请补充完整");
+        //    return false;
+        //}
+        //if (nulls.test(tel) && nulls.test(email) && nulls.test(wchat)) {
+        //    $("#errorTip").html("请在电话，邮箱，微信之中选择填一项作为您的联系方式");
+        //    return false;
+        //} else {
+        //    if (!nulls.test(tel)) {
+        //        if (!p.test(tel)) {
+        //            $("#errorTip").html("您的电话格式有误");
+        //            return false;
+        //        } else {
+        //            $("#form").submit();
+        //            $("#form input").val('');
+        //            $('#form textarea').val('');
+        //        }
+        //    } else if (!nulls.test(email)) {
+        //        if (!e.test(email)) {
+        //            $("#errorTip").html("您的邮箱格式有误");
+        //            return false;
+        //        } else {
+        //            $("#form").submit();
+        //            $("#form input").val('');
+        //            $('#form textarea').val('');
+        //        }
+        //    } else if (!nulls.test(wchat)) {
+        //        $("#form").submit();
+        //        $("#form input").val('');
+        //        $('#form textarea').val('');
+        //        return true;
+        //    }
+        //}
+        $.ajax({
+            url: 'http://localhost:64502/api/Complain/AddComplains_anonymity',
+            type: 'post',
+            data: JSON.stringify({
+                "caccessory": Caccessory,
+            }),
+            dataType: "json",
+            contentType: "application/json;charset=UTF-8",
+            success: function (data) {
+                if (data > 0) {
+                    alert("成功");
                 } else {
-                    $("#form").submit();
-                    $("#form input").val('');
-                    $('#form textarea').val('');
+                    alert("失败");
                 }
-            } else if (!nulls.test(email)) {
-                if (!e.test(email)) {
-                    $("#errorTip").html("您的邮箱格式有误");
-                    return false;
-                } else {
-                    $("#form").submit();
-                    $("#form input").val('');
-                    $('#form textarea').val('');
-                }
-            } else if (!nulls.test(wchat)) {
-                $("#form").submit();
-                $("#form input").val('');
-                $('#form textarea').val('');
-                return true;
-            }
-        }
+            },
+        });
     })
 </script>
