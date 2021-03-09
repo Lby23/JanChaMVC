@@ -136,7 +136,7 @@
 </head>
 <body>
     <!--轮播图-->
-    <div style="width:1920px;height:788px;background-color:deepskyblue;margin:0px auto;position:relative;margin-top:-40px;">
+    <div style="width:1920px;height:788px;background-color:deepskyblue;margin:0px auto;position:relative;">
         <div class="layui-carousel" id="test1" lay-filter="test1">
             <div carousel-item="" id="preview">
 
@@ -371,27 +371,27 @@
             })
         });
 
-
-        layui.use(['util', 'laydate', 'layer'], function () {
-            var util = layui.util
-                , laydate = layui.laydate
-                , $ = layui.$
-                , layer = layui.layer;
-            //固定块
-            util.fixbar({
-                bar1: false
-                , bar2: false
-                , css: { right: 50, bottom: 100 }
-                , bgcolor: '#393D49'
-                , click: function (type) {
-                    if (type === 'bar1') {
-                        layer.msg('www.xdpsg.com')
-                    } else if (type === 'bar2') {
-                        layer.msg('www.xdpsg.com')
-                    }
-                }
-            });
-        });
+        //置顶功能
+        //layui.use(['util', 'laydate', 'layer'], function () {
+        //    var util = layui.util
+        //        , laydate = layui.laydate
+        //        , $ = layui.$
+        //        , layer = layui.layer;
+        //    //固定块
+        //    util.fixbar({
+        //        bar1: false
+        //        , bar2: false
+        //        , css: { right: 50, bottom: 100 }
+        //        , bgcolor: '#393D49'
+        //        , click: function (type) {
+        //            if (type === 'bar1') {
+        //                layer.msg('www.xdpsg.com')
+        //            } else if (type === 'bar2') {
+        //                layer.msg('www.xdpsg.com')
+        //            }
+        //        }
+        //    });
+        //});
 
     </script>
 </body>
