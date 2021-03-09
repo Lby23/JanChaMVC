@@ -10,58 +10,13 @@
 </div>
 
 <div style="height:872px;width:1200px;border:1px solid;margin:0 auto;">
-    <div style="width:1200px;height:26px;padding:40px 0px;">
-        <a style="font-size:30px;margin-left:45%;">
-            服务类型
-        </a>
+    <hr class="layui-bg-gray" style="height:10px;border-style:solid;">
+    <div style="width:250px;height:160px;background-color:#fff;margin-left:45%; margin-top:-70px;">
+        <p style="width:160px; padding:20px 0;border-bottom:1px solid;font-size:40px;margin-left:50px;">
+            行<span style="border-bottom:5px solid; padding:20px 0;">业类</span>型
+        </p>
     </div>
     <div style="width:190px;height:666px;padding:20px,10px;float:left;background-color:aliceblue;margin-left:150px;">
-        @*<ul style="width:170px;height:129px;padding-left:10px;padding-top:20px;">
-                <li>
-                    <p style="width:155px;height:37px;text-align:center;border-bottom:1px solid;">
-                        <span id="a">
-                            审计
-                        </span>
-                    </p>
-                    <dl style="width:140px;height:62px;padding:0px,0px,30px;display:block;">
-                        <dd style="width:158px;height:19px;padding:10px,0px,2px;text-align:center;">
-                            <a href="javascript:;" id="324" name="投资立项审计">投资立项审计</a>
-                        </dd>
-                        <dd style="width:158px;height:19px;padding:10px,0px,2px;text-align:center;">
-                            <a href="javascript:;" id="325" name="设计（勘察）管理审计">设计（勘察）管理审计</a>
-                        </dd>
-                        <dd style="width:158px;height:19px;padding:10px,0px,2px;text-align:center;">
-                            <a href="javascript:;" id="326" name="招投标审计">招投标审计</a>
-                        </dd>
-
-                    </dl>
-                </li>
-
-                <li>
-                    <p style="width:155px;height:37px;text-align:center;border-bottom:1px solid;">
-                        <span>
-                            舞弊调查
-                        </span>
-                    </p>
-                    <dl>
-                        <dd>
-
-                        </dd>
-                    </dl>
-                </li>
-                <li>
-                    <p style="width:155px;height:37px;text-align:center;border-bottom:1px solid;">
-                        <span>
-                            咨询
-                        </span>
-                    </p>
-                    <dl>
-                        <dd>
-
-                        </dd>
-                    </dl>
-                </li>
-            </ul>*@
         <ul style="text-align:center;">
             <li style="border-bottom: 1px solid;">
 
@@ -71,7 +26,7 @@
 
                 <dl>
                     <dd>
-                        <a href="https://www.baidu.com/" target="qwe" >投资立项审计</a> 
+                        <a href="https://www.baidu.com/" target="qwe">投资立项审计</a>
                     </dd>
                     <dd>
                         <a href="javascript:;" id="325" name="设计（勘察）管理审计">设计（勘察）管理审计</a>
@@ -141,22 +96,33 @@
     <div style="width:700px;height:666px;float:left;padding-left:10px;">
         <p style="width:380px;height:40px;font-size:20px;background-color:azure;padding-left:300px;">投资立项审计</p>
         <div style="width:600px;height:180px;padding-top:30px;padding-bottom:50px;padding-left:10px;padding-right:10px;text-align:center;">
-           
+
             <iframe id="test" src="test.html" name="qwe"></iframe>
-            
-            <p></p>
-            <span style="text-align:center;">
-                asfdgfghhasdfghjasdfghjasdfghjasdfg<br />
-                asfdghmjsdfghmasdfghjk,,kjhgfddsfghjk,.<br />
-                ertyujikjkaasdfghjm,,ddfghjk,<br />
-            </span>
+            <div id="showdiv" style="width:600px;height:180px;display:none;">
+                <p></p>
+                <span style="text-align:center;">
+                    asfdgfghhasdfghjasdfghjasdfghjasdfg<br />
+                    asfdghmjsdfghmasdfghjk,,kjhgfddsfghjk,.<br />
+                    ertyujikjkaasdfghjm,,ddfghjk,<br />
+                </span>
+            </div>
+            <div id="a" style="margin:0 auto;width:80px;height:20px;">
+                <a onclick="showHideCode()"> 查看更多</a>
+            </div>
         </div>
         <div style="width:750px;height:338px;margin-top:30px;border:1px,solid;">
             <img src="~/Img/行业类型2.jpg" style="float:left;" />
             <img src="~/Img/咨询.png" style="float:left;" />
         </div>
-    </div> 
+    </div>
 </div>
+@section scripts{ 
+    <script>  
+            function showHideCode(){
+                $("#showdiv").toggle(); 
+             }
+    </script> 
+}
 
  
 
