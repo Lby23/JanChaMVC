@@ -336,12 +336,26 @@
                 return true;
             }
         }
-        alert(Cname);
-        alert(role);
-        alert(Cphone);
-        alert(Caccessory);
-        alert(Cemail);
-        alert(WeChat);
-
+        $.ajax({
+            url: 'http://localhost:64502/api/Complain/AddComplains_autonym',
+            type: 'post',
+            data: JSON.stringify({
+                "cname": Cname,
+                "crole": role,
+                "cphone": Cphone,
+                "cemail": Cemail,
+                "wechat": WeChat,
+                "caccessory": Caccessory,
+            }),
+            dataType: "json",
+            contentType: "application/json;charset=UTF-8",
+            success: function (data) {
+                if (data > 0) {
+                    alert("成功");
+                } else {
+                    alert("失败");
+                }
+            },
+        });
     })
 </script>
