@@ -5,13 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Admin\Img\**" />
+    <Content Remove="Areas\Admin\Img\**" />
+    <EmbeddedResource Remove="Areas\Admin\Img\**" />
+    <None Remove="Areas\Admin\Img\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Img\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Views\RegisteredUsersConTroller\" />
   </ItemGroup>
