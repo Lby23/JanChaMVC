@@ -3,7 +3,7 @@
     ViewData["Title"] = "blackList";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
+<title>黑名单</title>
 <style type="text/css">
     .boxCenter {
         width: 1200px;
@@ -177,7 +177,7 @@
                             <form id="blackForm" style="padding-left: 80px;" method="get" action="/blackList?pn=1">
                                 <div id="div-radio" style="text-align: left;padding:20px 10px;font-weight: bold;">
                                     <label style="cursor: pointer;padding:20px;">
-                                        <input checked="checked" class="blackType" name="type" type="radio" value="1" />&nbsp;企业
+                                        <input checked="checked" id="radio11" class="blackType" name="type" type="radio" value="1" />&nbsp;企业
                                     </label>
                                     <label style="margin-left: 30px;cursor: pointer;padding:20px;">
                                         <input class="blackType" id="radioBlackType" name="type" type="radio" value="2" />&nbsp;个人
@@ -185,8 +185,8 @@
                                 </div>
                                 <div style="height: 260px;padding-left:10px;">
                                     <div id="div-company" style="padding-top: 10px;">
-                                        <div class="div-name1" style="font-weight: bold; padding-bottom: 10px; display: block;">企业名称<span style="color:red;">★</span></div>
-                                        <div class="div-name2" style="font-weight: bold;padding-bottom: 10px;display: none;">姓名<span style="color:red;">★</span></div>
+                                        <div class="div-name1" id="name123" style="font-weight: bold; padding-bottom: 10px; display: block;">企业名称<span style="color:red;">★</span></div>
+                                        <div class="div-name2" id="name456" style="font-weight: bold;padding-bottom: 10px;display: none;">姓名<span style="color:red;">★</span></div>
                                     </div>
                                     <input class="company" name="company" placeholder="输入关键词" type="text" value="" />
                                     <div id="div-persional" style="padding-top: 20px;">
@@ -225,27 +225,27 @@
 <script src="~/Jquery/jquery-3.3.1.js"></script>
 <script>
     $(function () {
-        var returnCitySN = { "cip": "36.113.99.129", "cid": "330000", "cname": "浙江省" };
-        $("#visitIP").val(returnCitySN.cip);
-        if ($("#hd_tz").val()) {
-            var t = $('#tosearchResult').offset().top;
-            $(window).scrollTop(t); //滚动到锚点位置
-        }
-        if ($("input[name='company']").val() != null && $("input[name='company']").val() != '') {
-            var t = $('#tosearchResult').offset().top;
-            $(window).scrollTop(t); //滚动到锚点位置
+        //var returnCitySN = { "cip": "36.113.99.129", "cid": "330000", "cname": "浙江省" };
+        //$("#visitIP").val(returnCitySN.cip);
+        //if ($("#hd_tz").val()) {
+        //    var t = $('#tosearchResult').offset().top;
+        //    $(window).scrollTop(t); //滚动到锚点位置
+        //}
+        //if ($("input[name='company']").val() != null && $("input[name='company']").val() != '') {
+        //    var t = $('#tosearchResult').offset().top;
+        //    $(window).scrollTop(t); //滚动到锚点位置
 
-            if ($("#div-blackInfo span.span-com").text()) {
-                setTimeout(function () {
-                    alert($("#div-blackInfo").text().replace(new RegExp("_@@_", "gm"), "\n"));
-                }, 200);
-            }
-            if ($("#div-blackSize").text()) {
-                setTimeout(function () {
-                    alert($("#div-blackSize").text());
-                }, 200);
-            }
-        }
+        //    if ($("#div-blackInfo span.span-com").text()) {
+        //        setTimeout(function () {
+        //            alert($("#div-blackInfo").text().replace(new RegExp("_@@_", "gm"), "\n"));
+        //        }, 200);
+        //    }
+        //    if ($("#div-blackSize").text()) {
+        //        setTimeout(function () {
+        //            alert($("#div-blackSize").text());
+        //        }, 200);
+        //    }
+        //}
         $("#div-radio .blackType").click(function () {
             if ($(this).val() == "1") {
                 $("#div-company .div-name1").show();
@@ -266,31 +266,68 @@
             $("#div-company .div-name2").show();
             $("#div-persional .div-idcard2").show();
         }
-        $("#btnSearch").click(function () {
-            if (sousuo()) {
-                $("#blackForm")[0].submit();
-            }
-        });
+
     })
-    // 搜索
-    function sousuo() {
-        var button = $("#div-radio .blackType:checked").val();
-        var company = $(".company").val();
-        var idcard = $(".idcard").val();
-        // 					console.log(company,idcard);
-        var nulls = /^\s*$/;
-        if (nulls.test(company) || nulls.test(idcard) || company.length == 0 || idcard.length == 0) {
-            alert('搜索内容都为必填');
-            return false;
+    $("#btnSearch").click(function () {
+        if ($("#div-radio .blackType:checked").val() == "1") {
+            var company = $(".company").val()
+            var idcard = $(".idcard").val();
+            var nulls = /^\s*$/;
+            if (nulls.test(company) || nulls.test(idcard) || company.length == 0 || idcard.length == 0) {
+                alert('搜索内容都为必填');
+                return false;
+            }
+            $.ajax({
+                url: 'http://localhost:64502/api/BlackList/GetBlacklists_front?Bunit=' + company + '&BpapersNumber=' + idcard,
+                type: 'get',
+                success: function (data) {
+                    if (data > 0) {
+                        alert("查询成功");
+                    } else {
+                        alert("查询失败");
+                    }
+                }
+            });
+        } else if ($("#div-radio .blackType:checked").val() == "2") {
+            var company = $(".company").val()
+            var idcard = $(".idcard").val();
+            var nulls = /^\s*$/;
+            if (nulls.test(company) || nulls.test(idcard) || company.length == 0 || idcard.length == 0) {
+                alert('搜索内容都为必填');
+                return false;
+            }
+            $.ajax({
+                url: "http://localhost:64502/api/BlackList/GetBlacklists_onePerson?Bunit=" + company + "&BpapersNumber=" + idcard,
+                type: 'get',
+                success: function (data) {
+                    if (data > 0) {
+                        alert("查询成功");
+                    } else {
+                        alert("查询失败");
+                    }
+                }
+            });
         }
-        return true;
-    }
-    //回车搜索
-    document.onkeydown = function (event) {
-        e = event ? event : (window.event ? window.event : null);
-        if (e.keyCode == 13) {
-            //执行的方法
-            $('.sou').click();
-        }
-    }
+    });
+    //// 搜索
+    //function sousuo() {
+    //    var button = $("#div-radio .blackType:checked").val();
+    //    var company = $(".company").val();
+    //    var idcard = $(".idcard").val();
+    //    // 					console.log(company,idcard);
+    //    var nulls = /^\s*$/;
+    //    if (nulls.test(company) || nulls.test(idcard) || company.length == 0 || idcard.length == 0) {
+    //        alert('搜索内容都为必填');
+    //        return false;
+    //    }
+    //    return true;
+    //}
+    ////回车搜索
+    //document.onkeydown = function (event) {
+    //    e = event ? event : (window.event ? window.event : null);
+    //    if (e.keyCode == 13) {
+    //        //执行的方法
+    //        $('.sou').click();
+    //    }
+    //}
 </script>
