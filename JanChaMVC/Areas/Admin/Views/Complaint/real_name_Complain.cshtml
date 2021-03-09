@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewData["Title"] = "real_name_Complain";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #divcss1 {
+        width: 500px;
+        height: 1000px;
+        background-color: aqua;
+        margin-left: 35%;
+        text-align: center;
+    }
+</style>
+
+<div id="divcss1">
+    <form>
+        <table class="table table-bordered">
+            <tr>
+                <td><span>您的姓名:</span></td>
+                <td><input id="name" type="text" /></td>
+            </tr>
+            <tr>
+                <td><span>您的身份:</span></td>
+                <td>
+                    <input checked="" id="" name="Crole" type="radio" value="1">&nbsp;员工&nbsp;
+
+                    <input id="" name="Crole" type="radio" value="2"> &nbsp;供应商&nbsp;
+
+                    <input id="" name="Crole" type="radio" value="3"> &nbsp;客户&nbsp;
+
+                    <input id="" name="Crole" type="radio" value="4"> &nbsp;其他&nbsp;
+
+                    <input class="other" name="remark" style="width: 100px;display: none;" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td><span>您的联系方式:</span></td>
+                <td>(请至少填写一种)</td>
+            </tr>
+            <tr>
+                <td><span>电话:</span></td>
+                <td><input id="phone" type="text" /></td>
+            </tr>
+            <tr>
+                <td><span>邮箱:</span></td>
+                <td><input id="email" type="text" /></td>
+            </tr>
+            <tr>
+                <td><span>微信:</span></td>
+                <td><input id="WeChat" type="text" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input id="Button1" type="button" value="button" /></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+
+<script src="~/Jquery/jquery-3.3.1.js"></script>
+<script>
+    $("#Button1").click(function () {
+        var name = $("#name").val();
+        var role = $("input[type=radio]:checked").val();
+        var phone = $("#phone").val();
+        var email = $("#email").val();
+        var wechat = $("#WeChat").val();
+
+
+        $.ajax({
+            url: 'http://localhost:64502/api/Complain/AddComplains_autonym',
+            type: 'post',
+            data: JSON.stringify({
+                "cname": name,
+                "crole": role,
+                "cphone": phone,
+                "cemail": email,
+                "wechat": wechat,
+            }),
+            dataType: "json",
+            contentType: "application/json;charset=UTF-8",
+            success: function (data) {
+                if (data > 0) {
+                    alert("成功");
+                } else {
+                    alert("失败");
+                }
+            },
+        });
+    });
+
+
+</script>
