@@ -551,40 +551,38 @@
                 </div>
             </div>
         </div>
-        @*<hr style="position:relative;top:-22px;margin-top:20px;" />*@
-        <div class="gao-header-nav" style="border-top: 1px solid #ccc; line-height: 63px;">
-            <ul style="font-size:20px;color:black;">
-                <li style="float:left;list-style-type:none;position:relative;margin-left:33%;font-size:20px;" class=" layui-nav-item">
+
+        <div class="gao-header-nav">
+            <ul>
+                <li>
                     <div id="">
-                        <strong> <a href="/Admin/Default/Index" style="color:black">首页</a></strong>
+                        <a class="actives" href="/Admin/Default/Index">首页</a>
                     </div>
                 </li>
-                <li style="float:left;list-style-type:none;position:relative;margin-left:50px;">
+                <li>
                     <div id="">
-                        <strong> <a href="/Admin/Guanyv/Index" style="color:black">关于我们</a></strong>
+                        <a href="/Admin/Guanyv/Index">关于我们</a>
                     </div>
                 </li>
-                <li style="float:left;list-style-type:none;position:relative;margin-left:50px;">
+                <li>
                     <div id="">
-                        <strong> <a href="/Admin/Default/Information" style="color:black">要闻资讯</a></strong>
+                        <a href="/Admin/Default/Information">要闻资讯</a>
                     </div>
                 </li>
-                <li style="float:left;list-style-type:none;position:relative;margin-left:50px;">
+                <li>
                     <div id="">
-                        <strong> <a href="/Admin/Service/Index" style="color:black">行业/服务</a></strong>
+                        <a href="/Admin/Service/Index">行业/服务</a>
                     </div>
                 </li>
-                <li style="float:left;list-style-type:none;position:relative;margin-left:50px;">
+                <li>
                     <div>
-                        <strong> <a href="/Admin/Default/Insight" style="color:black">研究洞察</a></strong>
+                        <a href="/Admin/Default/Insight">研究洞察</a>
                     </div>
                 </li>
             </ul>
         </div>
+     
     </header>
-
-
-
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
