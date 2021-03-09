@@ -183,14 +183,14 @@
                 ]]
             });
 
-            //反填个人信息数据
-            var username = getCookie("name").toString();
-            var number = getCookie("number").toString();
+            //反填个人信息数据            
+            var number = getCookie("name").toString();
+            var username = getCookie("user").toString();
             var useremail = getCookie("email").toString();
             var userphone = getCookie("phone").toString();
             var content = getCookie("content").toString();
-            $('#name').val(username);
-            $('#userName').val(number);
+            $('#name').val(number);
+            $('#userName').val(username);
             $('#email').val(useremail);
             $('#phone').val(userphone);
             $('#content').val(content);
