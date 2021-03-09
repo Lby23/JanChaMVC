@@ -145,7 +145,7 @@
                 , cols: [[
                     { field: 'id', width: 80, title: '序号', templet: '#xuhao'}
                     , { field: 'name', width: 150, title: '栏目', sort: true }
-                    , { field: 'title', width: '20%', minWidth: 100, title: '名称', sort: true } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                    , { field: 'title', width: '15%', minWidth: 100, title: '名称', sort: true } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
                     , { field: 'sort', width: 80, title: '排序', sort: true }
                     , {
                         field: 'status', width: 80, title: '状态', sort: true
@@ -201,13 +201,13 @@
                     success: function (data) {
                         var str = '';
                         $(data.data).each(function () {
-                            str += '<tr>'
-                                + '<td>用户：' + this.userName + '</td>'
-                                + '<td>' + this.time1 + '</td>'
-                                + '</tr>';
+                            str += '<tr>';
+                            str += '<td>用户：' + this.userName + '</td>';
+                            str += '<td>' + this.time1 + '</td>';
+                            str += '</tr>';
                         });
                         $("#tab").empty().append(str);
-                        form.render();
+                        //form.render();
                     }
                 });
         });
