@@ -18,6 +18,9 @@
     <link href="~/src/swiper-4.2.6.min.css" rel="stylesheet" />
     <script src="~/src/swiper-4.2.6.min.js"></script>
     <link href="~/layui-v2.5.7/layui/css/layui.css" rel="stylesheet" />
+    <script src="~/layui-v2.5.7/layui/layui.js"></script>
+    <script src="~/layui-v2.5.7/layui/layui.all.js"></script>
+    <script src="~/Jquery/jquery-3.3.1.js"></script>
     @*<style type="text/css">
 
             footer {
@@ -517,6 +520,14 @@
             bottom: 100px;
             display: none;
         }
+
+        #top {
+            z-index: 2;
+            position: fixed;
+            bottom: 100px;
+            right: 85px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body style="position: relative; background: #fff; max-width: 1920px; min-width: 1200px; margin: 0 auto; ">
@@ -581,7 +592,7 @@
                 </li>
             </ul>
         </div>
-     
+
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -680,10 +691,16 @@
         </p>
     </footer>
     @*返回顶部*@
-    <div id="back_top">
+    <div id="back_top" title="返回顶部">
         <div class="arrow"></div>
         <div class="stick"></div>
     </div>
+    @*<input id="top" type="button" onclick="javascript:history.go(-1)" value="返回上一页" />*@
+
+    <button id="top" onclick="javascript:history.go(-1)" title="返回上一页">
+        <i class="layui-icon" style="font-size:30px">&#xe65c;</i>
+    </button>
+
 
     <script src="~/layui-v2.5.7/layui/layui.js"></script>
     <script src="~/Jquery/jquery-3.3.1.js"></script>
