@@ -264,25 +264,25 @@
             , url: 'http://localhost:64502/api/Complain' //数-据接口
             , page: true //开启分页
             , cols: [[ //表头
-                { field: 'Cid', title: '序号', width: 80, sort: true, fixed: 'left' }
-                , { field: 'Cnumber', title: '投诉编号', width: 180 }
-                , { field: 'Ctype', title: '投诉类别', width: 100 }
-                , { field: 'Crole', title: '身份信息', width: 100 }
-                , { field: 'Cname', title: '姓名', width: 100 }
-                , { field: 'Cphone', title: '电话', width: 150 }
-                , { field: 'WeChat', title: '微信', width: 50 }
-                , { field: 'Cemail', title: '邮箱', width: 100 }
-                , { field: 'ComplainPerson', title: '投诉人IP', width: 120 }
-                , { field: 'Caccessory', title: '是否有附件', width: 100 }
+                { field: 'cid', title: '序号', width: 80, sort: true, fixed: 'left' }
+                , { field: 'cnumber', title: '投诉编号', width: 180 }
+                , { field: 'ctype', title: '投诉类别', width: 100 }
+                , { field: 'crole', title: '身份信息', width: 100 }
+                , { field: 'cname', title: '姓名', width: 100 }
+                , { field: 'cphone', title: '电话', width: 150 }
+                , { field: 'weChat', title: '微信', width: 50 }
+                , { field: 'cemail', title: '邮箱', width: 100 }
+                , { field: 'complainPerson', title: '投诉人IP', width: 120 }
+                , { field: 'caccessory', title: '是否有附件', width: 100 }
                 , {
-                    field: 'Cstate', title: '状态', width: 80,
+                    field: 'cstate', title: '状态', width: 80,
                     templet: function (d)
                     {
                         return d.Cstate ? "已处理" : "待处理";
                     }
                 }
-                , { field: 'ComplainTime', title: '投诉时间', width: 180 }
-                , { field: 'CdisposePerson', title: '处理人', width: 150 }
+                , { field: 'complainTime', title: '投诉时间', width: 180 }
+                , { field: 'cdisposePerson', title: '处理人', width: 150 }
                 , { title: '操作', toolbar: '#barDemo', width: 300 }
             ]]
         });

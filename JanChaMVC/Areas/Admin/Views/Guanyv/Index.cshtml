@@ -4,16 +4,13 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <style>
-   /* body {
-        text-align: center
-    }*/
     #divcss1 {
         width: 1910px;
         height: 1150px;
     }
     #divcss2 {
         width:1915px;
-        height:50px;
+        height:100px;
         text-align:center;
     }
     #divcss3 {
@@ -29,10 +26,16 @@
         display: block;
     }
 </style>
+<title>关于我们</title>
 <div id="divcss1" style="padding-bottom:100px">
     <img src="~/Img/banner.png" style="width:1915px" />
     <div id="divcss2">
-        <h1>----------------------------------------------------关于我们----------------------------------------------------</h1>
+        <hr class="layui-bg-gray" style="height:10px;border-style:solid;">
+        <div style="width:250px;height:160px;background-color:#fff;margin-left:45%; margin-top:-70px;">
+            <p style="width:160px; padding:20px 0;border-bottom:1px solid;font-size:40px;margin-left:50px;">
+                关<span style="border-bottom:5px solid; padding:20px 0;">于我</span>们
+            </p>
+        </div>
     </div>
     <div id="divcss3">
         <div style="width:430px;height:430px;float:left">
@@ -61,19 +64,6 @@
             <img src="~/Img/aboutUS4.png" style="width:100%;height:100%" />
             <h1 style="margin-top:-185px;margin-left:120px;font-size:50px;color:white">招聘信息</h1>
             <a style="margin-top:-10px;margin-left:120px;font-size:45px;" href="/Admin/Guanyv/recruit">了解详情</a>
-        </div>
-    </div>
-    <div style="width:1000px;height:180px;margin-left:15%">
-        <img src="~/Img/lj.png" />
-        <h2 style="margin-top:-30px">相关链接</h2>
-        <div style="width:1000px;height:100px;line-height:100px;margin-top:10px">
-            <a style="margin-left: 20px" href="http://www.audit.gov.cn/index.html">中华人民共和国审计署</a>
-            <span style="margin-left:20px">|</span>
-            <a style="margin-left:20px" href="http://www.ciia.com.cn/index.html">中国内部审计协会</a>
-            <span style="margin-left:20px">|</span>
-            <a style="margin-left:20px" href="http://www.fanwubi.org/">企业反舞弊联盟</a>
-            <span style="margin-left:20px">|</span>
-            <a style="margin-left:20px" href="https://www.ctiea.com/">阳光诚信联盟</a>
         </div>
     </div>
 </div>
