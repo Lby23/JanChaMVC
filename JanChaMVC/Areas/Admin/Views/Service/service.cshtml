@@ -21,13 +21,13 @@
                 <li style="border-bottom: 1px solid;">
 
                     <p style="border-bottom: 1px solid;" id="sj">
-                        <span onclick="showHideCode1()">审计</span>
+                        <!--<span onclick="showHideCode1()">-->@*审计*@<!--</span>-->
                     </p>
                     <div id="showdiv1" style="width:190px;height:280px;float:left;display:none;margin:0 auto;">
 
                         <dl>
-                            <dd>
-                                <a id="324" name="投资理想审计">投资立项审计</a>
+                            <dd id="324">
+                                <a></a>
                             </dd>
                             <dd>
                                 <a id="325" name="设计（勘察）管理审计">设计（勘察）管理审计</a>
@@ -98,7 +98,7 @@
             </ul>
         </div>
         <div id="note" style="width:700px;height:666px;float:left;padding-left:10px;display:none;">
-            <p style="width:380px;height:40px;font-size:20px;background-color:azure;padding-left:300px;">投资立项审计</p>
+            <p style="width:380px;height:40px;font-size:20px;background-color:azure;padding-left:300px;" id="xx">@*投资立项审计*@</p>
             <div style="width:600px;height:180px;padding-top:30px;padding-bottom:50px;padding-left:10px;padding-right:10px;text-align:center;">
                
                 <div id="showdiv" style="width:600px;height:180px;display:none;">
@@ -124,6 +124,26 @@
     <script src="~/layui-v2.5.7/layui/layui.js"></script>
 
     <script>
+        $(function () {
+            $.ajax({
+                url: 'http://localhost:64502/api/Tab/Index',
+                type: 'get',
+                success: function (data) {
+                    var list = "";
+                    $(data).each(function () {
+                        list += "<a>" + this.severce1 + "</a>";
+                    });
+                    $("#324").empty().append(list);
+                    $("#xx").empty().append(list);
+                    
+                    var list = "";
+                    $(data).each(function () {
+                        list += " <span onclick='showHideCode1()'>" + this.tittle21 + "</span>";
+                    });
+                    $("#sj").empty().append(list);
+                }
+            });
+        })
 
         function showHideCode() {
             $("#showdiv").toggle();
