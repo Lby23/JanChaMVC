@@ -1,10 +1,11 @@
 ﻿
 @{
-    ViewData["Title"] = "Insight";
+    ViewData["Title"] = "Information";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -23,144 +24,113 @@
             border-bottom: 1px dashed #b9b2b2;
             padding-bottom: 12px;
         }
+
+        .backcolor {
+            width: 868px;
+            height: 240px;
+            border: 1px solid #b9b2b2;
+            margin-bottom: 20px;
+        }
+
+            .backcolor:hover {
+                background-color: #141b53;
+                color: #fff;
+            }
+
+        .h {
+            margin-bottom: 15px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .p {
+            margin-bottom: 50px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+
+        .li {
+            float: left;
+            font-size: 20px;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            background-color: #ebe2e2;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle
+        }
+
+            .li:focus {
+                color: #000;
+                background-color: #3153f5;
+                text-shadow: none;
+            }
     </style>
 </head>
 <body>
-
-    <div style="margin-bottom:100px;margin-top:-40px;">
-        <img src="~/Img/新闻中心.jpg" style="width:100%;" />
+    <!--标题栏-->
+    <div style="margin-bottom:100px; margin-top:-40px;">
+        <img src="~/Img/研究与洞察1.jpg" style="width:100%;" />@*border:1px solid #808080;*@
     </div>
-    <hr class="layui-bg-gray" style="height:10px;border:1px solid #808080;">
+    <hr class="layui-bg-gray" style="height:10px;border-style:solid;">
     <div style="width:250px;height:160px;background-color:#fff;margin-left:45%; margin-top:-70px;">
         <p style="width:160px; padding:20px 0;border-bottom:1px solid;font-size:40px;margin-left:50px;">
             研<span style="border-bottom:5px solid; padding:20px 0;">究洞</span>察
         </p>
     </div>
-
-
-    <div style="width:1200px;height:316px; margin:50px auto; border:3px solid #b9b2b2">
+    <!--轮播栏-->
+    <div style="width:1200px;height:316px; margin:50px auto; border:3px solid #b9b2b2;text-align:center">
         <div class="layui-carousel" id="test1">
             <div carousel-item>
-                <div>
-                    <div style="width: 365px; margin: 25px 0px 25px 25px; float: left;">
-                        <img src="~/Img/20210204_160818_630396.png" style="width:365px;height:195px; margin-bottom:25px; border:1px solid #141b53" />
-                        <p style="margin:0 auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">中梁控股"三道红线降档"</p>
+
+
+                @*<div>
+                        <div style="width: 365px; margin: 25px 0px 25px 25px; float: left;">
+                            <img src="~/Img/20210204_160818_630396.png" style="width:365px;height:195px; margin-bottom:25px;" />
+                            <p style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">中梁控股"三道红线降档"</p>
+                        </div>
+                        <div style="width: 365px; margin: 25px 0px 25px 25px; float: left;">
+                            <img src="~/Img/20210204_161815_340427.png" style="width:365px;height:195px; margin-bottom:25px;" />
+                            <p style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">业绩快报 | 中梁​2020全年累计合约销售1688亿元，稳居行业20强</p>
+                        </div>
+                        <div style="width: 365px; margin: 25px 0px 25px 25px; float: left;">
+                            <img src="~/Img/20210204_161228_981899.jpg" style="width:365px;height:195px; margin-bottom:25px;" />
+                            <p style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">中梁控股"三道红线降档"</p>
+                        </div>
                     </div>
-                    <div style="width: 365px; margin: 25px 0px 25px 25px; float: left;">
-                        <img src="~/Img/20210204_161815_340427.png" style="width:365px;height:195px; margin-bottom:25px;" />
-                        <p style="margin:0 auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">业绩快报 | 中梁​2020全年累计合约销售1688亿元，稳居行业20强</p>
-                    </div>
-                    <div style="width: 365px; margin: 25px 0px 25px 25px; float: left;">
-                        <img src="~/Img/20210204_161228_981899.jpg" style="width:365px;height:195px; margin-bottom:25px;" />
-                        <p style="margin:0 auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">中梁控股"三道红线降档"</p>
-                    </div>
-                </div>
-                <div>
-                    <div style="width: 365px; margin: 25px 0px 25px 25px; float: left;">
-                        <img src="~/Img/20210204_160818_630396.png" style="width:365px;height:195px; margin-bottom:25px; border:1px solid #141b53" />
-                        <p style="margin:0 auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">中梁控股"三道红线降档"</p>
-                    </div>
-                    <div style="width: 365px; margin: 25px 0px 25px 25px; float: left;">
-                        <img src="~/Img/20210204_161815_340427.png" style="width:365px;height:195px; margin-bottom:25px;" />
-                        <p style="margin:0 auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">业绩快报 | 中梁​2020全年累计合约销售1688亿元，稳居行业20强</p>
-                    </div>
-                    <div style="width: 365px; margin: 25px 0px 25px 25px; float: left;">
-                        <img src="~/Img/20210204_161228_981899.jpg" style="width:365px;height:195px; margin-bottom:25px;" />
-                        <p style="margin:0 auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">中梁控股"三道红线降档"</p>
-                    </div>
-                </div>
+                    <div>
+                        <div style="width: 365px; margin: 25px 0px 25px 25px; float: left;">
+                            <img src="~/Img/20210204_160818_630396.png" style="width:365px;height:195px; margin-bottom:25px;" />
+                            <p style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">中梁控股"三道红线降档"</p>
+                        </div>
+                        <div style="width: 365px; margin: 25px 0px 25px 25px; float: left;">
+                            <img src="~/Img/20210204_161815_340427.png" style="width:365px;height:195px; margin-bottom:25px;" />
+                            <p style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">业绩快报 | 中梁​2020全年累计合约销售1688亿元，稳居行业20强</p>
+                        </div>
+                        <div style="width: 365px; margin: 25px 0px 25px 25px; float: left;">
+                            <img src="~/Img/20210204_161228_981899.jpg" style="width:365px;height:195px; margin-bottom:25px;" />
+                            <p style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">中梁控股"三道红线降档"</p>
+                        </div>
+                    </div>*@
+
+
             </div>
         </div>
     </div>
     <div style="width:1200px;height:900px; margin:0 auto;margin-top:50px;">
-        <div style="float:left;">
-            <div style="width:868px;height:240px; border:1px solid #b9b2b2;margin-bottom:20px;" onmouseover="this.style.background='#141b53', this.style.color='#fff'" onmouseout="this.style.background='',this.style.color='#000'">
-                <div style="margin:20px;">
-                    <img src="~/Img/20190823_160223_717912.jpg" style="width:350px;height:200px; margin-right:50px; float:left;" />
-                    <div style="width:400px;height:200px; float:left;">
-                        <h3 style="margin-bottom:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">稳健前行！中梁首入中国民企500强，并获上海民营企业10强</h3>
-                        <p style="margin-bottom: 50px; overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;">
-                            8月22日，全国工商联发布《2019中国民营企业500强榜单》，中梁（2772.HK）以304.2亿元的营业收入位列第280名，
-                            这也是中梁首次跻身此榜单。在同步公布的“中国民营企业服务业100强”的榜单中，中梁控股亦榜上有名，位列第78位。
-                            值得关注的是，在8月19日发布的“2019上海民营企业100
-                        </p>
-                        <p style="margin-bottom: 15px;">
-                            <i class="layui-icon">&#xe68d;</i>
-                            <span>2019-08-23</span>
-                            <a href="">了解详情</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div style="width:868px;height:240px; border:1px solid #b9b2b2;margin-bottom:20px;" onmouseover="this.style.background='#141b53', this.style.color='#fff'" onmouseout="this.style.background='',this.style.color='#000'">
-                <div style="margin:20px;">
-                    <img src="~/Img/20190823_160223_717912.jpg" style="width:350px;height:200px; margin-right:50px; float:left;" />
-                    <div style="width:400px;height:200px; float:left;">
-                        <h3 style="margin-bottom:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">稳健前行！中梁首入中国民企500强，并获上海民营企业10强</h3>
-                        <p style="margin-bottom: 50px; overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;">
-                            8月22日，全国工商联发布《2019中国民营企业500强榜单》，中梁（2772.HK）以304.2亿元的营业收入位列第280名，
-                            这也是中梁首次跻身此榜单。在同步公布的“中国民营企业服务业100强”的榜单中，中梁控股亦榜上有名，位列第78位。
-                            值得关注的是，在8月19日发布的“2019上海民营企业100
-                        </p>
-                        <p style="margin-bottom: 15px;">
-                            <i class="layui-icon">&#xe68d;</i>
-                            <span>2019-08-23</span>
-                            <a href="">了解详情</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div style="width:868px;height:240px; border:1px solid #b9b2b2;margin-bottom:20px;" onmouseover="this.style.background = '#141b53', this.style.color='#fff'" onmouseout="this.style.background='',this.style.color='#000'">
-                <div style="margin:20px;">
-                    <img src="~/Img/20190823_160223_717912.jpg" style="width:350px;height:200px; margin-right:50px; float:left;" />
-                    <div style="width:400px;height:200px; float:left;">
-                        <h3 style="margin-bottom:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">稳健前行！中梁首入中国民企500强，并获上海民营企业10强</h3>
-                        <p style="margin-bottom: 50px; overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;">
-                            8月22日，全国工商联发布《2019中国民营企业500强榜单》，中梁（2772.HK）以304.2亿元的营业收入位列第280名，
-                            这也是中梁首次跻身此榜单。在同步公布的“中国民营企业服务业100强”的榜单中，中梁控股亦榜上有名，位列第78位。
-                            值得关注的是，在8月19日发布的“2019上海民营企业100
-                        </p>
-                        <p style="margin-bottom: 15px;">
-                            <i class="layui-icon">&#xe68d;</i>
-                            <span>2019-08-23</span>
-                            <a href="">了解详情</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div style="width:868px;margin-top:50px;">
-                <ul class="pagination" style="font-size:20px; float:right">
-                    <li style="float:left; width:40px;height:40px;margin-right:10px; background-color:#ebe2e2">
-                        <a href="/news?pn=2" style="margin-left:15px;margin-top:20px;">&lt;</a>
-                    </li>
-                    <li style="float:left; width:40px;height:40px;margin-right:10px; background-color:#ebe2e2">
-                        <a href="/news?pn=1" style="margin-left:15px;margin-top:20px;">1</a>
-                    </li>
-                    <li style="float:left; width:40px;height:40px;margin-right:10px; background-color:#ebe2e2">
-                        <a href="/news?pn=2" style="margin-left:15px;margin-top:20px;">2</a>
-                    </li>
-                    <li style="float:left; width:40px;height:40px;margin-right:10px; background-color:#ebe2e2;">
-                        <a href="" style="margin-left:15px;margin-top:20px;">3</a>
-                    </li>
-                    <li style="float:left; width:40px;height:40px;margin-right:10px; background-color:#ebe2e2;">
-                        <a href="/news?pn=4" style="margin-left:15px;margin-top:20px;">4</a>
-                    </li>
-                    <li style="float:left; width:40px;height:40px;margin-right:10px; background-color:#ebe2e2;">
-                        <a href="/news?pn=5" style="margin-left:15px;margin-top:20px;">5</a>
-                    </li>
-                    <li style="float:left; width:40px;height:40px;margin-right:10px; background-color:#ebe2e2;">
-                        <a href="/news?pn=4" style="margin-left:15px;margin-top:20px;">&gt;</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        <!--右边栏--><!--先左后右放不下-->
         <div style="width:300px; float:right; ">
             <div style="width:300px;height:349px; border:1px solid #b9b2b2;">
                 <div style="width:300px;height:53px;background-color:gainsboro">
                     <span style="font-size:20px; margin-top:12px;margin-left:20px; float:left;">热门推荐</span>
                 </div>
                 <div style=" width:260px;float:left;">
-                    <p class="hotList" style="border-bottom:1px dashed #b9b2b2;padding-bottom:12px;">
+                    <p class="hotList">
                         一笺说丨有信用，走大道 住建部约谈、房贷利率上调 楼市调控...
                     </p>
                     <p class="hotList">
@@ -195,52 +165,175 @@
             </div>
             <div style="width:300px;height:300px; background-color:gainsboro; margin-top:30px;">
                 <div style="width: 300px; height: 99px; border-bottom: 1px solid #b9b2b2">
-                    <a href="">
+                    <a href="/Admin/Complaint/Index">
                         <img src="~/Img/投诉举报.png" style="width:68px;height:68px; margin-top:15px;margin-left:40px;" />
                         <span style="margin-top:80px;margin-left:30px; font-size:20px;">投诉举报</span>
                     </a>
                 </div>
                 <div style="width: 300px; height: 100px; border-bottom: 1px solid #b9b2b2">
-                    <a href="">
+                    <a href="/Admin/DongChaController1/Index2">
                         <img src="~/Img/问卷调查.png" style="width:68px;height:68px; margin-top:15px;margin-left:40px;" />
                         <span style="margin-top:80px;margin-left:30px; font-size:20px;">问卷调查</span>
                     </a>
                 </div>
                 <div style="width: 300px; height: 99px; border-bottom: 1px solid #b9b2b2">
-                    <a href="">
+                    <a href="/Admin/Guanyv/recruit">
                         <img src="~/Img/加入我们.png" style="width:68px;height:68px; margin-top:15px;margin-left:40px;" />
                         <span style="margin-top:80px;margin-left:30px; font-size:20px;">加入我们</span>
                     </a>
                 </div>
             </div>
         </div>
+        <!--左边栏-->
+        <div style="width:870px;height:820px; float:left;" id="news2">
+            @*<div class="backcolor">
+                    <div style="margin:20px;">
+                        <img src="~/Img/20190823_160223_717912.jpg" style="width:350px;height:200px; margin-right:50px; float:left;" />
+                        <div style="width:400px;height:200px; float:left;">
+                            <h3 class="h">稳健前行！中梁首入中国民企500强，并获上海民营企业10强</h3>
+                            <p class="p">
+                                8月22日，全国工商联发布《2019中国民营企业500强榜单》，中梁（2772.HK）以304.2亿元的营业收入位列第280名，
+                                这也是中梁首次跻身此榜单。在同步公布的“中国民营企业服务业100强”的榜单中，中梁控股亦榜上有名，位列第78位。
+                                值得关注的是，在8月19日发布的“2019上海民营企业100
+                            </p>
+                            <p style="margin-bottom: 15px;">
+                                <i class="layui-icon">&#xe68d;</i>
+                                <span>2019-08-23</span> 了解详情
+                            </p>
+                        </div>
+                    </div>
+                </div>*@
+        </div>
+        <div id="pageDiv" style="width:868px; margin-top:20px;margin-left:500px;">
 
-
+        </div>
     </div>
-
     <script src="~/layui-v2.5.7/layui/layui.js"></script>
     <script src="~/Jquery/jquery-3.3.1.js"></script>
     <script>
-        //一般直接写在一个js文件中
-        layui.use(['layer', 'form'], function () {
-            var layer = layui.layer
-                , form = layui.form;
+        //每页条数
+        var limit = 3;
+        var i = 0;
+        $(function () {
+            layui.use('carousel', function () {
+                var carousel = layui.carousel;
+                //建造实例
+                var ins = carousel.render({
+                    elem: '#test1'
+                    , width: '100%' //设置容器宽度
+                    , height: '100%'
+                    //, arrow: 'always' //始终显示箭头
+                    //,anim: 'updown' //切换动画方式
+                });
+                //加载轮播数据
+                $.ajax({
+                    url: 'http://localhost:64502/api/Article/GetArticles',
+                    type: 'get',
 
+                    success: function (result) {
+                        var str = '';
+                        str += '<div>';
+                        $(result.data).each(function () {
+                            str += '<a href="/Admin/Default/Information"><div style="width: 365px; margin: 25px 0px 25px 25px; float: left;">';
+                            str += '<img src="' + this.image + '" style="width:365px;height:195px; margin-bottom:25px;" />';
+                            str += '<p style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + this.title + '</p>';
+                            str += '</div></a>';
+                            i++;
+                            if (i == 3) {
+                                str += '</div> <div>';
+                            }
+                            if (i == 6) {
+                                str += '</div>'
+                            }
+                        });
 
-        });
+                        $('#test1>div').empty().append(str);
+                        //下面这步很重要
+                        ins.reload({ elem: '#test1' });//重置轮播图
 
-        layui.use('carousel', function () {
-            var carousel = layui.carousel;
-            //建造实例
-            carousel.render({
-                elem: '#test1'
-                , width: '100%' //设置容器宽度
-                , height: '100%'
-                //, arrow: 'always' //始终显示箭头
-                //,anim: 'updown' //切换动画方式
+                    },
+                    error: function () {
+                        alert("数据库查询失败，请联系管理员！")
+                    }
+                });
             });
+
+
+            layui.use(['layer', 'form'], function () {
+                var layer = layui.layer
+                    , form = layui.form;
+                loadData(1);
+            });
+
         });
+        //加载数据
+        function loadData(page) {
+            $.ajax({
+                url: 'http://localhost:64502/api/Article/GetArticles',
+                type: 'get',
+                data: {
+                    page: page,
+                    limit: limit
+                },
+                success: function (result) {
+                    var str = '';
+                    $(result.data).each(function () {
+                        str += '<a href="/Admin/Default/Information"><div class="backcolor" >';
+                        str += '<div style="margin:20px;">';
+                        str += '    <img src="' + this.image + '" style="width:350px;height:200px; margin-right:50px; float:left;" />';
+                        str += '    <div style="width:400px;height:200px; float:left;">';
+                        str += '        <h3 class="h">' + this.title + '</h3>';
+                        str += '        <p class="p">' + this.jumpUrl + '';
+                        str += '            8月22日，全国工商联发布《2019中国民营企业500强榜单》，中梁（2772.HK）以304.2亿元的营业收入位列第280名，';
+                        str += '            这也是中梁首次跻身此榜单。在同步公布的“中国民营企业服务业100强”的榜单中，中梁控股亦榜上有名，位列第78位。';
+                        str += '            值得关注的是，在8月19日发布的“2019上海民营企业100';
+                        str += '    </p>';
+                        str += '        <p style="margin-bottom: 15px;">';
+                        str += '            <i class="layui-icon">&#xe68d;</i>';
+                        var time = this.createTime.substring(0, 10);
+                        str += '            <span>' + time + '</span> 了解详情';
+                        str += '    </p>';
+                        str += '    </div>';
+                        str += '</div></div></a>';
+                    });
+                    $('#news2').empty().append(str);
+
+                    showPager(result.count, page);
+                },
+                error: function () {
+                    alert("数据库查询失败，请联系管理员！")
+                }
+            })
+        }
+        //分页
+        function showPager(total, currentPageIndex) {
+            //total是总条数，计算一下有几页
+            var pageCount = Math.ceil(total / limit);
+            //上一页的页码
+            var prevIndex = (currentPageIndex - 1) == 0 ? 1 : (currentPageIndex - 1);
+            //下一页的页码
+            var nextIndex = (currentPageIndex + 1) > pageCount ? pageCount : (currentPageIndex + 1);
+
+            //定义字符串
+            var pagerHtml = "";
+            if (currentPageIndex = 1 || empty(currentPageIndex)) {
+                $('li:first').css('display', 'none');
+            }
+            if (currentPageIndex >= nextIndex) {
+                $('li:last').css('display', true);
+            }
+            pagerHtml += '   <nav><ul class="pager">';
+            pagerHtml += '       <li class="li"><a href="javascript:loadData(' + prevIndex + ')">&lt;</a></li>';
+            for (var i = 1; i <= pageCount; i++) {
+                pagerHtml += '       <li tabindex="' + i + '" class="li"><a href="javascript:loadData(' + i + ')">' + i + '</a></li>';
+            }
+            pagerHtml += '       <li class="li"><a href="javascript:loadData(' + nextIndex + ')">&gt;</a></li>';
+            pagerHtml += '   </ul></nav>';
+
+            $('#pageDiv').empty().append(pagerHtml);
+
+
+        }
     </script>
 </body>
 </html>
-
