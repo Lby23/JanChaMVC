@@ -520,11 +520,12 @@
             bottom: 100px;
             display: none;
         }
+
         #top {
             z-index: 2;
             position: fixed;
             bottom: 100px;
-            right: 80px;
+            right: 85px;
             cursor: pointer;
         }
     </style>
@@ -690,11 +691,15 @@
         </p>
     </footer>
     @*返回顶部*@
-    <div id="back_top">
+    <div id="back_top" title="返回顶部">
         <div class="arrow"></div>
         <div class="stick"></div>
     </div>
-    <input id="top" type="button" onclick="javascript:history.go(-1)" value="返回上一页"/>
+    @*<input id="top" type="button" onclick="javascript:history.go(-1)" value="返回上一页" />*@
+
+    <button id="top" onclick="javascript:history.go(-1)" title="返回上一页">
+        <i class="layui-icon" style="font-size:30px">&#xe65c;</i>
+    </button>
 
 
     <script src="~/layui-v2.5.7/layui/layui.js"></script>
