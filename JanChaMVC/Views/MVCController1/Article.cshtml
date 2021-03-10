@@ -364,7 +364,7 @@
                             $('[name="endTime"]').val(data.endTime);
                             $('[name="type"]').val(data.type);
                             $('[name="jumpUrl"]').val(data.jumpUrl);
-                            $('[name="image"]').val(data.image);
+                            $('#image').val(data.image);
                             form.render('select')
                             form.render('radio')
                         }
@@ -389,7 +389,7 @@
                                     endTime: $('[name="endTime"]').val(),
                                     type: $('[name="type"]').val(),
                                     jumpUrl: $('[name="jumpUrl"]').val(),
-                                    image: $('[name="image"]').val()
+                                    image: $('#image').val()
 
                                 }),
                                 success: function (data) {
