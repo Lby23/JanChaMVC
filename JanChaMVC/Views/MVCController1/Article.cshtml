@@ -53,6 +53,10 @@
                 </li>
             </ul>
         </div>
+        <!-- 内容左侧栏区域 -->
+        <div class="layui-side" lay-filter="test">
+            <div id="test1"></div>
+        </div>
         <!-- 内容主体区域 -->
         <div class="layui-body">
 
@@ -180,7 +184,7 @@
                         <img class="layui-upload-img" id="demo1" style="width:85px;height:80px;position:relative;left:215px;top:-50px">
                         <p id="demoText"></p>
                     </div>
-                    
+
                     <div class="layui-input-inline">
                         <input id="image" type="hidden" />
                         @*<input type="text" name="空" required lay-verify="required" placeholder="网络图片url" autocomplete="off" class="layui-input">*@
@@ -193,11 +197,11 @@
                     </div>
                 </div>
                 @*<div class="layui-form-item">
-                    <div class="layui-input-block">
-                        <button class="layui-btn" lay-submit lay-filter="formDemo" id="submit">保存</button>
-                        <button type="reset" class="layui-btn"><i class="layui-icon">&#xe9aa;</i>重置</button>
-                    </div>
-                </div>*@
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="formDemo" id="submit">保存</button>
+                            <button type="reset" class="layui-btn"><i class="layui-icon">&#xe9aa;</i>重置</button>
+                        </div>
+                    </div>*@
             </form>
         </div>
     </div>
@@ -506,7 +510,7 @@
                         }),
                         success: function (data) {
                             if (data > 0) {
-                                alert("添加成功");                               
+                                alert("添加成功");
                                 location.reload();
                                 table.reload('test', {
                                     where: { //设定异步数据接口的额外参数，任意设
@@ -530,6 +534,71 @@
             });
         })
 
+        //动态加载树
+        //渲染
+        $.ajax({
+            url: 'http://localhost:64502/api/Folder/Index',
+            type: 'get',
+            success: function (data) {
+                var datas = new Object;
+                loadTree('项目', data.data, datas);
+                layui.use('tree', function () {
+                    var tree = layui.tree;
+                    tree.render({
+                        elem: '#test1'//绑定元素
+                        , data: [{
+                            title: '项目1'
+                            , children: datas.children
+                            , spread: true
+                        }]
+                        , click: function (obj) {
+                            var data = obj.data;//获取当前点击的节点数据
+                            tableIns.reload({
+                                where: {    //设定异步数据接口的额外参数，任意设
+                                    id: $('#artname').val(),
+                                    name: data.name
+                                }
+                                , page: {
+                                    curr: 1 //重新从第1页开始
+                                }
+                            });
+                        }
+                    });
+                });
+            }
+        });
+
+        //var inst1 = tree.render({
+        //    elem: '#test1'  //绑定元素
+        //    , data: [{
+        //        title: '江西' //一级菜单
+        //        , children: [{
+        //            title: '南昌' //二级菜单
+        //            , children: [{
+        //                title: '高新区' //三级菜单
+        //                //…… //以此类推，可无限层级
+        //            }]
+        //        }]
+        //    }, {
+        //        title: '陕西' //一级菜单
+        //        , children: [{
+        //            title: '西安' //二级菜单
+        //        }]
+        //    }]
+        //});
+
+        function loadTree(prevName, data, element) {
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].name == prevName) {
+                    chiidItem = new Object;
+                    chiidItem.title = data[i].name;
+                    chiidItem.spread = true
+                    element.children = element.children == null ? new Array : element.children;
+                    element.children.push(chiidItem);
+                    loadTree(data[i].name, data, element.children[element.children.length - 1]);
+                }
+            }
+        }
     </script>
     <!--用来layui数据自动排序-->
     <script type="text/html" id="xuhao">
