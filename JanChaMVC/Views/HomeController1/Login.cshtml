@@ -153,11 +153,12 @@
                         alert(result);
                         if (result != "") {
                             alert("登录成功");
-                            Setcookie("name", result.Number);
-                            Setcookie("email", result.Email);
-                            Setcookie("phone", result.phone);
-                            Setcookie("content", result.userName);
-                            Setcookie("Id", result.uId);
+                            Setcookie("name", result[0].number);
+                            Setcookie("user", result[0].userName);
+                            Setcookie("email", result[0].emile);
+                            Setcookie("phone", result[0].phone);
+                            Setcookie("content", result[0].note);
+                            Setcookie("Id", result[0].uId);
                             location.href = '/MVCController1/Index';
                             return false;
                         } else {

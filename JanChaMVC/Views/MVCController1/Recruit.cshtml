@@ -301,7 +301,7 @@
         $("#chaxun").click(function () {
             tableObj.reload({
                 where: {
-                    RPosition: $("[name=RPosition]").val()
+                    rposition: $("[name=RPosition]").val()
                 },
                 page: {
                     curr: 1
@@ -324,24 +324,24 @@
                         layer.close(index); //如果设定了yes回调，需进行手工关闭
                     },
                     success: function () {
-                        if (data.Rtype == "社会招聘") {
+                        if (data.rtype == "社会招聘") {
                             $("#IRtypea").prop('checked', true);
-                        } else if (data.Rtype == "毕业生招聘") {
+                        } else if (data.rtype == "毕业生招聘") {
                             $("#IRtypeb").prop('checked', true);
-                        } else if (data.Rtype == "实习生招聘") {
+                        } else if (data.rtype == "实习生招聘") {
                             $("#IRtypec").prop('checked', true);
                         }
-                        $("[name=Rposition]").val(data.Rposition);
-                        $("[name=RpositionDescride]").val(data.RpositionDescride);
-                        $("[name=Rlocation]").val(data.Rlocation);
-                        $("[name=Rcompany]").val(data.Rcompany);
-                        if (data.Rstate == true) {
+                        $("[name=Rposition]").val(data.rposition);
+                        $("[name=RpositionDescride]").val(data.rpositionDescride);
+                        $("[name=Rlocation]").val(data.rlocation);
+                        $("[name=Rcompany]").val(data.rcompany);
+                        if (data.rstate == true) {
                             $("#Rstate123").prop('checked', true);
                         } else {
                             $("#Rstate1234").prop('checked', true);
                         }
-                        $("[name=Rtime]").val(data.Rtime);
-                        $("[name=Rperson]").val(data.Rperson);
+                        $("[name=Rtime]").val(data.rtime);
+                        $("[name=Rperson]").val(data.rperson);
                         form.render();
                     }
                     , content: $("#chakan")
@@ -349,7 +349,7 @@
             } else if (layEvent === 'del') { //删除
                 layer.confirm('真的删除行么', function (index) {
                     $.ajax({
-                        url: "http://localhost:64502/api/Recruit?RId=" + data.Rid,
+                        url: "http://localhost:64502/api/Recruit/DeleteRecruits?RId=" + data.rid,
                         type: "delete",
                         success: function (result) {
                             if (result > 0) {
@@ -370,41 +370,41 @@
                 , title: "修改"
                 , closeBtn: 1,
                 success: function () {
-                    if (data.Rtype == "社会招聘") {
+                    if (data.rtype == "社会招聘") {
                         $("#IRtypeaaa").prop('checked', true);
-                    } else if (data.Rtype == "毕业生招聘") {
+                    } else if (data.rtype == "毕业生招聘") {
                         $("#IRtypebbb").prop('checked', true);
-                    } else if (data.Rtype == "实习生招聘") {
+                    } else if (data.rtype == "实习生招聘") {
                         $("#IRtypeccc").prop('checked', true);
                     }
-                    $("[name=Rposition]").val(data.Rposition);
-                    $("[name=RpositionDescride]").val(data.RpositionDescride);
-                    $("[name=Rlocation]").val(data.Rlocation);
-                    $("[name=Rcompany]").val(data.Rcompany);
-                    if (data.Rstate == true) {
+                    $("[name=Rposition]").val(data.rposition);
+                    $("[name=RpositionDescride]").val(data.rpositionDescride);
+                    $("[name=Rlocation]").val(data.rlocation);
+                    $("[name=Rcompany]").val(data.rcompany);
+                    if (data.rstate == true) {
                         $("#IRstate321").prop('checked', true);
                     } else {
                         $("#IRstate567").prop('checked', true);
                     }
-                    $("[name=Rtime]").val(data.Rtime);
-                    $("[name=Rperson]").val(data.Rperson);
+                    $("[name=Rtime]").val(data.rtime);
+                    $("[name=Rperson]").val(data.rperson);
                     form.render();
                 }
                 , content: $('#xiugai') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
                 , yes: function (index, layero) {
                     $.ajax({
-                        url: "http://localhost:64502/api/Recruit?RId=" + data.Rid,
+                        url: "http://localhost:64502/api/Recruit/UpdateRecruits?RId=" + data.rid,
                         type: "put",
                         data: JSON.stringify({
-                            Rid: data.Rid,
-                            Rtype: $("input[name='Rtype']:checked").val(),
-                            Rposition: $("[name=Rposition]").val(),
-                            RpositionDescride: $("[name=RpositionDescride]").val(),
-                            Rlocation: $("[name=Rlocation]").val(),
-                            Rcompany: $("[name=Rcompany]").val(),
-                            Rstate: $("#IRstate1").prop("checked") == true ? true : false,
-                            Rtime: $("[name=Rtime]").val(),
-                            Rperson: $("[name=Rperson]").val(),
+                            rid: data.Rid,
+                            rtype: $("input[name='Rtype']:checked").val(),
+                            rposition: $("[name=Rposition]").val(),
+                            rpositionDescride: $("[name=RpositionDescride]").val(),
+                            rlocation: $("[name=Rlocation]").val(),
+                            rcompany: $("[name=Rcompany]").val(),
+                            rstate: $("#IRstate1").prop("checked") == true ? true : false,
+                            rtime: $("[name=Rtime]").val(),
+                            rperson: $("[name=Rperson]").val(),
                         }),
                         success: function (result) {
                             if (result > 0) {
@@ -430,17 +430,17 @@
             console.log(data.form) //被执行提交的form对象，一般在存在form标签时才会返回
             console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
             $.ajax({
-                url: "http://localhost:64502/api/Recruit",
+                url: "http://localhost:64502/api/Recruit/AddRecruits",
                 type: 'post',
                 data: JSON.stringify({
-                    Rtype: $("input[name='Rtype']:checked").val(),
-                    Rposition: $("[name=Rposition]").val(),
-                    RpositionDescride: $("[name=RpositionDescride]").val(),
-                    Rlocation: $("[name=Rlocation]").val(),
-                    Rcompany: $("[name=Rcompany]").val(),
-                    Rstate: $("#IRstate1").prop("checked") == true ? true : false,
-                    Rtime: $("[name=Rtime]").val(),
-                    Rperson: $("[name=Rperson]").val(),
+                    rtype: $("input[name='Rtype']:checked").val(),
+                    rposition: $("[name=Rposition]").val(),
+                    rpositionDescride: $("[name=RpositionDescride]").val(),
+                    rlocation: $("[name=Rlocation]").val(),
+                    rcompany: $("[name=Rcompany]").val(),
+                    rstate: $("#IRstate1").prop("checked") == true ? true : false,
+                    rtime: $("[name=Rtime]").val(),
+                    rperson: $("[name=Rperson]").val(),
                 }),
                 success: function (result)
                 {
