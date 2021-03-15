@@ -56,19 +56,27 @@
         .li {
             float: left;
             font-size: 20px;
-            width: 40px;
-            height: 40px;
+            /*width: 40px;
+            height: 40px;*/
             margin-right: 10px;
             background-color: #ebe2e2;
-            text-align: center;
+            /*text-align: center;
             display: table-cell;
-            vertical-align: middle
+            vertical-align: middle*/
         }
 
-            .li:focus {
+            .li :focus {
                 color: #000;
                 background-color: #3153f5;
                 text-shadow: none;
+            }
+            .li a {
+                display: block;
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                text-decoration: none;
             }
     </style>
 </head>
@@ -229,7 +237,7 @@
                 $.ajax({
                     url: 'http://localhost:64502/api/Article/GetArticles',
                     type: 'get',
-
+                    data: limit,
                     success: function (result) {
                         var str = '';
                         str += '<div>';
@@ -239,10 +247,10 @@
                             str += '<p style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + this.title + '</p>';
                             str += '</div></a>';
                             i++;
-                            if (i == 3) {
+                            if (i % 3 == 0) {
                                 str += '</div> <div>';
                             }
-                            if (i == 6) {
+                            if (i == result.count) {
                                 str += '</div>'
                             }
                         });

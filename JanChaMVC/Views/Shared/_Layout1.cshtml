@@ -48,7 +48,13 @@
             </ul>
         </div>
         <div>
-            @RenderBody()
+
+            <div id="testtree" class="demo-tree demo-tree-box" style="width: 200px; height: 300px; overflow: scroll;"></div>
+
+            <div class="layui-body">
+                @RenderBody()
+            </div>
+
         </div>
     </div>
     <script>
@@ -62,7 +68,40 @@
             });
         });
     </script>
-    
+    <script>
+        layui.use(['tree', 'util'], function () {
+            var tree = layui.tree
+                , layer = layui.layer
+                , util = layui.util;
+
+            var $ = layui.$;
+            var treedata;
+
+            $.ajax({
+                url: "http://localhost:64502/api/Folder/LoadTree",
+                type: "get",
+                async: false,//关闭异步
+                success: function (d) {
+                    treedata = d;
+                    //alert(d);
+                }
+            });
+
+            //基本演示
+            tree.render({
+                elem: '#testtree'
+                , data: treedata
+                , showLine: false  //是否开启连接线
+                , id: 'demo1'
+                , isJump: true //是否允许点击节点时弹出新窗口跳转
+                , click: function (obj) {
+                    var data = obj.data;  //获取当前点击的节点数据
+                    layer.msg('状态：' + obj.state + '<br>节点数据：' + JSON.stringify(data));
+                }
+            });
+
+        });
+    </script>
     <script type="text/html" id="zizeng">
         {{d.LAY_TABLE_INDEX+1}}
     </script>
