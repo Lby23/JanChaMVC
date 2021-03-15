@@ -208,15 +208,15 @@
                         <div class="layui-form-item">
                             <label class="layui-form-label">是否有附件</label>
                             <div class="layui-input-inline">
-                                <input type="radio" name="Caccessory" value="是" title="是">
-                                <input type="radio" name="Caccessory" value="否" title="否">
+                                <input type="radio" name="Caccessory" id="cacc1"  value="是" title="是">
+                                <input type="radio" name="Caccessory" id="cscc2"  value="否" title="否">
                             </div>
                         </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label">状态</label>
                             <div class="layui-input-inline">
-                                <input type="radio" name="Cstate" value="true" title="已处理">
-                                <input type="radio" name="Cstate" value="false" title="待处理">
+                                <input type="radio" name="Cstate" value="true"  id="cstate1"  title="已处理">
+                                <input type="radio" name="Cstate" value="false" id="cstate2"  title="待处理">
                             </div>
                         </div>
                         <div class="layui-form-item">
@@ -319,38 +319,38 @@
                     , title: "修改"
                     , closeBtn: 1,
                     success: function () {
-                        $("[name=Cnumber]").val(data.Cnumber);
-                        $("[name=Ctype]").val(data.Ctype);
-                        $("[name=Crole]").val(data.Crole);
-                        $("[name=Cname]").val(data.Cname);
-                        $("[name=Cphone]").val(data.Cphone);
-                        $("[name=WeChat]").val(data.WeChat);
-                        $("[name=Cemail]").val(data.Cemail);
-                        $("[name=ComplainPerson]").val(data.ComplainPerson);
-                        $("[name=Caccessory]").val(data.Caccessory);
-                        $("[name=Cstate]").val(data.Cstate);
-                        $("[name=ComplainTime]").val(data.ComplainTime);
-                        $("[name=CdisposePerson]").val(data.CdisposePerson);
+                        $("[name=Cnumber]").val(data.cnumber);
+                        $("[name=Ctype]").val(data.ctype);
+                        $("[name=Crole]").val(data.crole);
+                        $("[name=Cname]").val(data.cname);
+                        $("[name=Cphone]").val(data.cphone);
+                        $("[name=WeChat]").val(data.weChat);
+                        $("[name=Cemail]").val(data.cemail);
+                        $("[name=ComplainPerson]").val(data.complainPerson);
+                        $("[name=Caccessory]").val(data.caccessory);
+                        $("[name=Cstate]").val(data.cstate);
+                        $("[name=ComplainTime]").val(data.complainTime);
+                        $("[name=CdisposePerson]").val(data.cdisposePerson);
                     }
                     , content: $('#xiugai') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
                     , yes: function (index, layero) {
                         $.ajax({
-                            url: "http://localhost:64502/api/Complain?Cid=" + data.Cid,
+                            url: "http://localhost:64502/api/Complain/PutComplain?Cid=" + data.cid,
                             type: "put",
                             data: JSON.stringify({
-                                Cid: data.Cid,
-                                Cnumber: $("#ICnumber").val(),
-                                Ctype: $("#ICtype").val(),
-                                Crole: $("#ICrole").val(),
-                                Cname: $("#ICname").val(),
-                                Cphone: $("#ICphone").val(),
-                                WeChat: $("#IWeChat").val(),
-                                Cemail: $("#ICemail").val(),
-                                ComplainPerson: $("#IComplainPerson").val(),
-                                Caccessory: $("#ICaccessory").prop("checked") == true ? "是" : "否",
-                                Cstate: $("#ICstate").prop("checked") == true ? true : false,
-                                ComplainTime: $("#IComplainTime").val(),
-                                CdisposePerson: $("#ICdisposePerson").val(),
+                                cid: data.Cid,
+                                cnumber: $("#ICnumber").val(),
+                                ctype: $("#ICtype").val(),
+                                crole: $("#ICrole").val(),
+                                cname: $("#ICname").val(),
+                                cphone: $("#ICphone").val(),
+                                weChat: $("#IWeChat").val(),
+                                cemail: $("#ICemail").val(),
+                                complainPerson: $("#IComplainPerson").val(),
+                                caccessory: $("#ICaccessory").prop("checked") == true ? "是" : "否",
+                                cstate: $("#ICstate").prop("checked") == true ? true : false,
+                                complainTime: $("#IComplainTime").val(),
+                                cdisposePerson: $("#ICdisposePerson").val(),
                             }),
                             success: function (result) {
                                 if (result > 0) {
@@ -372,7 +372,7 @@
             } else if (layEvent === 'del') {//删除
                 layer.confirm('确定删除吗?', function (index) {
                     $.ajax({
-                        url: "http://localhost:64502/api/Complain?Cid=" + data.Cid,
+                        url: "http://localhost:64502/api/Complain/DelComplain?Cid=" + data.cid,
                         type: "delete",
                         success: function (result) {
                             if (result > 0) {
@@ -396,18 +396,27 @@
                         layer.close(index); //如果设定了yes回调，需进行手工关闭
                     },
                     success: function () {
-                        $("[name=Cnumber]").val(data.Cnumber);
-                        $("[name=Ctype]").val(data.Ctype);
-                        $("[name=Crole]").val(data.Crole);
-                        $("[name=Cname]").val(data.Cname);
-                        $("[name=Cphone]").val(data.Cphone);
-                        $("[name=WeChat]").val(data.WeChat);
-                        $("[name=Cemail]").val(data.Cemail);
-                        $("[name=ComplainPerson]").val(data.ComplainPerson);
-                        $("[name=Caccessory]").val(data.Caccessory);
-                        $("[name=Cstate]").val(data.Cstate);
-                        $("[name=ComplainTime]").val(data.ComplainTime);
-                        $("[name=CdisposePerson]").val(data.CdisposePerson);
+                        $("[name=Cnumber]").val(data.cnumber);
+                        $("[name=Ctype]").val(data.ctype);
+                        $("[name=Crole]").val(data.crole);
+                        $("[name=Cname]").val(data.cname);
+                        $("[name=Cphone]").val(data.cphone);
+                        $("[name=WeChat]").val(data.weChat);
+                        $("[name=Cemail]").val(data.cemail);
+                        $("[name=ComplainPerson]").val(data.complainPerson);
+                        if (data.caccessory == true) {
+                            $("#cacc1").prop('checked', true);
+                        } else {
+                            $("#cacc1").prop('checked', true);
+                        }
+                        if (data.cstate == true) {
+                            $("#cstate2").prop('checked', true);
+                        } else {
+                            $("#cstate2").prop('checked', true);
+                        }
+                        $("[name=ComplainTime]").val(data.complainTime);
+                        $("[name=CdisposePerson]").val(data.cdisposePerson);
+                        form.render();
                     }
                     , content: $('#xiangqing') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
                 });

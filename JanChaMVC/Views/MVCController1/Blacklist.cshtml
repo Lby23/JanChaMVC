@@ -246,7 +246,7 @@
 
         });
 
-        layui.use(['table', 'form','laydate'], function () {
+        layui.use(['table', 'form', 'laydate'], function () {
             var table = layui.table;
             var form = layui.form;
             var laydate = layui.laydate;
@@ -311,34 +311,34 @@
                         , title: "修改"
                         , closeBtn: 1,
                         success: function () {
-                            $("[name=Bid]").val(data.Bid);
-                            $("[name=Btype]").val(data.Btype);
-                            $("[name=Bunit]").val(data.Bunit);
-                            $("[name=BpapersNumber]").val(data.BpapersNumber);
-                            $("[name=Bmatter]").val(data.Bmatter);
-                            if (data.Bstate == true) {
+                            $("[name=Bid]").val(data.bid);
+                            $("[name=Btype]").val(data.btype);
+                            $("[name=Bunit]").val(data.bunit);
+                            $("[name=BpapersNumber]").val(data.bpapersNumber);
+                            $("[name=Bmatter]").val(data.bmatter);
+                            if (data.bstate == true) {
                                 $("#IBstate2").prop('checked', true);
                             } else {
                                 $("#IIBstate22").prop('checked', true);
                             }
-                            $("[name=BUpdateTime]").val(data.BUpdateTime);
-                            $("[name=PubLishPerson]").val(data.PubLishPerson);
+                            $("[name=BUpdateTime]").val(data.bUpdateTime);
+                            $("[name=PubLishPerson]").val(data.pubLishPerson);
                             form.render();
                         }
                         , content: $('#xiugai') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
                         , yes: function (index, layero) {
                             $.ajax({
-                                url: "http://localhost:64502/api/BlackList?Bid=" + data.Bid,
+                                url: "http://localhost:64502/api/BlackList/UpdateBlacklist?Bid=" + data.bid,
                                 type: "put",
                                 data: JSON.stringify({
-                                    Bid: data.Bid,
-                                    Btype: $("#IBtype2").val(),
-                                    Bunit: $("#IBunit2").val(),
-                                    BpapersNumber: $("#IBpapersNumber2").val(),
-                                    Bmatter: $("#IBmatter2").val(),
-                                    Bstate: $("#IBstate2").prop('checked') == true ? true : false,
-                                    BUpdateTime: $("#IBUpdateTime2").val(),
-                                    PubLishPerson: $("#IPubLishPerson2").val(),
+                                    bid: data.Bid,
+                                    btype: $("#IBtype2").val(),
+                                    bunit: $("#IBunit2").val(),
+                                    bpapersNumber: $("#IBpapersNumber2").val(),
+                                    bmatter: $("#IBmatter2").val(),
+                                    bstate: $("#IBstate2").prop('checked') == true ? true : false,
+                                    bUpdateTime: $("#IBUpdateTime2").val(),
+                                    pubLishPerson: $("#IPubLishPerson2").val(),
                                 }),
                                 success: function (result) {
                                     if (result > 0) {
@@ -359,15 +359,15 @@
                 } else if (layEvent === 'del') {//删除
                     layer.confirm('确定删除吗?', function (index) {
                         $.ajax({
-                            url: "http://localhost:64502/api/BlackList?Bid=" + data.Bid,
-                            type: "delete",
+                            url: "http://localhost:64502/api/BlackList/DelBlacklist?Bid=" + data.bid,
+                            type: "Delete",
                             success: function (result) {
                                 if (result > 0) {
                                     layer.msg("删除成功！");
                                     tableObj.reload();//重载表格
                                 }
                                 else {
-                                    layer.msg("哎呀呀，删除失败咯");
+                                    layer.msg("删除失败");
                                 }
                             }
                         })
@@ -383,17 +383,17 @@
                             layer.close(index); //如果设定了yes回调，需进行手工关闭
                         },
                         success: function () {
-                            $("[name=Btype]").val(data.Btype);
-                            $("[name=Bunit]").val(data.Bunit);
-                            $("[name=BpapersNumber]").val(data.BpapersNumber);
-                            $("[name=Bmatter]").val(data.Bmatter);
+                            $("[name=Btype]").val(data.btype);
+                            $("[name=Bunit]").val(data.bunit);
+                            $("[name=BpapersNumber]").val(data.bpapersNumber);
+                            $("[name=Bmatter]").val(data.bmatter);
                             if (data.Bstate == true) {
                                 $("#IBstate1").prop('checked', true);
                             } else {
                                 $("#IBstate11").prop('checked', true);
                             }
-                            $("[name=BUpdateTime]").val(data.BUpdateTime);
-                            $("[name=PubLishPerson]").val(data.PubLishPerson);
+                            $("[name=BUpdateTime]").val(data.bUpdateTime);
+                            $("[name=PubLishPerson]").val(data.pubLishPerson);
                             form.render();
                         }
                         , content: $('#xiangqing') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
@@ -411,13 +411,13 @@
                     url: "http://localhost:64502/api/BlackList",
                     type: "post",
                     data: JSON.stringify({
-                        Btype: $("#IBtype").val(),
-                        Bunit: $("#IBunit").val(),
-                        BpapersNumber: $("#IBpapersNumber").val(),
-                        Bmatter: $("#IBmatter").val(),
-                        Bstate: $("#IBstate2").prop("checked") == true ? true : false,
-                        BUpdateTime: $("#IBUpdateTime").val(),
-                        PubLishPerson: $("#IPubLishPerson").val(),
+                        btype: $("#IBtype").val(),
+                        bunit: $("#IBunit").val(),
+                        bpapersNumber: $("#IBpapersNumber").val(),
+                        bmatter: $("#IBmatter").val(),
+                        bstate: $("#IBstate2").prop("checked") == true ? true : false,
+                        bUpdateTime: $("#IBUpdateTime").val(),
+                        pubLishPerson: $("#IPubLishPerson").val(),
                     }),
                     success: function (result) {
                         if (result > 0) {
