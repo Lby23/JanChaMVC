@@ -18,19 +18,19 @@
     <div style="width:190px;height:666px;padding:20px,10px;float:left;background-color:aliceblue;margin-left:150px;">
         <ul style="width:170px;height:129px;padding-left:10px;padding-top:20px;">
             <li>
-                <p style="width:155px;height:37px;text-align:center;border-bottom:1px solid;">行业类型</p>
+                <p style="width:155px;height:37px;text-align:center;border-bottom:1px solid;" id="sj">@*行业类型*@</p>
                 <hr style="width:150px;height:2px;color:black" />
-                <dl style="width:140px;height:62px;text-align:center;">
+                <dl id="b" style="width:140px;height:62px;text-align:center;display:none;">
                     <dd style="width:158px;height:19px;padding:10px,0px,2px;">
-                        <a href="">房地产行业</a>
+                        <a href="" id="324">@*房地产行业*@</a>
                     </dd>
                 </dl>
             </li>
         </ul>
     </div>
-    <div style="width:700px;height:666px;float:left;padding-left:10px;">
-        <p style="width:380px;height:40px;font-size:20px;background-color:azure;padding-left:300px;">房地产行业</p>
-        <div style="width:600px;height:180px;padding-top:30px;padding-bottom:50px;padding-left:10px;padding-right:10px;">
+    <div style="width:700px;float:left;padding-left:10px;" id="a" >
+        <p style="width:380px;height:40px;font-size:20px;background-color:azure;padding-left:300px;" id="xx">@*房地产行业*@</p>
+        <div id="showdiv1" style="width:600px;height:180px;padding-top:30px;padding-bottom:50px;padding-left:10px;padding-right:10px;">
             <p style="text-align:center">
                 <span>
                     132
@@ -61,12 +61,37 @@
 
 </div>
 
-    <script>
+<script>
+    $(function () {
+        $.ajax({
+            url: 'http://localhost:64502/api/Tab/Index',
+            type: 'get',
+            success: function (data) {
+                var list = "";
+                $(data).each(function () {
+                    list += "<a>" + this.severce1 + "</a>";
+                });
+                $("#324").empty().append(list);
+                $("#xx").empty().append(list);
 
-            function showHideCode(){
-                $("#showdiv").toggle();
-             }
-    </script>
+                var list = "";
+                $(data).each(function () {
+                    list += " <span onclick='showHideCode1()'>" + this.tittle21 + "</span>";
+                });
+                $("#sj").empty().append(list);
+            }
+        });
+    })
+    
+
+    function showHideCode() {
+        $("#showdiv").toggle();
+    }
+    function showHideCode1() {
+        $("#showdiv1").toggle();  
+        $("#b").toggle(); 
+    }
+</script>
 
 
 
